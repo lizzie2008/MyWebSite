@@ -18,7 +18,6 @@ namespace MyWebSite
     {
         public Startup(IConfiguration configuration)
         {
-            //开始配置
             Configuration = configuration;
         }
 
