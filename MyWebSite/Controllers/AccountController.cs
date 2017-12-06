@@ -78,7 +78,7 @@ namespace MyWebSite.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "登录失败，请检查用户名或密码");
                     return View(model);
                 }
             }
@@ -247,7 +247,7 @@ namespace MyWebSite.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(Login));
         }
 
         [HttpPost]
