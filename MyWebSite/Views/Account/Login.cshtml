@@ -1,9 +1,5 @@
-﻿@using System.Collections.Generic
-@using System.Linq
-@using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Http.Authentication
-@model LoginViewModel
-@inject SignInManager<ApplicationUser> SignInManager
+﻿@model LoginViewModel
+
 @{
     Layout = null;
     ViewData["Title"] = "登录";
@@ -25,20 +21,18 @@
             <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group has-feedback">
-                    <input type="email" asp-for="Email" class="form-control" placeholder="邮箱">
+                    <input asp-for="Email" class="form-control" placeholder="邮箱">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" asp-for="Password" class="form-control" placeholder="密码">
+                    <input asp-for="Password" class="form-control" placeholder="密码">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label asp-for="RememberMe">
-                                <input type="checkbox" asp-for="RememberMe"> @Html.DisplayNameFor(m => m.RememberMe)
+                                <input asp-for="RememberMe"> @Html.DisplayNameFor(m => m.RememberMe)
                             </label>
                         </div>
                     </div>
@@ -66,16 +60,6 @@
 </html>
 
 @await Html.PartialAsync("_SiteScriptsPartial")
-<!-- 复选框样式 -->
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
 @await Html.PartialAsync("_ValidationScriptsPartial")
 
 

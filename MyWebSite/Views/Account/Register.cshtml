@@ -1,36 +1,70 @@
 ﻿@model RegisterViewModel
+
 @{
-    ViewData["Title"] = "Register";
+    Layout = null;
+    ViewData["Title"] = "注册";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LanceL0t</title>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+    @await Html.PartialAsync("_SiteCssPartial")
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-box-body">
+            <p class="login-box-msg">欢迎，注册新用户</p>
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group has-feedback">
+                    <input asp-for="Email" class="form-control" placeholder="请输入邮箱">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input asp-for="Password" class="form-control" placeholder="请输入密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+                </div>
+                <div class="form-group has-feedback">
+                    <input asp-for="ConfirmPassword" class="form-control" placeholder="请确认密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label asp-for="IsAgree">
+                                <input asp-for="IsAgree"> 阅读并接受《<a href="#">用户协议</a>》
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
+                    </div>
+                </div>
+            </form>
+            <div class="social-auth-links text-center">
+                <p>- 或者 -</p>
+                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                    <i class="fa fa-facebook"></i> Sign in using
+                    Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                    <i class="fa fa-google-plus"></i> Sign in using
+                    Google+
+                </a>
             </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-default">Register</button>
-        </form>
+            <a asp-controller="Account" asp-action="Login">已有账号</a><br>
+        </div>
     </div>
-</div>
+</body>
+</html>
 
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}
+@await Html.PartialAsync("_SiteScriptsPartial")
+@await Html.PartialAsync("_ValidationScriptsPartial")
+
+
+

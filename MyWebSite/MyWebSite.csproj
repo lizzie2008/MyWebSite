@@ -2165,4 +2165,9 @@
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\xbox.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Configuration\Data\" />
+    <Folder Include="Areas\Configuration\Models\" />
+  </ItemGroup>
+
 </Project>

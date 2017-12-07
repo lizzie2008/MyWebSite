@@ -8,11 +8,11 @@ namespace MyWebSite.Models.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "请输入邮箱")]
+        [EmailAddress(ErrorMessage = "邮箱格式非法")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "请输入密码")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MyWebSite.Extensions;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyWebSite.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessage = "请输入邮箱")]
+        [EmailAddress(ErrorMessage = "邮箱格式非法")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "请输入密码")]
+        [StringLength(100, ErrorMessage = "密码长度必须介于 {2} 和 {1} 之间", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "两次输入密码不一致")]
         public string ConfirmPassword { get; set; }
+
+        [MustBeTrue(ErrorMessage = "请勾选阅读并接受用户协议")]
+        public bool IsAgree { get; set; }
     }
 }
