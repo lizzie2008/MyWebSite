@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\.bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\css\dataTables.bootstrap.css" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\css\dataTables.bootstrap.min.css" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\License.txt" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net\.bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net\bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net\License.txt" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\fastclick\.bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\fastclick\bower.json" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\font-awesome\.bower.json" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\font-awesome\.gitignore" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\font-awesome\.npmignore" />
@@ -1403,6 +1413,26 @@
     <Content Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\woman.svg" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\wrench.svg" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\xbox.svg" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\.bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\bower.json" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\dynamic-content.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\index.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\navigation.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\nested.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\rail.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\scroll-events.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\style.css" />
+    <Content Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\package.json" />
   </ItemGroup>
 
 
@@ -1419,6 +1449,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\Readme.md" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net\js\jquery.dataTables.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net\Readme.md" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\fastclick\lib\fastclick.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\fastclick\LICENSE" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\fastclick\README.md" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\fonts\ionicons.svg" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\less\ionicons.less" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\less\_ionicons-font.less" />
@@ -2163,13 +2202,15 @@
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\woman.svg" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\wrench.svg" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\Ionicons\src\xbox.svg" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\jquery.slimscroll.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\README.md" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Configuration\Controllers\" />
     <Folder Include="Areas\Configuration\Data\" />
     <Folder Include="Areas\Configuration\Models\" />
-    <Folder Include="Areas\Configuration\Views\" />
     <Folder Include="bin\" />
   </ItemGroup>
 

@@ -1,0 +1,103 @@
+﻿@using Microsoft.CodeAnalysis
+@model IEnumerable<MyWebSite.Models.Configuration.Menu>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <button type="button" class="btn btn-primary">新建</button>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>菜单编号</th>
+                            <th>菜单名称</th>
+                            <th>菜单级别</th>
+                            <th>父级菜单</th>
+                            <th>组内排序</th>
+                            <th>菜单类型</th>
+                            <th>菜单图标</th>
+                            <th>菜单路径</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    Level @Html.DisplayFor(modelItem => item.Level)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ParentId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IndexCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MenuType)
+                                </td>
+                                <td>
+                                    <i class="fa @item.Icon"></i>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Url)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">编辑</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">详情</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">删除</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            var table = $('.table').DataTable({
+                "scrollX": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+                }
+
+                //"language": {
+                //    "lengthMenu": "每页显示 _MENU_ 条记录",
+                //    "zeroRecords": "无任何数据返回",
+                //    "info": "第 _PAGE_ 页 共 _PAGES_ 页",
+                //    "infoEmpty": "无任何记录",
+                //    "infoFiltered": "(filtered from _MAX_ total records)"
+                //}
+            })
+
+            $('.table').css("font-size", "12px");
+            $('.table th').css("white-space", "nowrap");
+            $('.table td').css("white-space", "nowrap");
+
+            console.log($('.table th'));
+
+            //$('.table').on('click', 'tr', function () {
+            //     var data = table.row( this ).data();
+            //     alert( 'You clicked on '+data[0]+'\'s row' );
+            // } );
+        })
+    </script>
+}

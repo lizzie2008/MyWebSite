@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using MyWebSite.Datas;
+using MyWebSite.Models.Configuration;
 using System;
 
 namespace MyWebSite.Migrations
@@ -189,21 +190,17 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Models.Configuration.Menu", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AreaUrl")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("ControllerUrl")
-                        .IsRequired()
-                        .HasMaxLength(256);
+                    b.Property<string>("Id");
 
                     b.Property<string>("Icon")
                         .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<int>("IndexCode");
+
+                    b.Property<int>("Level");
+
+                    b.Property<int>("MenuType");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -213,7 +210,8 @@ namespace MyWebSite.Migrations
 
                     b.Property<string>("Remarks");
 
-                    b.Property<int>("Type");
+                    b.Property<string>("Url")
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 

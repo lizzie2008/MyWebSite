@@ -56,14 +56,14 @@ namespace MyWebSite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AreaUrl = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ControllerUrl = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Icon = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IndexCode = table.Column<int>(type: "int", nullable: false),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    MenuType = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     ParentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Remarks = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<int>(type: "int", nullable: false)
+                    Url = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true)
                 },
                 constraints: table =>
                 {

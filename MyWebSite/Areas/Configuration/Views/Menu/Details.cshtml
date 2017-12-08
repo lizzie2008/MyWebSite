@@ -1,0 +1,73 @@
+﻿@model MyWebSite.Models.Configuration.Menu
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParentId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IndexCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IndexCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreaUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ControllerUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ControllerUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActionUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActionUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MenuType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Icon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Icon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
