@@ -2166,8 +2166,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Configuration\Controllers\" />
     <Folder Include="Areas\Configuration\Data\" />
     <Folder Include="Areas\Configuration\Models\" />
+    <Folder Include="Areas\Configuration\Views\" />
+    <Folder Include="bin\" />
   </ItemGroup>
 
 </Project>

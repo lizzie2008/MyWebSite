@@ -11,8 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MyWebSite.Models;
-using MyWebSite.Models.ManageViewModels;
+using MyWebSite.Models.Configuration;
 using MyWebSite.Services;
+using MyWebSite.ViewModels.ManageViewModels;
 
 namespace MyWebSite.Controllers
 {

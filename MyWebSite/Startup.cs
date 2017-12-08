@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyWebSite.Data;
+using MyWebSite.Datas;
 using MyWebSite.Extensions;
-using MyWebSite.Models;
+using MyWebSite.Models.Configuration;
 using MyWebSite.Services;
 
 namespace MyWebSite
@@ -26,7 +26,7 @@ namespace MyWebSite
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
                 .AddErrorDescriber<IdentityExtensions>();

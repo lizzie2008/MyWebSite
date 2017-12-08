@@ -11,8 +11,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MyWebSite.Models;
-using MyWebSite.Models.AccountViewModels;
+using MyWebSite.Models.Configuration;
 using MyWebSite.Services;
+using MyWebSite.ViewModels.AccountViewModels;
 
 namespace MyWebSite.Controllers
 {
