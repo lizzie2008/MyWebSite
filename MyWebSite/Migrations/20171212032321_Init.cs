@@ -58,7 +58,6 @@ namespace MyWebSite.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Icon = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IndexCode = table.Column<int>(type: "int", nullable: false),
-                    Level = table.Column<int>(type: "int", nullable: false),
                     MenuType = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     ParentId = table.Column<string>(type: "nvarchar(max)", nullable: true),

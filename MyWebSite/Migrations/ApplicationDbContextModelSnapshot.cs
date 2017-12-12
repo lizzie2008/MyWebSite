@@ -198,8 +198,6 @@ namespace MyWebSite.Migrations
 
                     b.Property<int>("IndexCode");
 
-                    b.Property<int>("Level");
-
                     b.Property<int>("MenuType");
 
                     b.Property<string>("Name")

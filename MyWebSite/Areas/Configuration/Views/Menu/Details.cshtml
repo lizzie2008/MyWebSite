@@ -1,73 +1,63 @@
 ﻿@model MyWebSite.Models.Configuration.Menu
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "菜单详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">详情</h3>
+                </div>
+                <form>
+                    <div class="box-body">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Id">菜单编号</label>
+                            <input asp-for="Id" class="form-control input-sm" readonly>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Name">菜单名称</label>
+                            <input asp-for="Name" class="form-control input-sm" readonly>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="ParentId">父级菜单</label>
+                            <input asp-for="ParentId" class="form-control input-sm" readonly>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="IndexCode">组内排序</label>
+                            <input asp-for="IndexCode" class="form-control input-sm" readonly>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="MenuType">菜单类型</label>
+                            <input asp-for="MenuType" class="form-control input-sm" readonly>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Icon">菜单图标</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i id="IconfShow" class="fa @Model.Icon"></i></span>
+                                <input asp-for="Icon" class="form-control input-sm" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Url">菜单路径</label>
+                            <input asp-for="Url" class="form-control input-sm" readonly>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Remarks">备注</label>
+                            <input asp-for="Remarks" class="form-control input-sm" readonly>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary"><i id="IconfShow" class="fa fa-edit"></i>&nbsp;编辑</a>
+                        <a asp-action="Index" class="btn btn-primary"><i id="IconfShow" class="fa fa-undo"></i>&nbsp;返回</a>
+                    </div>
+                </form>
+            </div>
 
-<h2>Details</h2>
-
-<div>
-    <h4>Menu</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ParentId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParentId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IndexCode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IndexCode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AreaUrl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AreaUrl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ControllerUrl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ControllerUrl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ActionUrl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ActionUrl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MenuType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MenuType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Icon)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Icon)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Remarks)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Remarks)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        </div>
+    </div>
+</section>

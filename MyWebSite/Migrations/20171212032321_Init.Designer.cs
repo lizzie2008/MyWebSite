@@ -13,7 +13,7 @@ using System;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171208070543_Init")]
+    [Migration("20171212032321_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -198,8 +198,6 @@ namespace MyWebSite.Migrations
                         .HasMaxLength(50);
 
                     b.Property<int>("IndexCode");
-
-                    b.Property<int>("Level");
 
                     b.Property<int>("MenuType");
 

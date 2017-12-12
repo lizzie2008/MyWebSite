@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Datas;
+using MyWebSite.Extensions;
 using MyWebSite.Models.Configuration;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {
@@ -47,15 +47,21 @@ namespace MyWebSite.Areas.Configuration.Controllers
         // GET: Configuration/Menu/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new Menu
+            {
+                Id = "M_",
+                IndexCode = 1,
+                Icon = "fa-circle-o"
+            };
+            UpdateDropDownList();
+            return View(model);
         }
 
         // POST: Configuration/Menu/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ParentId,Name,IndexCode,AreaUrl,ControllerUrl,ActionUrl,MenuType,Icon,Remarks")] Menu menu)
+        public async Task<IActionResult> Create([Bind("Id,Name,ParentId,IndexCode,Url,MenuType,Icon,Remarks")] Menu menu)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +69,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            UpdateDropDownList(menu);
             return View(menu);
         }
 
@@ -79,6 +86,8 @@ namespace MyWebSite.Areas.Configuration.Controllers
             {
                 return NotFound();
             }
+
+            UpdateDropDownList(menu);
             return View(menu);
         }
 
@@ -86,8 +95,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,ParentId,Name,IndexCode,AreaUrl,ControllerUrl,ActionUrl,MenuType,Icon,Remarks")] Menu menu)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,ParentId,IndexCode,Url,MenuType,Icon,Remarks")] Menu menu)
         {
             if (id != menu.Id)
             {
@@ -114,31 +122,14 @@ namespace MyWebSite.Areas.Configuration.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(menu);
-        }
 
-        // GET: Configuration/Menu/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var menu = await _context.Menus
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (menu == null)
-            {
-                return NotFound();
-            }
-
+            UpdateDropDownList(menu);
             return View(menu);
         }
 
         // POST: Configuration/Menu/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
         {
             var menu = await _context.Menus.SingleOrDefaultAsync(m => m.Id == id);
             _context.Menus.Remove(menu);
@@ -149,6 +140,25 @@ namespace MyWebSite.Areas.Configuration.Controllers
         private bool MenuExists(string id)
         {
             return _context.Menus.Any(e => e.Id == id);
+        }
+
+        /// <summary>
+        /// 初始化下拉选择框
+        /// </summary>
+        /// <param name="menu"></param>
+        private void UpdateDropDownList(Menu menu = null)
+        {
+            var menusParent = _context.Menus.AsNoTracking().Where(s => s.MenuType == MenuTypes.导航菜单);
+            if (menu == null)
+            {
+                ViewBag.ParentIds = new SelectList(menusParent, "Id", "Id");
+                ViewBag.MenuTypes = MenuTypes.导航菜单.GetSelectListByEnum();
+            }
+            else
+            {
+                ViewBag.ParentIds = new SelectList(menusParent, "Id", "Id", menu.ParentId);
+                ViewBag.MenuTypes = MenuTypes.导航菜单.GetSelectListByEnum(Convert.ToInt32(menu.MenuType));
+            }
         }
     }
 }

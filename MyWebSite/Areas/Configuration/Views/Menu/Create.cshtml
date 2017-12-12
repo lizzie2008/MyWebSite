@@ -1,79 +1,76 @@
 ﻿@model MyWebSite.Models.Configuration.Menu
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "菜单新建";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">新建</h3>
+                </div>
+                <form asp-action="Create">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="box-body">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Id">菜单编号</label>
+                            <input asp-for="Id" class="form-control input-sm">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Name">菜单名称</label>
+                            <input asp-for="Name" class="form-control input-sm">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="ParentId">父级菜单</label>
+                            <select asp-for="ParentId" class="form-control input-sm" asp-items="ViewBag.ParentIds">
+                                <option value="">-- 请选择 --</option>
+                            </select>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="IndexCode">组内排序</label>
+                            <input asp-for="IndexCode" class="form-control input-sm">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="MenuType">菜单类型</label>
+                            <select asp-for="MenuType" class="form-control input-sm" asp-items="ViewBag.MenuTypes">
+                                <option value="">-- 请选择 --</option>
+                            </select>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Icon">菜单图标</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i id="IconfShow" class="fa @Model.Icon"></i></span>
+                                <input asp-for="Icon" class="form-control input-sm">
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Url">菜单路径</label>
+                            <input asp-for="Url" class="form-control input-sm">
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label asp-for="Remarks">备注</label>
+                            <input asp-for="Remarks" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary"><i id="IconfShow" class="fa fa-save"></i>&nbsp;保存</button>
+                        <a asp-action="Index" class="btn btn-primary"><i id="IconfShow" class="fa fa-undo"></i>&nbsp;返回</a>
+                    </div>
+                </form>
+            </div>
 
-<h2>Create</h2>
-
-<h4>Menu</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ParentId" class="control-label"></label>
-                <input asp-for="ParentId" class="form-control" />
-                <span asp-validation-for="ParentId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IndexCode" class="control-label"></label>
-                <input asp-for="IndexCode" class="form-control" />
-                <span asp-validation-for="IndexCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AreaUrl" class="control-label"></label>
-                <input asp-for="AreaUrl" class="form-control" />
-                <span asp-validation-for="AreaUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ControllerUrl" class="control-label"></label>
-                <input asp-for="ControllerUrl" class="form-control" />
-                <span asp-validation-for="ControllerUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ActionUrl" class="control-label"></label>
-                <input asp-for="ActionUrl" class="form-control" />
-                <span asp-validation-for="ActionUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MenuType" class="control-label"></label>
-                <select asp-for="MenuType" class="form-control"></select>
-                <span asp-validation-for="MenuType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Icon" class="control-label"></label>
-                <input asp-for="Icon" class="form-control" />
-                <span asp-validation-for="Icon" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Remarks" class="control-label"></label>
-                <input asp-for="Remarks" class="form-control" />
-                <span asp-validation-for="Remarks" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+</section>
 @section Scripts {
+    <script>
+        $('#Icon').blur(function () {
+            $("#IconfShow").attr('class', 'fa ' + $('#Icon').val());
+        });
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

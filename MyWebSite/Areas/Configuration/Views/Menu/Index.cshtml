@@ -1,23 +1,22 @@
-﻿@using Microsoft.CodeAnalysis
-@model IEnumerable<MyWebSite.Models.Configuration.Menu>
+﻿@model IEnumerable<MyWebSite.Models.Configuration.Menu>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "菜单列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <button type="button" class="btn btn-primary">新建</button>
+                <a class="btn btn-primary" href="/Configuration/Menu/Create"><i class="fa fa-plus"></i>&nbsp;新建</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table class="table table-bordered table-hover" style="width:100%">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>菜单编号</th>
                             <th>菜单名称</th>
-                            <th>菜单级别</th>
                             <th>父级菜单</th>
                             <th>组内排序</th>
                             <th>菜单类型</th>
@@ -27,17 +26,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @{
+                            var index = 0;
+                        }
                         @foreach (var item in Model)
                         {
+                            index++;
                             <tr>
+                                <td>
+                                    @index.ToString("D3")
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Id)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    Level @Html.DisplayFor(modelItem => item.Level)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ParentId)
@@ -55,49 +58,51 @@
                                     @Html.DisplayFor(modelItem => item.Url)
                                 </td>
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id">编辑</a> |
-                                    <a asp-action="Details" asp-route-id="@item.Id">详情</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.Id">删除</a>
+                                    @Html.ActionLink("编辑", "Edit", new { id = @item.Id })|
+                                    @Html.ActionLink("详情", "Details", new { id = @item.Id })|
+                                    <a href="#" onclick="onDelete('@item.Id');">删除</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
-            <!-- /.box-body -->
         </div>
     </div>
-    <!-- /.col -->
 </div>
 
 @section Scripts{
     <script>
-        $(function () {
-            var table = $('.table').DataTable({
-                "scrollX": true,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
-                }
-
-                //"language": {
-                //    "lengthMenu": "每页显示 _MENU_ 条记录",
-                //    "zeroRecords": "无任何数据返回",
-                //    "info": "第 _PAGE_ 页 共 _PAGES_ 页",
-                //    "infoEmpty": "无任何记录",
-                //    "infoFiltered": "(filtered from _MAX_ total records)"
-                //}
-            })
-
-            $('.table').css("font-size", "12px");
-            $('.table th').css("white-space", "nowrap");
-            $('.table td').css("white-space", "nowrap");
-
-            console.log($('.table th'));
-
-            //$('.table').on('click', 'tr', function () {
-            //     var data = table.row( this ).data();
-            //     alert( 'You clicked on '+data[0]+'\'s row' );
-            // } );
-        })
+        function onDelete(Id) {
+            BootstrapDialog.show({
+                message: '确认删除菜单[' + Id + ']？',
+                size: BootstrapDialog.SIZE_SMALL,
+                draggable: true,
+                buttons: [
+                    {
+                        icon: 'fa fa-check',
+                        label: '确定',
+                        cssClass: 'btn-primary',
+                        action: function (dialogRef) {
+                            dialogRef.close();
+                            $.ajax({
+                                type: 'POST',
+                                url: '/Configuration/Menu/Delete',
+                                data: { id: Id },
+                                success: function () {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    }, {
+                        icon: 'fa fa-close',
+                        label: '取消',
+                        action: function (dialogRef) {
+                            dialogRef.close();
+                        }
+                    }
+                ]
+            });
+        }
     </script>
 }

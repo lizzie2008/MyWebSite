@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Content Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\.bower.json" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\bower.json" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\css\dataTables.bootstrap.css" />
@@ -2206,12 +2213,14 @@
     <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\jquery.slimscroll.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\jquery.slimscroll.min.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\jquery-slimscroll\README.md" />
+    <None Include="wwwroot\lib\bootstrap3-dialog\dist\js\bootstrap-dialog.js" />
+    <None Include="wwwroot\lib\bootstrap3-dialog\dist\js\bootstrap-dialog.min.js" />
+    <None Include="wwwroot\lib\bootstrap3-dialog\dist\less\bootstrap-dialog.less" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Configuration\Data\" />
     <Folder Include="Areas\Configuration\Models\" />
-    <Folder Include="bin\" />
   </ItemGroup>
 
 </Project>

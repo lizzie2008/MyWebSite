@@ -12,43 +12,40 @@ namespace MyWebSite.Models.Configuration
         /// 主键ID
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required(ErrorMessage = "请输入菜单编号")]
         public string Id { get; set; }
 
         /// <summary>
         /// 菜单名称
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "请输入菜单名称")]
         [StringLength(256)]
         public string Name { get; set; }
 
         /// <summary>
-        /// 菜单级别
-        /// </summary>
-        [Required]
-        public int Level { get; set; }
-
-        /// <summary>
         /// 父级ID
         /// </summary>
+        [DisplayFormat(NullDisplayText = "无")]
         public string ParentId { get; set; }
 
         /// <summary>
         /// 菜单组内排序
         /// </summary>
-        [Required]
+        [Range(0, 99, ErrorMessage = "请选择1-99范围内的整数")]
         public int IndexCode { get; set; }
 
         /// <summary>
         /// 菜单路径
         /// </summary>
         [StringLength(256)]
+        [DisplayFormat(NullDisplayText = "无")]
         public string Url { get; set; }
 
         /// <summary>
         /// 类型：0导航菜单；1操作按钮。
         /// </summary>
-        [Required]
-        public MenuTypes MenuType { get; set; }
+        [Required(ErrorMessage = "请选择菜单类型")]
+        public MenuTypes? MenuType { get; set; }
 
         /// <summary>
         /// 菜单图标名称
