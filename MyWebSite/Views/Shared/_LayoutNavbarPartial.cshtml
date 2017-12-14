@@ -1,4 +1,6 @@
-﻿<aside class="main-sidebar">
+﻿@using MyWebSite.Services
+
+<aside class="main-sidebar">
     <section class="sidebar">
         <div class="user-panel">
             <div class="pull-left image">
@@ -21,20 +23,7 @@
         </form>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">菜单导航</li>
-            <li class="active treeview menu-open">
-                <a href="#">
-                    <i class="fa fa-cog"></i> <span>后台管理</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href=""><i class="fa fa-circle-o"></i> 用户管理</a></li>
-                    <li><a href=""><i class="fa fa-circle-o"></i> 角色管理</a></li>
-                    <li><a asp-area="Configuration" asp-controller="Menu" asp-action="Index"><i class="fa fa-circle-o"></i> 菜单权限</a></li>
-                </ul>
-            </li>
-
+            @await Html.PartialAsync("_NavMenu", NavMenuService.NavMenus)
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
@@ -43,3 +32,4 @@
         </ul>
     </section>
 </aside>
+

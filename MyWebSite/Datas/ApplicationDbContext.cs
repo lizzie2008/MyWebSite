@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MyWebSite.Models.Configuration;
+using MyWebSite.Areas.Configuration.Models;
+using MyWebSite.Models;
 
 namespace MyWebSite.Datas
 {

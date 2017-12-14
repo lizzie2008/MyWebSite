@@ -1,5 +1,5 @@
-﻿@using MyWebSite.Views.Manage
-@using MyWebSite.Models.Configuration
+﻿@using MyWebSite.Models
+@using MyWebSite.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

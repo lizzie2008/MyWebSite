@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using MyWebSite.Datas;
-using MyWebSite.Models.Configuration;
 using System;
 
 namespace MyWebSite.Migrations

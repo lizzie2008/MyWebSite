@@ -6,8 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
-using MyWebSite.Models.Configuration;
+using MyWebSite.Models;
 using MyWebSite.Services;
+using MyWebSite.Services.Interfaces;
 
 namespace MyWebSite
 {
@@ -33,6 +34,9 @@ namespace MyWebSite
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<INavMenuService, NavMenuService>();
+
+            services.AddSession();
 
             services.AddMvc();
         }
@@ -54,6 +58,8 @@ namespace MyWebSite
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

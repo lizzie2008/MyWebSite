@@ -1,4 +1,6 @@
-﻿namespace MyWebSite.Models.Configuration
+﻿using MyWebSite.Models;
+
+namespace MyWebSite.Areas.Configuration.Models
 {
     /// <summary>
     /// 角色菜单权限

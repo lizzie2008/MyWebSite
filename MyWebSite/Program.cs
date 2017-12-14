@@ -11,7 +11,7 @@ using MyWebSite.Datas;
 using Microsoft.Extensions.DependencyInjection;
 using ContosoUniversity.Data;
 using Microsoft.AspNetCore.Identity;
-using MyWebSite.Models.Configuration;
+using MyWebSite.Models;
 
 namespace MyWebSite
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyWebSite.Models.Configuration
+namespace MyWebSite.Areas.Configuration.Models
 {
     /// <summary>
     /// 菜单

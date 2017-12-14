@@ -1,8 +1,9 @@
 ﻿using MyWebSite.Datas;
-using MyWebSite.Models.Configuration;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MyWebSite.Areas.Configuration.Models;
+using MyWebSite.Models;
 
 namespace ContosoUniversity.Data
 {
@@ -42,7 +43,7 @@ namespace ContosoUniversity.Data
                         Name = "用户管理",
                         ParentId = "M01_00_00",
                         IndexCode=1,
-                        Url = "Configuration/User/Index",
+                        Url = "/Configuration/User/Index",
                         MenuType = MenuTypes.操作菜单,
                         Icon = "fa-user",
                     },
@@ -64,8 +65,8 @@ namespace ContosoUniversity.Data
                         Name = "菜单管理",
                         ParentId = "M01_00_00",
                         IndexCode=3,
-                        Url = "Configuration/Menu/Index",
-                        MenuType = MenuTypes.导航菜单,
+                        Url = "/Configuration/Menu/Index",
+                        MenuType = MenuTypes.操作菜单,
                         Icon = "fa-user-secret",
                     },
                     //后台管理-角色管理-角色信息配置
@@ -75,7 +76,7 @@ namespace ContosoUniversity.Data
                         Name = "角色信息配置",
                         ParentId = "M01_02_00",
                         IndexCode=1,
-                        Url = "Configuration/Role/Index",
+                        Url = "/Configuration/Role/Index",
                         MenuType = MenuTypes.操作菜单,
                         Icon = "fa-circle-o",
                     },
@@ -86,7 +87,7 @@ namespace ContosoUniversity.Data
                         Name = "角色菜单配置",
                         ParentId = "M01_02_00",
                         IndexCode=2,
-                        Url = "Configuration/Role/RoleMenu",
+                        Url = "/Configuration/Role/RoleMenu",
                         MenuType = MenuTypes.操作菜单,
                         Icon = "fa-circle-o",
                     },

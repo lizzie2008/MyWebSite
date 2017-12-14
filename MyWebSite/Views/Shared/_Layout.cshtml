@@ -7,12 +7,13 @@
 
     @await Html.PartialAsync("_SiteCssPartial")
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onpagehide="onpagehide()" onload="onload()">
     <div class="wrapper">
         <!-- 顶部区域 -->
         @await Html.PartialAsync("_LayoutHeaderPartial")
         <!-- 导航栏 -->
         @await Html.PartialAsync("_LayoutNavbarPartial")
+
         <!-- 内容区域 -->
         <div class="content-wrapper">
             <section class="content-header">

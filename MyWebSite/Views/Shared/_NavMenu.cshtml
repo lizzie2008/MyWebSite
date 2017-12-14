@@ -1,0 +1,29 @@
+﻿@using MyWebSite.Areas.Configuration.Models
+@model IList<MyWebSite.Areas.Configuration.ViewModels.NavMenu>
+
+@foreach (var navMenu in Model)
+{
+    @if (navMenu.MenuType == MenuTypes.导航菜单)
+    {
+        <li class="treeview" menuid="@navMenu.Id">
+            <a href="#">
+                <i class="fa @navMenu.Icon"></i> <span>@navMenu.Name</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @await Html.PartialAsync("_NavMenu", navMenu.SubNavMenus)
+            </ul>
+        </li>
+    }
+    else if ((navMenu.MenuType == MenuTypes.操作菜单))
+    {
+        <li menuid="@navMenu.Id">
+            <a href="@navMenu.Url">
+                <i class="fa @navMenu.Icon"></i> @navMenu.Name
+            </a>
+        </li>
+    }
+}
+

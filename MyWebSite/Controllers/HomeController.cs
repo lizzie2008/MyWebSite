@@ -1,19 +1,25 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MyWebSite.Controllers.Abstract;
 using MyWebSite.Models;
-using System.Diagnostics;
-using MyWebSite.Models.Configuration;
+using MyWebSite.Services;
+using MyWebSite.Services.Interfaces;
 using MyWebSite.ViewModels;
+using System.Diagnostics;
 
 namespace MyWebSite.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AppController
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly INavMenuService _navMenuService;
 
-        public HomeController(SignInManager<ApplicationUser> signInManager)
+
+        public HomeController(SignInManager<ApplicationUser> signInManager, INavMenuService navMenuService)
         {
             _signInManager = signInManager;
+            _navMenuService = navMenuService;
         }
 
         public IActionResult Index()
@@ -21,6 +27,8 @@ namespace MyWebSite.Controllers
             //如果已经登录，返回主页面
             if (_signInManager.IsSignedIn(User))
             {
+                NavMenuService.NavMenus = _navMenuService.GenerateNavMenus();
+
                 return View();
             }
             //如果未登录，跳转登录界面

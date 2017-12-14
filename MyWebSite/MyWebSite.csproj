@@ -1445,6 +1445,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />
   </ItemGroup>
@@ -2220,7 +2221,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Configuration\Data\" />
-    <Folder Include="Areas\Configuration\Models\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace MyWebSite.Models.Configuration
+namespace MyWebSite.Models
 {
     public class ApplicationRole : IdentityRole
     {

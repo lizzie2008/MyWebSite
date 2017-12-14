@@ -1,17 +1,42 @@
-﻿<script src="~/lib/jquery/dist/jquery.js"></script>
+﻿
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.cookie.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-
-<script src="~/lib/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="~/lib/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="~/lib/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="~/lib/AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
-
-<script src="~/lib/AdminLTE/dist/js/adminlte.min.js"></script>
-<script src="~/lib/AdminLTE/dist/js/demo.js"></script>
-<script src="~/lib/AdminLTE/plugins/iCheck/icheck.js"></script>
 <script src="~/lib/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
 
-<script src="~/js/app.js"></script>
+<script src="~/lib/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.js"></script>
+<script src="~/lib/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+<script src="~/lib/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="~/lib/AdminLTE/bower_components/fastclick/lib/fastclick.js"></script>
 
+<script src="~/lib/AdminLTE/dist/js/adminlte.js"></script>
+<script src="~/lib/AdminLTE/dist/js/demo.js"></script>
+<script src="~/lib/AdminLTE/plugins/iCheck/icheck.js"></script>
 
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<script>
+    //页面跳转前，保存菜单展开信息到cookie
+    function onpagehide() {
+        var menuids = [];
+        $('.menu-open').each(function () {
+            menuids.push($(this).attr('menuid'));
+        })
+        $.cookie('menuids_open', menuids.join(','), { path: "/" });
+    }
+    //界面加载时，从cookie中读取并设置菜单展开信息
+    function onload() {
+        var menuidsCookie = $.cookie('menuids_open');
+        if (menuidsCookie == null || menuidsCookie == undefined || menuidsCookie == "") return;
+
+        var menuids = menuidsCookie.split(',');
+
+        $.each(menuids, function (index, value) {
+            var menu = $('li[menuid$=' + value + ']');
+            menu.addClass('menu-open');
+            menu.children('ul').each(function () {
+                $(this).attr('style', "display: block;");
+            })
+        });
+    }
+</script>

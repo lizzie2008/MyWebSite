@@ -11,15 +11,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MyWebSite.Models;
-using MyWebSite.Models.Configuration;
 using MyWebSite.Services;
+using MyWebSite.Services.Interfaces;
 using MyWebSite.ViewModels.ManageViewModels;
+using MyWebSite.Controllers.Abstract;
 
 namespace MyWebSite.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
-    public class ManageController : Controller
+    public class ManageController : AppController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;

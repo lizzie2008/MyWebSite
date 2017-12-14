@@ -3,15 +3,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
-using MyWebSite.Models.Configuration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using MyWebSite.Areas.Configuration.Models;
+using MyWebSite.Controllers.Abstract;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {
     [Area("Configuration")]
-    public class MenuController : Controller
+    public class MenuController : AppController
     {
         private readonly ApplicationDbContext _context;
 
