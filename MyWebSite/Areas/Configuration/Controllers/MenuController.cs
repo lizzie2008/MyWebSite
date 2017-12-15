@@ -5,6 +5,7 @@ using MyWebSite.Areas.Configuration.Models;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
+using MyWebSite.Services.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,10 +16,12 @@ namespace MyWebSite.Areas.Configuration.Controllers
     public class MenuController : AppController
     {
         private readonly ApplicationDbContext _context;
+        private readonly INavMenuService _NavMenuService;
 
-        public MenuController(ApplicationDbContext context)
+        public MenuController(ApplicationDbContext context, INavMenuService navMenuService)
         {
             _context = context;
+            _NavMenuService = navMenuService;
         }
 
         // GET: Configuration/Menu
@@ -68,6 +71,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
             {
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
+                _NavMenuService.InitOrUpdate();
                 return RedirectToAction(nameof(Index));
             }
             UpdateDropDownList(menu);
@@ -121,6 +125,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
                         throw;
                     }
                 }
+                _NavMenuService.InitOrUpdate();
                 return RedirectToAction(nameof(Index));
             }
 
@@ -135,6 +140,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
             var menu = await _context.Menus.SingleOrDefaultAsync(m => m.Id == id);
             _context.Menus.Remove(menu);
             await _context.SaveChangesAsync();
+            _NavMenuService.InitOrUpdate();
             return RedirectToAction(nameof(Index));
         }
 

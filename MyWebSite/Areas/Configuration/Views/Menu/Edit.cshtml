@@ -1,10 +1,20 @@
-﻿@using MyWebSite.Areas.Configuration.Models
+﻿@using MyWebSite.ViewModels
+@using MyWebSite.Areas.Configuration.Models
 @model MyWebSite.Areas.Configuration.Models.Menu
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewData["Title"] = "菜单编辑";
+
+    var breadcrumb = new BreadCrumb("菜单编辑", "Version 2.0", new List<NavCrumb>
+    {
+        new NavCrumb(name:"菜单管理",url: "/Configuration/Menu"),
+        new NavCrumb(name:"菜单编辑"),
+        new NavCrumb(name:Model.Id),
+    });
+    ViewBag.BreadCrumb = breadcrumb;
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="content">

@@ -1,6 +1,15 @@
-﻿@model IEnumerable<MyWebSite.Areas.Configuration.Models.Menu>
+﻿@using MyWebSite.ViewModels
+@model IEnumerable<MyWebSite.Areas.Configuration.Models.Menu>
 @{
     ViewData["Title"] = "菜单列表";
+
+    var breadcrumb = new BreadCrumb("菜单列表", "Version 2.0", new List<NavCrumb>
+    {
+        new NavCrumb(name:"菜单管理",url: "/Configuration/Menu"),
+        new NavCrumb(name:"菜单列表"),
+    });
+    ViewBag.BreadCrumb = breadcrumb;
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row">

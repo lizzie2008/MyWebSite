@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using MyWebSite.ViewModels
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,14 +18,30 @@
         <!-- 内容区域 -->
         <div class="content-wrapper">
             <section class="content-header">
+                @{
+                    var breadCrumb = ViewBag.BreadCrumb as BreadCrumb;
+                    breadCrumb = breadCrumb ?? new BreadCrumb("主页", "Version 2.0", new List<NavCrumb>());
+                }
                 <h1>
-                    Dashboard
-                    <small>Version 2.0</small>
+                    @breadCrumb.Title
+                    <small>@breadCrumb.SubTitle</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-dashboard"></i> 主页</a></li>
-                    <li class="active">Dashboard</li>
-                    <li class="active">Dashboard</li>
+                    @foreach (var navCrumbs in @breadCrumb.NavCrumbs)
+                    {
+                        @if (!string.IsNullOrEmpty(navCrumbs.Url))
+                        {
+                            <li>
+                                <a href="@navCrumbs.Url">@navCrumbs.Name</a>
+                                <span></span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="active">@navCrumbs.Name</li>
+                        }
+                    }
                 </ol>
             </section>
             <section class="content">

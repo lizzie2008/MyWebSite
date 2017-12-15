@@ -29,6 +29,10 @@
     }
 }
 
+.table {
+    font-size: 13px;
+}
+
 th {
     white-space: nowrap;
 }

@@ -8,26 +8,43 @@ using MyWebSite.Areas.Configuration.Models;
 
 namespace MyWebSite.Services
 {
+    /// <summary>
+    /// 菜单服务
+    /// </summary>
     public class NavMenuService : INavMenuService
     {
         private readonly ApplicationDbContext _context;
-        public static IList<NavMenu> NavMenus { get; set; }
-
         public NavMenuService(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        private static IList<NavMenu> NavMenus { get; set; }
+
+        /// <summary>
+        /// 获取导航菜单
+        /// </summary>
+        /// <returns></returns>
+        public IList<NavMenu> GetNavMenus()
+        {
+            if (NavMenus == null)
+                InitOrUpdate();
+
+            return NavMenus;
+        }
         /// <summary>
         /// 生成导航菜单
         /// </summary>
         /// <returns></returns>
-        public void Init()
+        public void InitOrUpdate()
         {
             NavMenus = new List<NavMenu>();
 
             var rootMenus = _context.Menus
-                .Where(s => string.IsNullOrEmpty(s.ParentId)).AsNoTracking().ToList();
+                .Where(s => string.IsNullOrEmpty(s.ParentId))
+                .AsNoTracking()
+                .OrderBy(s => s.IndexCode)
+                .ToList();
 
             foreach (var rootMenu in rootMenus)
             {
@@ -41,6 +58,7 @@ namespace MyWebSite.Services
         /// <returns></returns>
         public NavMenu GetOneNavMenu(Menu menu)
         {
+            //构建菜单项
             var navMenu = new NavMenu
             {
                 Id = menu.Id,
@@ -50,8 +68,12 @@ namespace MyWebSite.Services
                 Icon = menu.Icon
             };
 
-            //查找子菜单
-            var subMenus = _context.Menus.Where(s => s.ParentId == menu.Id).AsNoTracking().ToList();
+            //构建子菜单
+            var subMenus = _context.Menus
+                .Where(s => s.ParentId == menu.Id)
+                .AsNoTracking()
+                .OrderBy(s => s.IndexCode)
+                .ToList();
 
             foreach (var subMenu in subMenus)
             {

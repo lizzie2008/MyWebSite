@@ -1,7 +1,11 @@
-﻿namespace MyWebSite.Services.Interfaces
+﻿using MyWebSite.Areas.Configuration.ViewModels;
+using System.Collections.Generic;
+
+namespace MyWebSite.Services.Interfaces
 {
     public interface INavMenuService
     {
-        void Init();
+        void InitOrUpdate();
+        IList<NavMenu> GetNavMenus();
     }
 }

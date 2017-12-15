@@ -34,7 +34,7 @@ namespace MyWebSite
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<INavMenuService, NavMenuService>();
+            services.AddScoped<INavMenuService, NavMenuService>();
 
             services.AddSession();
 

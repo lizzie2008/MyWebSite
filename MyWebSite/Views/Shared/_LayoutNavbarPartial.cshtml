@@ -26,13 +26,9 @@
         </form>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">菜单导航</li>
-            @{
-                if (NavMenuService.NavMenus == null)
-                {
-                    navMenuService.Init();
-                }
-            }
-            @await Html.PartialAsync("_NavMenu", NavMenuService.NavMenus)
+
+            @await Html.PartialAsync("_NavMenu", navMenuService.GetNavMenus())
+
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
