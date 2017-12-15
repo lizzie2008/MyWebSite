@@ -1,4 +1,5 @@
-﻿@model MyWebSite.Areas.Configuration.Models.Menu
+﻿@using MyWebSite.Areas.Configuration.Models
+@model MyWebSite.Areas.Configuration.Models.Menu
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -49,7 +50,14 @@
                         </div>
                         <div class="form-group  col-md-6">
                             <label asp-for="Url">菜单路径</label>
-                            <input asp-for="Url" class="form-control input-sm">
+                            @if (Model.MenuType == MenuTypes.操作菜单)
+                            {
+                                <input asp-for="Url" class="form-control input-sm">
+                            }
+                            else
+                            {
+                                <input asp-for="Url" class="form-control input-sm" readonly>
+                            }
                         </div>
                         <div class="form-group  col-md-6">
                             <label asp-for="Remarks">备注</label>
@@ -67,10 +75,6 @@
     </div>
 </section>
 @section Scripts {
-    <script>
-        $('#Icon').blur(function () {
-            $("#IconfShow").attr('class', 'fa ' + $('#Icon').val());
-        });
-    </script>
+    <script src="~/js/Configuration/Menu.js" ></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

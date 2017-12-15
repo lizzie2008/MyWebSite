@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using MyWebSite.Areas.Configuration.Models;
+using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using MyWebSite.Areas.Configuration.Models;
-using MyWebSite.Controllers.Abstract;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {

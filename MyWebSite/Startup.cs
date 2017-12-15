@@ -52,7 +52,8 @@ namespace MyWebSite
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Home/Error/500");
+                app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
             }
 
             app.UseStaticFiles();

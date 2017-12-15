@@ -22,21 +22,23 @@ namespace MyWebSite.Services
         /// 生成导航菜单
         /// </summary>
         /// <returns></returns>
-        public IList<NavMenu> GenerateNavMenus()
+        public void Init()
         {
-            var navMenus = new List<NavMenu>();
+            NavMenus = new List<NavMenu>();
 
             var rootMenus = _context.Menus
                 .Where(s => string.IsNullOrEmpty(s.ParentId)).AsNoTracking().ToList();
 
             foreach (var rootMenu in rootMenus)
             {
-                navMenus.Add(GetOneNavMenu(rootMenu));
+                NavMenus.Add(GetOneNavMenu(rootMenu));
             }
-
-            return navMenus;
         }
-
+        /// <summary>
+        /// 根据给定的Menu，生成对应的导航菜单
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         public NavMenu GetOneNavMenu(Menu menu)
         {
             var navMenu = new NavMenu

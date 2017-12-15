@@ -1457,6 +1457,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\Configuration\Menu.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\js\dataTables.bootstrap.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\datatables.net-bs\Readme.md" />

@@ -1,23 +1,69 @@
-﻿@using MyWebSite.ViewModels
-@model MyWebSite.ViewModels.ErrorViewModel
+﻿@model MyWebSite.ViewModels.ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = "错误";
 }
+<div class="error-page" style="margin-top: 100px;">
+    @if (Model.StatusCode == 500)
+    {
+        <!-- 500类型错误 -->
+        <h2 class="headline text-red"> @Model.StatusCode</h2>
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+        <div class="error-content">
+            <h3>
+                <i class="fa fa-warning text-red"></i> Oops! Something went wrong.
+            </h3>
+            <div>
+                StatusCode:<code>@Model.StatusCode</code>
+            </div>
+            <div>
+                Request ID: <code>@Model.RequestId</code>
+            </div>
+            <p>
+                We will work on fixing that right away.
+                Meanwhile, you may <a asp-area="" asp-controller="Home" asp-action="Index">return to index</a> or try using the search form.
+            </p>
+            <form class="search-form">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button type="submit" name="submit" class="btn btn-danger btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <!-- 其他类型错误 -->
+        <h2 class="headline text-yellow"> @Model.StatusCode</h2>
 
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
+        <div class="error-content">
+            <h3>
+                <i class="fa fa-warning text-yellow"></i> Oops! Page not found.
+            </h3>
+            <div>
+                StatusCode:<code>@Model.StatusCode</code>
+            </div>
+            <div>
+                Request ID: <code>@Model.RequestId</code>
+            </div>
+            <p>
+                We could not find the page you were looking for.
+                Meanwhile, you may <a asp-area="" asp-controller="Home" asp-action="Index">return to index</a> or try using the search form.
+            </p>
+            <form class="search-form">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button type="submit" name="submit" class="btn btn-warning btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
 
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
-</p>
+</div>

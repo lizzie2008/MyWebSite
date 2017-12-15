@@ -1,5 +1,4 @@
-﻿@using MyWebSite.Areas.Configuration.Models
-@model IEnumerable<MyWebSite.Areas.Configuration.Models.Menu>
+﻿@model IEnumerable<MyWebSite.Areas.Configuration.Models.Menu>
 @{
     ViewData["Title"] = "菜单列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,9 +15,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>菜单编号</th>
                             <th>菜单名称</th>
-                            <th>父级菜单</th>
+                            <th>菜单编号</th>
+                            <th>父级编号</th>
                             <th>组内排序</th>
                             <th>菜单类型</th>
                             <th>菜单图标</th>
@@ -38,25 +37,25 @@
                                     @index.ToString("D3")
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Id)
+                                    @Html.ActionLink(@item.Name, "Details", new { id = @item.Id })
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
+                                    <span>@item.Id</span>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ParentId)
+                                    <span>@Html.DisplayFor(modelItem => item.ParentId)</span>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.IndexCode)
+                                    <span>@item.IndexCode</span>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MenuType)
+                                    <span>@item.MenuType</span>
                                 </td>
                                 <td>
-                                    <i class="fa @item.Icon"></i>
+                                    <i class="fa @item.Icon" data-toggle="tooltip" data-placement="right" title="@item.Icon"></i>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Url)
+                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="right" title="@Html.DisplayFor(modelItem => item.Url)"></i>
                                 </td>
                                 <td>
                                     @Html.ActionLink("编辑", "Edit", new { id = @item.Id })|

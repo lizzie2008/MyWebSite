@@ -18,8 +18,7 @@ body {
   height: 100%;
 }
 body {
-    font-family: 'Source Sans Pro', 'Microsoft YaHei','Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 400;
+    font-family: 'Source Sans Pro','Microsoft YaHei','Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -166,7 +165,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: 'Source Sans Pro', 'Microsoft YaHei', sans-serif;
+    font-family: 'Source Sans Pro','Microsoft YaHei','Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 /* General Links */
 a {
@@ -258,7 +257,7 @@ a:focus {
     background-color: transparent;
     background-image: none;
     padding: 15px 15px;
-    font-family: fontAwesome, 'Microsoft YaHei';
+    font-family: fontAwesome;
 }
 .main-header .sidebar-toggle:before {
   content: "\f0c9";
@@ -298,7 +297,7 @@ a:focus {
     line-height: 50px;
     text-align: center;
     width: 230px;
-    font-family: "Helvetica Neue",, 'Microsoft YaHei' Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro','Microsoft YaHei','Helvetica Neue', Helvetica, Arial, sans-serif;
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
@@ -5671,3 +5670,4 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+

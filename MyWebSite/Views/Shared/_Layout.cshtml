@@ -7,7 +7,7 @@
 
     @await Html.PartialAsync("_SiteCssPartial")
 </head>
-<body class="hold-transition skin-blue sidebar-mini" onpagehide="onpagehide()" onload="onload()">
+<body class="hold-transition skin-blue sidebar-mini" onpagehide="onpagehide()" onpageshow="onpageshow()">
     <div class="wrapper">
         <!-- 顶部区域 -->
         @await Html.PartialAsync("_LayoutHeaderPartial")

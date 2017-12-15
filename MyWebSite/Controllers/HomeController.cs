@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Models;
-using MyWebSite.Services;
 using MyWebSite.Services.Interfaces;
 using MyWebSite.ViewModels;
 using System.Diagnostics;
@@ -27,8 +26,6 @@ namespace MyWebSite.Controllers
             //如果已经登录，返回主页面
             if (_signInManager.IsSignedIn(User))
             {
-                NavMenuService.NavMenus = _navMenuService.GenerateNavMenus();
-
                 return View();
             }
             //如果未登录，跳转登录界面
@@ -52,9 +49,14 @@ namespace MyWebSite.Controllers
             return View();
         }
 
-        public IActionResult Error()
+        [Route("Home/Error/{statusCode}")]
+        public IActionResult Error(int statusCode)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                StatusCode = statusCode,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
         }
     }
 }

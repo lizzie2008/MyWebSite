@@ -29,13 +29,10 @@
     }
 }
 
-.table {
-    font-size: 12px;
-}
-
 th {
     white-space: nowrap;
 }
+
 td {
     white-space: nowrap;
 }

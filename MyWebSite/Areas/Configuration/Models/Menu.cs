@@ -50,7 +50,7 @@ namespace MyWebSite.Areas.Configuration.Models
         /// <summary>
         /// 菜单图标名称
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "请输入菜单图标")]
         [StringLength(50)]
         public string Icon { get; set; }
 
@@ -59,7 +59,9 @@ namespace MyWebSite.Areas.Configuration.Models
         /// </summary>
         public string Remarks { get; set; }
     }
-
+    /// <summary>
+    /// 菜单类型
+    /// </summary>
     public enum MenuTypes
     {
         /// <summary>

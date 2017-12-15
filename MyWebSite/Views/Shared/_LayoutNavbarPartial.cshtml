@@ -1,4 +1,7 @@
 ﻿@using MyWebSite.Services
+@using MyWebSite.Services.Interfaces
+
+@inject INavMenuService navMenuService
 
 <aside class="main-sidebar">
     <section class="sidebar">
@@ -23,6 +26,12 @@
         </form>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">菜单导航</li>
+            @{
+                if (NavMenuService.NavMenus == null)
+                {
+                    navMenuService.Init();
+                }
+            }
             @await Html.PartialAsync("_NavMenu", NavMenuService.NavMenus)
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
@@ -32,4 +41,6 @@
         </ul>
     </section>
 </aside>
+
+
 

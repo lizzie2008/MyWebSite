@@ -14,7 +14,6 @@
 <script src="~/lib/AdminLTE/plugins/iCheck/icheck.js"></script>
 
 <script src="~/js/site.js" asp-append-version="true"></script>
-
 <script>
     //页面跳转前，保存菜单展开信息到cookie
     function onpagehide() {
@@ -25,7 +24,7 @@
         $.cookie('menuids_open', menuids.join(','), { path: "/" });
     }
     //界面加载时，从cookie中读取并设置菜单展开信息
-    function onload() {
+    function onpageshow() {
         var menuidsCookie = $.cookie('menuids_open');
         if (menuidsCookie == null || menuidsCookie == undefined || menuidsCookie == "") return;
 
