@@ -14,7 +14,6 @@ $(function () {
     //表格控件初始化
     var table = $('.table').DataTable({
         "scrollX": true,
-        //"dom": '<"top"f>rt<"bottom"lpi><"clear">',
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
         }

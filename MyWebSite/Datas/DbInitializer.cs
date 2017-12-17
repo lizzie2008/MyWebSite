@@ -67,7 +67,7 @@ namespace ContosoUniversity.Data
                         IndexCode=3,
                         Url = "/Configuration/Menu/Index",
                         MenuType = MenuTypes.操作菜单,
-                        Icon = "fa-user-secret",
+                        Icon = "fa-bars",
                     },
                     //后台管理-角色管理-角色信息配置
                     new Menu
