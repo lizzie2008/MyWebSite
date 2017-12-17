@@ -30,7 +30,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-dashboard"></i> 主页</a></li>
                     @foreach (var navCrumbs in @breadCrumb.NavCrumbs)
                     {
-                        @if (!string.IsNullOrEmpty(navCrumbs.Url))
+                        if (!string.IsNullOrEmpty(navCrumbs.Url))
                         {
                             <li>
                                 <a href="@navCrumbs.Url">@navCrumbs.Name</a>

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Models;
@@ -12,13 +11,11 @@ namespace MyWebSite.Controllers
     public class HomeController : AppController
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly INavMenuService _navMenuService;
 
 
         public HomeController(SignInManager<ApplicationUser> signInManager, INavMenuService navMenuService)
         {
             _signInManager = signInManager;
-            _navMenuService = navMenuService;
         }
 
         public IActionResult Index()

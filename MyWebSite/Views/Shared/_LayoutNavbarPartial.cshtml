@@ -1,8 +1,11 @@
-﻿@using MyWebSite.Services
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Internal
 @using MyWebSite.Services.Interfaces
 
-@inject INavMenuService navMenuService
+@inject INavMenuService NavMenuServiceIns
 
+@{
+}
 <aside class="main-sidebar">
     <section class="sidebar">
         <div class="user-panel">
@@ -27,7 +30,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">菜单导航</li>
 
-            @await Html.PartialAsync("_NavMenu", navMenuService.GetNavMenus())
+            @await Html.PartialAsync("_NavMenu", NavMenuServiceIns.GetNavMenus())
 
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>

@@ -3,7 +3,7 @@
 
 @foreach (var navMenu in Model)
 {
-    @if (navMenu.MenuType == MenuTypes.导航菜单)
+    if (navMenu.MenuType == MenuTypes.导航菜单)
     {
         <li class="treeview" menuid="@navMenu.Id">
             <a href="#">
