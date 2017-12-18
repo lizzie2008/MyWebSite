@@ -7,6 +7,7 @@ using MyWebSite.Datas;
 using MyWebSite.Extensions;
 using MyWebSite.Services.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,6 +46,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
                 return NotFound();
             }
 
+            UpdateDropDownList(menu);
             return View(menu);
         }
 
@@ -53,7 +55,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
         {
             var model = new Menu
             {
-                Id = "M_",
+                Id = "MXX_XX_XX",
                 IndexCode = 1,
                 Icon = "fa-circle-o"
             };
@@ -71,6 +73,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
             {
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
+
                 _NavMenuService.InitOrUpdate();
                 return RedirectToAction(nameof(Index));
             }
@@ -156,14 +159,24 @@ namespace MyWebSite.Areas.Configuration.Controllers
         private void UpdateDropDownList(Menu menu = null)
         {
             var menusParent = _context.Menus.AsNoTracking().Where(s => s.MenuType == MenuTypes.导航菜单);
+            List<SelectListItem> listMenusParent = new List<SelectListItem>();
+            foreach (var menuParent in menusParent)
+            {
+                listMenusParent.Add(new SelectListItem
+                {
+                    Value = menuParent.Id,
+                    Text = menuParent.Id + $"({menuParent.Name})",
+                    Selected = (menu != null && menuParent.Id == menu.Id)
+                });
+            }
+            ViewBag.ParentIds = listMenusParent;
+
             if (menu == null)
             {
-                ViewBag.ParentIds = new SelectList(menusParent, "Id", "Id");
                 ViewBag.MenuTypes = MenuTypes.导航菜单.GetSelectListByEnum();
             }
             else
             {
-                ViewBag.ParentIds = new SelectList(menusParent, "Id", "Id", menu.ParentId);
                 ViewBag.MenuTypes = MenuTypes.导航菜单.GetSelectListByEnum(Convert.ToInt32(menu.MenuType));
             }
         }

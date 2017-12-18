@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
 using MyWebSite.Models;
 using MyWebSite.Services;
 using MyWebSite.Services.Interfaces;
+using System;
 
 namespace MyWebSite
 {
@@ -42,7 +45,7 @@ namespace MyWebSite
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider svp)
         {
             if (env.IsDevelopment())
             {

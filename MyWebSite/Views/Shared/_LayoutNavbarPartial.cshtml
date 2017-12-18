@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Http.Internal
+@using MyWebSite.Areas.Configuration.ViewModels
 @using MyWebSite.Services.Interfaces
 
+@inject IHttpContextAccessor  HttpContextAccessorIns
 @inject INavMenuService NavMenuServiceIns
 
 @{
@@ -29,8 +30,15 @@
         </form>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">菜单导航</li>
-
-            @await Html.PartialAsync("_NavMenu", NavMenuServiceIns.GetNavMenus())
+            @{
+                var navMenus = NavMenuServiceIns.GetNavMenus();
+                var cookieMenuidsOpen = HttpContextAccessorIns.HttpContext.Request.Cookies["menuids_open"];
+            }
+            @await Html.PartialAsync("_NavMenu", new NavMenuVM
+            {
+                NavMenus = navMenus,
+                MenuidsOpen = cookieMenuidsOpen.Split(",")
+            })
 
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
@@ -40,6 +48,3 @@
         </ul>
     </section>
 </aside>
-
-
-

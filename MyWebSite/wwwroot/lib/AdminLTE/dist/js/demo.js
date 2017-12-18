@@ -349,26 +349,15 @@ $(function () {
 })
 
 
-//页面跳转前，保存菜单展开信息到cookie
-function onpagehide() {
-    var menuids = [];
-    $('.menu-open').each(function () {
-        menuids.push($(this).attr('menuid'));
-    });
-    $.cookie('menuids_open', menuids.join(','), { path: "/" });
-}
-//界面加载时，从cookie中读取并设置菜单展开信息
-function onpageshow() {
-    var menuidsCookie = $.cookie('menuids_open');
-    if (menuidsCookie == null || menuidsCookie === "") return;
+$(function () {
+    $('.treeview a').on('click', function () {
+        var href = $(this).attr('href');
+        if (href == null || href === "#") return;
 
-    var menuids = menuidsCookie.split(',');
-
-    $.each(menuids, function (index, value) {
-        var menu = $('li[menuid$=' + value + ']');
-        menu.addClass('menu-open');
-        menu.children('ul').each(function () {
-            $(this).attr('style', "display: block;");
+        var menuids = [];
+        $('.menu-open').each(function () {
+            menuids.push($(this).attr('menuid'));
         });
-    });
-}
+        $.cookie('menuids_open', menuids.join(','), { path: "/" });
+    })
+})

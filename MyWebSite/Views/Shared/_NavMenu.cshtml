@@ -1,19 +1,25 @@
 ﻿@using MyWebSite.Areas.Configuration.Models
-@model IList<MyWebSite.Areas.Configuration.ViewModels.NavMenu>
+@using MyWebSite.Areas.Configuration.ViewModels
+@model MyWebSite.Areas.Configuration.ViewModels.NavMenuVM
 
-@foreach (var navMenu in Model)
+
+@foreach (var navMenu in Model.NavMenus)
 {
     if (navMenu.MenuType == MenuTypes.导航菜单)
     {
-        <li class="treeview" menuid="@navMenu.Id">
+        <li menuid="@navMenu.Id" class="treeview @(Model.MenuidsOpen.Contains(navMenu.Id) ? "menu-open" : "")">
             <a href="#">
                 <i class="fa @navMenu.Icon"></i> <span>@navMenu.Name</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
-            <ul class="treeview-menu">
-                @await Html.PartialAsync("_NavMenu", navMenu.SubNavMenus)
+            <ul class="treeview-menu" @(Model.MenuidsOpen.Contains(navMenu.Id) ? @"style=display:block;" : "")>
+                @await Html.PartialAsync("_NavMenu", new NavMenuVM
+           {
+               NavMenus = navMenu.SubNavMenus,
+               MenuidsOpen = Model.MenuidsOpen
+           })
             </ul>
         </li>
     }
@@ -26,4 +32,3 @@
         </li>
     }
 }
-

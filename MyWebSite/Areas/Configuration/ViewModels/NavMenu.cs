@@ -20,4 +20,14 @@ namespace MyWebSite.Areas.Configuration.ViewModels
         /// </summary>
         public IList<NavMenu> SubNavMenus = new List<NavMenu>();
     }
+
+    /// <summary>
+    /// 导航菜单
+    /// </summary>
+    public class NavMenuVM
+    {
+        public IList<NavMenu> NavMenus { get; set; }
+
+        public string[] MenuidsOpen { get; set; }
+    }
 }
