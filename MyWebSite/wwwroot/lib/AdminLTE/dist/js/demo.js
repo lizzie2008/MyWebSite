@@ -347,17 +347,3 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip()
 })
-
-
-$(function () {
-    $('.treeview a').on('click', function () {
-        var href = $(this).attr('href');
-        if (href == null || href === "#") return;
-
-        var menuids = [];
-        $('.menu-open').each(function () {
-            menuids.push($(this).attr('menuid'));
-        });
-        $.cookie('menuids_open', menuids.join(','), { path: "/" });
-    })
-})

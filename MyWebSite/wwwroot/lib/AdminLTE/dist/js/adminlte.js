@@ -1087,6 +1087,14 @@ if (typeof jQuery === 'undefined') {
 
             $(this.element).on('click', this.options.trigger, function (event) {
                 that.toggle($(this), event)
+                //记录菜单展开状态
+                var href = $(this).attr('href')
+                if (href == null || href === "#") return
+                var menuids = [];
+                $('.menu-open').each(function () {
+                    menuids.push($(this).attr('menuid'))
+                })
+                $.cookie('menuids_open', menuids.join(','), { path: "/" })
             })
         }
 
