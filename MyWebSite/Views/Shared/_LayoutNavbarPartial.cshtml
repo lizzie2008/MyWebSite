@@ -32,13 +32,13 @@
             <li class="header">菜单导航</li>
             @{
                 var navMenus = NavMenuServiceIns.GetNavMenus();
-                var cookieMenuidsOpen = HttpContextAccessorIns.HttpContext.Request.Cookies["menuids_open"];
+                var cookieMenuidsOpen = HttpContextAccessorIns.HttpContext.Request.Cookies["menuids_open"] ?? "";
             }
             @await Html.PartialAsync("_NavMenu", new NavMenuVM
-            {
-                NavMenus = navMenus,
-                MenuidsOpen = cookieMenuidsOpen.Split(",")
-            })
+       {
+           NavMenus = navMenus,
+           MenuidsOpen = cookieMenuidsOpen == null ? new string[] { } : cookieMenuidsOpen.Split(",")
+       })
 
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
