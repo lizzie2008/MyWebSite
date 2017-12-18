@@ -28,7 +28,7 @@ namespace ContosoUniversity.Data
                     //后台管理
                     new Menu
                     {
-                        Id = "M01_00_00",
+                        Id = "M01",
                         Name = "后台管理",
                         ParentId = "",
                         IndexCode=1,
@@ -39,9 +39,9 @@ namespace ContosoUniversity.Data
                     //后台管理-用户管理
                     new Menu
                     {
-                        Id = "M01_01_00",
+                        Id = "M01_01",
                         Name = "用户管理",
-                        ParentId = "M01_00_00",
+                        ParentId = "M01",
                         IndexCode=1,
                         Url = "/Configuration/User/Index",
                         MenuType = MenuTypes.操作菜单,
@@ -50,9 +50,9 @@ namespace ContosoUniversity.Data
                     //后台管理-角色管理
                     new Menu
                     {
-                        Id = "M01_02_00",
+                        Id = "M01_02",
                         Name = "角色管理",
-                        ParentId = "M01_00_00",
+                        ParentId = "M01",
                         IndexCode=2,
                         Url = "",
                         MenuType = MenuTypes.导航菜单,
@@ -61,9 +61,9 @@ namespace ContosoUniversity.Data
                     //后台管理-菜单管理
                     new Menu
                     {
-                        Id = "M01_03_00",
+                        Id = "M01_03",
                         Name = "菜单管理",
-                        ParentId = "M01_00_00",
+                        ParentId = "M01",
                         IndexCode=3,
                         Url = "/Configuration/Menu/Index",
                         MenuType = MenuTypes.操作菜单,
@@ -74,7 +74,7 @@ namespace ContosoUniversity.Data
                     {
                         Id = "M01_02_01",
                         Name = "角色信息配置",
-                        ParentId = "M01_02_00",
+                        ParentId = "M01_02",
                         IndexCode=1,
                         Url = "/Configuration/Role/Index",
                         MenuType = MenuTypes.操作菜单,
@@ -85,7 +85,7 @@ namespace ContosoUniversity.Data
                     {
                         Id = "M01_02_02",
                         Name = "角色菜单配置",
-                        ParentId = "M01_02_00",
+                        ParentId = "M01_02",
                         IndexCode=2,
                         Url = "/Configuration/Role/RoleMenu",
                         MenuType = MenuTypes.操作菜单,

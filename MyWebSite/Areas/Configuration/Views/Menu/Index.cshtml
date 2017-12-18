@@ -4,10 +4,10 @@
     ViewData["Title"] = "菜单列表";
 
     var breadcrumb = new BreadCrumb("菜单列表", "Version 2.0", new List<NavCrumb>
-    {
-        new NavCrumb(name:"菜单管理",url: "/Configuration/Menu"),
-        new NavCrumb(name:"菜单列表"),
-    });
+{
+new NavCrumb(name:"菜单管理",url: "/Configuration/Menu"),
+new NavCrumb(name:"菜单列表"),
+});
     ViewBag.BreadCrumb = breadcrumb;
 
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -69,7 +69,7 @@
                                 <td>
                                     @Html.ActionLink("编辑", "Edit", new { id = @item.Id })|
                                     @Html.ActionLink("详情", "Details", new { id = @item.Id })|
-                                    <a href="#" onclick="onDelete('@item.Id');">删除</a>
+                                    <a href="#" onclick="onDelete('@item.Id','@item.Name');">删除</a>
                                 </td>
                             </tr>
                         }
@@ -82,9 +82,9 @@
 
 @section Scripts{
     <script>
-        function onDelete(Id) {
+        function onDelete(id,name) {
             BootstrapDialog.show({
-                message: '确认删除菜单[' + Id + ']？',
+                message: '确认删除菜单-' + name + '[' + id + ']？',
                 size: BootstrapDialog.SIZE_SMALL,
                 draggable: true,
                 buttons: [
@@ -97,7 +97,7 @@
                             $.ajax({
                                 type: 'POST',
                                 url: '/Configuration/Menu/Delete',
-                                data: { id: Id },
+                                data: { id: id },
                                 success: function () {
                                     location.reload();
                                 }
