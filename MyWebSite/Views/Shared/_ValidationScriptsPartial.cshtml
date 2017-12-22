@@ -13,4 +13,12 @@
         options.rules.mustbetrue = {};
         options.messages["mustbetrue"] = options.message;
     });
+
+    //∑¿÷π÷ÿ∏¥Ã·Ωª
+    $.validator.setDefaults({
+        submitHandler: function (form) {
+            $(form).find('[type="submit"]').attr('disabled', true);
+            form.submit();
+        }
+    });
 </script>
