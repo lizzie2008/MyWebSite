@@ -5,7 +5,7 @@ $('#Icon').blur(function () {
 //菜单路径可编辑状态
 $('#MenuType').change(function (parameters) {
     //如果菜单是操作菜单，才允许编辑
-    if ($(this).val() == '1') {
+    if ($(this).val() === '1') {
         $("#Url").removeAttr('readonly')
     } else {
         $("#Url").attr('readonly', 'readonly')

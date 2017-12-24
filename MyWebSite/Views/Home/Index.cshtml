@@ -2,67 +2,420 @@
     ViewData["Title"] = "主页";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+<div class="row">
+    <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <img class="profile-user-img img-responsive img-circle" src="~/images/me.png" alt="User profile picture">
+                <h3 class="profile-username text-center">许 立</h3>
+                <p class="text-muted text-center">软件工程师/架构师</p>
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <b>点赞</b> <a class="pull-right">1,322</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>关注</b> <a class="pull-right">543</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>粉丝</b> <a class="pull-right">13,287</a>
+                    </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-block"><b>关注我</b></a>
             </div>
         </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">关于我</h3>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
+            <div class="box-body">
+                <strong><i class="fa fa-book margin-r-5"></i> 教育经历</strong>
+                <p class="text-muted">
+                    <br />
+                    <strong>2007/09 - 2009/07</strong><br /> 武汉大学 信息科学技术 硕士
                 </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
+                <p class="text-muted">
+                    <strong>2002/09 - 2006/07</strong><br />	南京邮电大学  信息科学技术  本科
                 </p>
+                <hr>
+                <strong><i class="fa fa-map-marker margin-r-5"></i> 位置</strong>
+                <br /><br />
+                <p class="text-muted">北京市, 朝阳区</p>
+                <hr>
+                <strong><i class="fa fa-pencil margin-r-5"></i> 专业技能</strong>
+                <p>
+                    <br />
+                    <span class="label label-danger">C/C++</span>
+                    <span class="label label-danger">C#</span>
+                    <span class="label label-danger">Java</span>
+                    <span class="label label-danger">Golang</span>
+                    <br /><br />
+                    <span class="label label-success">.NET Core</span>
+                    <span class="label label-success">WPF</span>
+                    <span class="label label-success">EF</span>
+                    <br /><br />
+                    <span class="label label-info">Javascript</span>
+                    <span class="label label-info">Bootstrap</span>
+                    <span class="label label-info">AngularJS</span>
+                    <span class="label label-info">Node.js</span>
+                    <br /><br />
+                    <span class="label label-warning">Oracle</span>
+                    <span class="label label-warning">MySql</span>
+                    <span class="label label-warning">Sql Server</span>
+                    <span class="label label-warning">Redis</span>
+                    <span class="label label-warning">MongoDB</span>
+                    <br /><br />
+                    <span class="label label-primary">设计模式</span>
+                    <span class="label label-primary">数据结构</span>
+                    <span class="label label-primary">数据库</span>
+                    <span class="label label-primary">计算机网络</span>
+                    <span class="label label-primary">通信原理</span>
+                    <span class="label label-primary">软件测试</span>
+                    <span class="label label-primary">项目管理</span>
+                </p>
+                <hr>
+                <strong><i class="fa fa-file-text-o margin-r-5"></i> 兴趣爱好</strong>
+                <br /><br />
+                <p>球类运动、音乐、旅游、交友、读书</p>
             </div>
         </div>
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <div class="col-md-9">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class=""><a href="#activity" data-toggle="tab" aria-expanded="false">个人简介</a></li>
+                <li class="active"><a href="#timeline" data-toggle="tab" aria-expanded="true">项目经历</a></li>
+                <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">基本资料</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane" id="activity">
+                    <div class="post">
+                        <div class="user-block">
+                            <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                            <span class="username">
+                                <a href="#">Jonathan Burke Jr.</a>
+                                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                            </span>
+                            <span class="description">Shared publicly - 7:30 PM today</span>
+                        </div>
+                        <p>
+                            Lorem ipsum represents a long-held tradition for designers,
+                            typographers and the like. Some people hate it and argue for
+                            its demise, but others ignore the hate as they create awesome
+                            tools to help create filler text for everyone from bacon lovers
+                            to Charlie Sheen fans.
+                        </p>
+                        <ul class="list-inline">
+                            <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                            <li>
+                                <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                            </li>
+                            <li class="pull-right">
+                                <a href="#" class="link-black text-sm">
+                                    <i class="fa fa-comments-o margin-r-5"></i> Comments
+                                    (5)
+                                </a>
+                            </li>
+                        </ul>
+
+                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                    </div>
+                    <div class="post clearfix">
+                        <div class="user-block">
+                            <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                            <span class="username">
+                                <a href="#">Sarah Ross</a>
+                                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                            </span>
+                            <span class="description">Sent you a message - 3 days ago</span>
+                        </div>
+                        <p>
+                            Lorem ipsum represents a long-held tradition for designers,
+                            typographers and the like. Some people hate it and argue for
+                            its demise, but others ignore the hate as they create awesome
+                            tools to help create filler text for everyone from bacon lovers
+                            to Charlie Sheen fans.
+                        </p>
+
+                        <form class="form-horizontal">
+                            <div class="form-group margin-bottom-none">
+                                <div class="col-sm-9">
+                                    <input class="form-control input-sm" placeholder="Response">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="post">
+                        <div class="user-block">
+                            <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
+                            <span class="username">
+                                <a href="#">Adam Jones</a>
+                                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                            </span>
+                            <span class="description">Posted 5 photos - 5 days ago</span>
+                        </div>
+                        <div class="row margin-bottom">
+                            <div class="col-sm-6">
+                                <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
+                                        <br>
+                                        <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
+                                        <br>
+                                        <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-inline">
+                            <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                            <li>
+                                <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                            </li>
+                            <li class="pull-right">
+                                <a href="#" class="link-black text-sm">
+                                    <i class="fa fa-comments-o margin-r-5"></i> Comments
+                                    (5)
+                                </a>
+                            </li>
+                        </ul>
+
+                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                    </div>
+                    <!-- /.post -->
+                </div>
+                <div class="tab-pane active" id="timeline" style="overflow-y:auto;height:1200px;">
+                    <ul class="timeline timeline-inverse">
+                        <!-- 2nd -->
+                        <li class="time-label">
+                            <span class="bg-green">
+                                2009.07 - 2010.07
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fa fa-tags bg-blue"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                <h3 class="timeline-header">
+                                    <a>项目简介</a> 列控站间安全信息传输设备
+                                </h3>
+                                <div class="timeline-body">
+                                    <p class="text-muted">责任描述: 软件工程师</p>
+                                    <p class="text-muted">所在公司: 北京和利时系统工程有限公司</p>
+                                    <p class="text-muted">项目职务: 软件开发</p>
+                                    <p class="text-muted">项目职责: 列控中心相邻站传递信息功能实现</p>
+                                    <p class="text-muted">项目技术: C语言,数据结构</p>
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-primary btn-xs">更多 >></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-thumb-tack bg-aqua"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                                <h3 class="timeline-header no-border">
+                                    <a>项目描述</a>
+                                </h3>
+                                <div class="timeline-body">
+                                    <p class="text-muted">1. 设计实现安全计算单元SCU、驱动采集单元IOU、通信接口单元COMU、维护单元MU,采用符合故障－安全原则的2乘2取2安全计算机平台作为主逻辑运算单元.</p>
+                                    <p class="text-muted">2. 报文编码实时组帧,如有异常导向安全侧.</p>
+                                    <p class="text-muted">3. 系统平均故障间隔时间（MTBF）≥ 105h,系统的可维护性指标：MTTR≤1h.</p>
+                                    <p class="text-muted">4. 安全主机软件运算周期范围为200ms~500ms.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-camera bg-purple"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+                                <h3 class="timeline-header">
+                                    <a href="#">Mina Lee</a> uploaded new photos
+                                </h3>
+                                <div class="timeline-body">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-comments bg-yellow"></i>
+
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+
+                                <h3 class="timeline-header">
+                                    <a href="#">Jay White</a> commented on your post
+                                </h3>
+
+                                <div class="timeline-body">
+                                    Take me to your leader!
+                                    Switzerland is small and neutral!
+                                    We are more like Germany, ambitious and misunderstood!
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- 1st -->
+                        <li class="time-label">
+                            <span class="bg-green">
+                                2009.02 - 2009.07
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fa fa-tags bg-blue"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                <h3 class="timeline-header"><a>项目简介</a> ISDN转换接口装置
+                                </h3>
+                                <div class="timeline-body">
+                                    <p class="text-muted">责任描述: 软件开发工程师</p>
+                                    <p class="text-muted">所在公司: 北京和利时系统工程有限公司</p>
+                                    <p class="text-muted">项目职务: 软件开发</p>
+                                    <p class="text-muted">项目职责: GSM-R Mobile车载电台与ISDN转换接口装置对端安全功能模块实现</p>
+                                    <p class="text-muted">项目技术: C语言,数据结构</p>
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-primary btn-xs">Read more</a>
+                                    <a class="btn btn-danger btn-xs">Delete</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-thumb-tack bg-aqua"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                                <h3 class="timeline-header no-border">
+                                    <a>项目描述</a>
+                                </h3>
+                                <div class="timeline-body">
+                                    <p class="text-muted">1. 遵循欧洲无线标准Subset037协议,对应用数据进行封装和解析.</p>
+                                    <p class="text-muted">2. SFM安全功能模块的设计和实现，支持SFM到CFM(通信功能模块)接入点访问,支持从GSM-R Mobile方或ISDN方逻辑链路的请求建立、释放、数据的传输、数据可信度、完整度的检测和错误报告.</p>
+                                    <p class="text-muted">3. ISDN装置采用一次群速率（30B+D，2Mbps），支持最大30路车载设备同时建立连接并相互独立，通过大数据量拷机测试.</p>
+                                    <p class="text-muted">4. 对特殊数据的优先处理.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-camera bg-purple"></i>
+
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+
+                                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos
+                                </h3>
+
+                                <div class="timeline-body">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-comments bg-yellow"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post
+                                </h3>
+                                <div class="timeline-body">
+                                    Take me to your leader!
+                                    Switzerland is small and neutral!
+                                    We are more like Germany, ambitious and misunderstood!
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+
+                        <li>
+                            <i class="fa fa-clock-o bg-gray"></i>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.tab-pane -->
+
+                <div class="tab-pane" id="settings">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+    </div>
+    <!-- /.col -->
 </div>
 @*<div class="row">
         <div class="col-md-3">

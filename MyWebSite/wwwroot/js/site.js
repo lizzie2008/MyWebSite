@@ -1,4 +1,16 @@
-﻿// Write your JavaScript code.
+﻿$('.main-sidebar a').click(function() {
+    //记录菜单展开状态
+    var href = $(this).attr('href')
+    if (href == null || href === "#") return
+    var menuids = [];
+    $('.menu-open').each(function () {
+        menuids.push($(this).attr('menuid'))
+    })
+    $.cookie('menuids_open', menuids.join(','), { path: "/" })  
+})
+
+
+
 //对话框本地化
 BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '提示';
 BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = '提示';
@@ -9,6 +21,7 @@ BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = '错误';
 BootstrapDialog.DEFAULT_TEXTS['OK'] = '确定';
 BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
 BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '确定';
+
 
 $(function () {
     //表格控件初始化

@@ -72,11 +72,18 @@ namespace MyWebSite.Areas.Configuration.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(menu);
-                await _context.SaveChangesAsync();
+                if (!MenuExists(menu.Id))
+                {
+                    _context.Add(menu);
+                    await _context.SaveChangesAsync();
 
-                _NavMenuService.InitOrUpdate();
-                return RedirectToAction(nameof(Index));
+                    _NavMenuService.InitOrUpdate();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("Id","菜单编号已存在，请修改菜单编号.");
+                }
             }
             UpdateDropDownList(menu);
             return View(menu);
