@@ -1,7 +1,7 @@
 ﻿$('.main-sidebar a').click(function() {
     //记录菜单展开状态
     var href = $(this).attr('href')
-    if (href == null || href === "#") return
+    if (href === null || href === "#") return
     var menuids = [];
     $('.menu-open').each(function () {
         menuids.push($(this).attr('menuid'))
