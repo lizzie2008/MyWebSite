@@ -26,7 +26,7 @@
     else if ((navMenu.MenuType == MenuTypes.操作菜单))
     {
         <li menuid="@navMenu.Id">
-            <a href="@navMenu.Url">
+            <a href="@navMenu.Url" @(navMenu.Url != null && navMenu.Url.StartsWith("http") ? @"target=_blank" : "")>
                 <i class="fa @navMenu.Icon"></i> @navMenu.Name
             </a>
         </li>

@@ -40,3 +40,9 @@ th {
 td {
     white-space: nowrap;
 }
+
+.qrCode-img {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 180px;
+}

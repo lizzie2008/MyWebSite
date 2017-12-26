@@ -174,7 +174,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
                 {
                     Value = menuParent.Id,
                     Text = menuParent.Id + $"({menuParent.Name})",
-                    Selected = (menu != null && menuParent.Id == menu.Id)
+                    Selected = (menu != null && menuParent.Id == menu.ParentId)
                 });
             }
             ViewBag.ParentIds = listMenusParent;
