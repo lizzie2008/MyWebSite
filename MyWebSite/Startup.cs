@@ -49,6 +49,9 @@ namespace MyWebSite
         {
             if (env.IsDevelopment())
             {
+                app.UseExceptionHandler("/Home/Error/500");
+                app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
                 app.UseDatabaseErrorPage();

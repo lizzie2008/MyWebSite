@@ -1,4 +1,10 @@
 ﻿@using MyWebSite.ViewModels
+@inject UserManager<ApplicationUser> UserManagerIns
+
+@{
+    var user = await UserManagerIns.GetUserAsync(User);
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +17,9 @@
 <body class="hold-transition skin-blue sidebar-mini" >
     <div class="wrapper">
         <!-- 顶部区域 -->
-        @await Html.PartialAsync("_LayoutHeaderPartial")
+        @await Html.PartialAsync("_LayoutHeaderPartial", user)
         <!-- 导航栏 -->
-        @await Html.PartialAsync("_LayoutNavbarPartial")
+        @await Html.PartialAsync("_LayoutNavbarPartial", user)
 
         <!-- 内容区域 -->
         <div class="content-wrapper">

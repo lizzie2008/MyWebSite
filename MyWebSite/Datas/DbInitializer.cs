@@ -15,8 +15,8 @@ namespace ContosoUniversity.Data
 
             if (!context.ApplicationUsers.AsNoTracking().Any())
             {
-                var user = new ApplicationUser { UserName = @"34878936@qq.com", Email = @"34878936@qq.com" };
-                userManager.CreateAsync(user, @"@Lizzie08");
+                var userAdmin = new ApplicationUser { UserName = @"34878936@qq.com", Email = @"34878936@qq.com", NickName = "许立" };
+                userManager.CreateAsync(userAdmin, @"@Lizzie08");
             }
 
             #region 菜单数据初始化

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyWebSite.Models
 {
@@ -6,8 +7,9 @@ namespace MyWebSite.Models
     public class ApplicationUser : IdentityUser
     {
         /// <summary>
-        /// 备注
+        /// 昵称
         /// </summary>
-        public string Remark { get; set; }
+        [StringLength(256)]
+        public string NickName { get; set; }
     }
 }
