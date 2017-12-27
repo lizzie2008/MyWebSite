@@ -41,12 +41,6 @@ td {
     white-space: nowrap;
 }
 
-.qrCode-img {
-    margin: 0 auto;
-    margin-bottom: 10px;
-    width: 180px;
-}
-
 .label-sm {
     padding: .1em .6em .1em;
 }
