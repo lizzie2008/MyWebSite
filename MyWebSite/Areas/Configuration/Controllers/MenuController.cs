@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MyWebSite.Areas.Configuration.ViewModels;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {
@@ -26,9 +27,28 @@ namespace MyWebSite.Areas.Configuration.Controllers
         }
 
         // GET: Configuration/Menu
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(MenuIndexQuery query)
         {
-            return View(await _context.Menus.AsNoTracking().ToListAsync());
+            var menus = _context.Menus.AsNoTracking();
+            if (!string.IsNullOrEmpty(query.QName))
+            {
+                menus= menus.Where(s => s.Name.Contains(query.QName.Trim()));
+            }
+            if (!string.IsNullOrEmpty(query.QId))
+            {
+                menus = menus.Where(s => s.Id.Contains(query.QId.Trim()));
+            }
+            if (!string.IsNullOrEmpty(query.QParentId))
+            {
+                menus = menus.Where(s => s.ParentId == query.QParentId.Trim());
+            }
+            if (query.QMenuType != null)
+            {
+                menus = menus.Where(s => s.MenuType == query.QMenuType);
+            }
+
+            UpdateDropDownList();
+            return View(new MenuIndexVM { Menus = await menus.ToListAsync(), Query = query });
         }
 
         // GET: Configuration/Menu/Details/5
@@ -81,7 +101,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Id","菜单编号已存在，请修改菜单编号.");
+                    ModelState.AddModelError("Id", "菜单编号已存在，请修改菜单编号.");
                 }
             }
             UpdateDropDownList(menu);

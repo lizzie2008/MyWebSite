@@ -27,7 +27,7 @@
     {
         <li menuid="@navMenu.Id">
             <a href="@navMenu.Url" @(navMenu.Url != null && navMenu.Url.StartsWith("http") ? @"target=_blank" : "")>
-                <i class="fa @navMenu.Icon"></i> @navMenu.Name
+                <i class="fa @navMenu.Icon"></i><span>@navMenu.Name</span>
             </a>
         </li>
     }
