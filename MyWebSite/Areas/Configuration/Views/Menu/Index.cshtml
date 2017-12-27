@@ -42,7 +42,7 @@ new NavCrumb(name:"菜单列表"),
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label asp-for="Query.QParentId">父级菜单:</label>
-                                <select asp-for="Query.QParentId" class="form-control input-sm select2" style="width: 100%" asp-items="ViewBag.ParentIds">
+                                <select asp-for="Query.QParentId" class="form-control input-sm select2" asp-items="ViewBag.ParentIds">
                                     <option value="">-- 请选择 --</option>
                                 </select>
                             </div>
@@ -50,7 +50,7 @@ new NavCrumb(name:"菜单列表"),
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label asp-for="Query.QMenuType">菜单类型:</label>
-                                <select asp-for="Query.QMenuType" class="form-control input-sm select2" style="width: 100%" asp-items="ViewBag.MenuTypes">
+                                <select asp-for="Query.QMenuType" class="form-control input-sm select2" asp-items="ViewBag.MenuTypes">
                                     <option value="">-- 请选择 --</option>
                                 </select>
                             </div>
