@@ -18,87 +18,47 @@ new NavCrumb(name:"菜单列表"),
 <div class="row">
     <div class="col-xs-12">
         <div class="box with-border">
-            <div class="box-header">
-                <h3 class="box-title"><i class="fa fa-search margin-r-5">查询条件</i></h3>
-                <div class="box-tools pull-right">
-                    <a class="btn btn-primary" href="/Configuration/Menu/Create"><i class="fa fa-plus margin-r-5"></i>新建</a>
-                </div>
-            </div>
-            <div class="box-body">
-                <form class="form-inline" asp-action="Index">
+            <form class="form" asp-action="Index">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-search margin-r-5">查询条件</i></h3>
+                    <div class="box-tools pull-right">
+                        <button type="submit" class="btn btn-success margin-r-5"><i class="fa fa-search margin-r-5"></i>查询</button>
+                        <a class="btn btn-primary" href="/Configuration/Menu/Create"><i class="fa fa-plus margin-r-5"></i>新建</a>
+                    </div>
                     <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group margin-r-15">
-                        <label asp-for="Query.QName">菜单名称:</label>
-                        <input asp-for="Query.QName" class="form-control input-sm">
-                    </div>
-                    <div class="form-group margin-r-15">
-                        <label asp-for="Query.QId">菜单编码:</label>
-                        <input asp-for="Query.QId" class="form-control input-sm">
-                    </div>
-                    <div class="form-group margin-r-15">
-                        <label asp-for="Query.QParentId">父级菜单:</label>
-                        <select asp-for="Query.QParentId" class="form-control input-sm select2" style="width: 220px;" asp-items="ViewBag.ParentIds">
-                            <option value="">-- 请选择 --</option>
-                        </select>
-                    </div>
-                    <div class="form-group margin-r-15">
-                        <label asp-for="Query.QMenuType">菜单类型:</label>
-                        <select asp-for="Query.QMenuType" class="form-control input-sm select2" asp-items="ViewBag.MenuTypes">
-                            <option value="">-- 请选择 --</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-sm btn-success"><i class="fa fa-search"></i></button>
-                </form>
-                @*<div class="row">
+                    <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>菜单名称</label>
-                                <input class="form-control input-sm">
+                                <label asp-for="Query.QName">菜单名称:</label>
+                                <input asp-for="Query.QName" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>菜单编号</label>
-                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <option selected="selected">Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>California</option>
-                                    <option>Delaware</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Washington</option>
+                                <label asp-for="Query.QId">菜单编码:</label>
+                                <input asp-for="Query.QId" class="form-control input-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Query.QParentId">父级菜单:</label>
+                                <select asp-for="Query.QParentId" class="form-control input-sm select2" style="width: 100%" asp-items="ViewBag.ParentIds">
+                                    <option value="">-- 请选择 --</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>父级编号</label>
-                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <option selected="selected">Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>California</option>
-                                    <option>Delaware</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Washington</option>
+                                <label asp-for="Query.QMenuType">菜单类型:</label>
+                                <select asp-for="Query.QMenuType" class="form-control input-sm select2" style="width: 100%" asp-items="ViewBag.MenuTypes">
+                                    <option value="">-- 请选择 --</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>菜单类型</label>
-                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <option selected="selected">Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>California</option>
-                                    <option>Delaware</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Washington</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>*@
+                    </div>
+                </div>
+            </form>
+            <div class="box-body">
                 <table class="table table-bordered table-hover" style="width: 100%">
                     <thead>
                         <tr>

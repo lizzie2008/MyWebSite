@@ -39,6 +39,6 @@ $(function () {
     })
     //下拉框样式
     $('.select2').select2({
-        language: "zh-CN"
+        language: "zh-CN",
     })
 })
