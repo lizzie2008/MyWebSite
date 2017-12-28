@@ -26,7 +26,11 @@ namespace MyWebSite.Areas.Configuration.Controllers
             _NavMenuService = navMenuService;
         }
 
-        // GET: Configuration/Menu
+        /// <summary>
+        /// 列表页
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Index(MenuIndexQuery query)
         {
             var menus = _context.Menus.AsNoTracking();
@@ -51,7 +55,11 @@ namespace MyWebSite.Areas.Configuration.Controllers
             return View(new MenuIndexVM { Menus = await menus.ToListAsync(), Query = query });
         }
 
-        // GET: Configuration/Menu/Details/5
+        /// <summary>
+        /// 详情页
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -70,7 +78,10 @@ namespace MyWebSite.Areas.Configuration.Controllers
             return View(menu);
         }
 
-        // GET: Configuration/Menu/Create
+        /// <summary>
+        /// 新建空白
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             var model = new Menu
@@ -83,9 +94,11 @@ namespace MyWebSite.Areas.Configuration.Controllers
             return View(model);
         }
 
-        // POST: Configuration/Menu/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// 新建保存
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Id,Name,ParentId,IndexCode,Url,MenuType,Icon,Remarks")] Menu menu)
         {
@@ -108,7 +121,11 @@ namespace MyWebSite.Areas.Configuration.Controllers
             return View(menu);
         }
 
-        // GET: Configuration/Menu/Edit/5
+        /// <summary>
+        /// 开始编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -126,9 +143,12 @@ namespace MyWebSite.Areas.Configuration.Controllers
             return View(menu);
         }
 
-        // POST: Configuration/Menu/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// 编辑保存
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,ParentId,IndexCode,Url,MenuType,Icon,Remarks")] Menu menu)
         {

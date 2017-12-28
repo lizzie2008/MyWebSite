@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace MyWebSite.Areas.Configuration.ViewModels
 {
     /// <summary>
-    /// 导航菜单
+    /// 导航菜单项
     /// </summary>
     public class NavMenu
     {
@@ -22,7 +22,7 @@ namespace MyWebSite.Areas.Configuration.ViewModels
     }
 
     /// <summary>
-    /// 导航菜单
+    /// 左侧导航菜单视图模型
     /// </summary>
     public class NavMenuVM
     {
