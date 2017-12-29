@@ -7,7 +7,7 @@ namespace MyWebSite.Controllers.Abstract
     {
         public AppController()
         {
-           
+
         }
     }
 }
