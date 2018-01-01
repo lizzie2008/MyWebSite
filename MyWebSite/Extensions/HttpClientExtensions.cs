@@ -15,16 +15,8 @@ namespace MyWebSite.Extensions
         /// <param name="jsonValue"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public static async Task<string> HttpGetAsync(this HttpClient client, string url, Dictionary<string, string> headers = null)
+        public static async Task<string> HttpGetAsync(this HttpClient client, string url)
         {
-            //初始化头部
-            if (headers != null)
-            {
-                foreach (var header in headers)
-                {
-                    client.DefaultRequestHeaders.Add(header.Key, header.Value);
-                }
-            }
             //初始化内容
             var responseMessage = await client.GetAsync(url);
             if (responseMessage.IsSuccessStatusCode)
@@ -46,16 +38,8 @@ namespace MyWebSite.Extensions
         /// <param name="jsonValue"></param>
         /// <param name="headers"></param>
         /// <returns></returns>
-        public static async Task<string> HttpPostAsync(this HttpClient client, string url, string jsonValue, Dictionary<string, string> headers = null)
+        public static async Task<string> HttpPostAsync(this HttpClient client, string url, string jsonValue)
         {
-            //初始化头部
-            if (headers != null)
-            {
-                foreach (var header in headers)
-                {
-                    client.DefaultRequestHeaders.Add(header.Key, header.Value);
-                }
-            }
             //初始化内容
             var content = new StringContent(jsonValue, Encoding.UTF8, "application/json");
 

@@ -1,0 +1,130 @@
+﻿@using MyWebSite.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model MyWebSite.Datas.Config.ApiRequest
+@{
+    ViewData["Title"] = "API模拟请求";
+
+    var breadcrumb = new BreadCrumb("API模拟请求", "Version 2.0", new List<NavCrumb>
+{
+new NavCrumb(name:"工具箱"),
+new NavCrumb(name:"API模拟请求"),
+});
+    ViewBag.BreadCrumb = breadcrumb;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">参数配置</h3>
+                </div>
+                <form asp-action="InvokApi" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="box-body row">
+                        <div class="col-md-12">
+                            <input asp-for="ApiName" hidden>
+                            <div class="form-group">
+                                <label asp-for="ApiCode">API名称:</label>
+                                <select asp-for="ApiCode" class="form-control input-sm select2" asp-items="ViewBag.ApiCodes">
+                                    <option value="">-- 请选择 --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Url">API地址:</label>
+                                <input asp-for="Url" class="form-control input-sm" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Methord">请求方式:</label>
+                                <input asp-for="Methord" class="form-control input-sm" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="params" class="">请求参数：</label>
+                                @if (Model.Methord == "GET")
+                                {
+                                    <table class="table table-bordered table-striped table-condensed" id="params">
+                                        <thead>
+                                            <tr>
+                                                <td>参数名</td>
+                                                <td>类型</td>
+                                                <td>是否必填</td>
+                                                <td>说明</td>
+                                                <td>值</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (var i = 0; i < Model.ApiParas.Count(); i++)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <span>@Model.ApiParas[i].ParaName</span>
+                                                        @Html.TextBoxFor(a => a.ApiParas[i].ParaName, new { @class = "form-control input-sm", type = "hidden" })
+                                                    </td>
+                                                    <td>
+                                                        <span> @Model.ApiParas[i].ParaType</span>
+                                                        @Html.TextBoxFor(a => a.ApiParas[i].ParaType, new { @class = "form-control input-sm", type = "hidden" })
+                                                    </td>
+                                                    <td>
+                                                        <span>@(Model.ApiParas[i].Required ? "是" : "否")</span>
+                                                        @Html.TextBoxFor(a => a.ApiParas[i].Required, new { @class = "form-control input-sm", type = "hidden" })
+                                                    </td>
+                                                    <td>
+                                                        <span>@Model.ApiParas[i].Description</span>
+                                                        @Html.TextBoxFor(a => a.ApiParas[i].Description, new { @class = "form-control input-sm", type = "hidden" })
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(a => a.ApiParas[i].ParaValue, new { @class = "form-control input-sm" })</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                                else if ((Model.Methord == "POST"))
+                                {
+                                    @Html.TextAreaFor(m => m.ApiDatas, new { @class = "form-control", rows = "6", placeholder = "输入Json格式 ..." })
+                                }
+                            </div>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-send-o margin-r-5"></i>发送请求</button>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">请求与返回</h3>
+                </div>
+                <div class="box-body row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>请求详情:</label>
+                            <textarea class="form-control" rows="6" readonly>@ViewBag.SendContent</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>请求返回:</label>
+                            <textarea class="form-control" rows="8" readonly>@ViewBag.ReturnResult</textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script>
+        $('#ApiCode').on('change',
+            function() {
+                var selectCode = $(this).val();
+                location.href = "/Tools/ApiSimulator/Index?selectedApiCode=" + selectCode;
+            })
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

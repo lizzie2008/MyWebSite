@@ -1,0 +1,49 @@
+﻿{
+  "MyRequest": {
+    "ApiRequests": [
+      {
+        "ApiCode": "001",
+        "ApiName": "手机号码归属地",
+        "Url": "http://apis.juhe.cn/mobile/get",
+        "Methord": "GET",
+        "ApiParas": [
+          {
+            "ParaName": "key",
+            "ParaType": "string",
+            "Required": true,
+            "Description": "用户认证token",
+            "ParaValue": "339e89edc137921c680a4bc39e6abf95"
+          },
+          {
+            "ParaName": "phone",
+            "ParaType": "int",
+            "Required": true,
+            "Description": "需要查询的手机号码或手机号码前7位",
+            "ParaValue": "15000000000"
+          },
+          {
+            "ParaName": "dtype",
+            "ParaType": "string",
+            "Required": false,
+            "Description": "返回数据的格式,xml或json，默认json",
+            "ParaValue": null
+          }
+        ]
+      },
+      {
+        "ApiCode": "002",
+        "ApiName": "百度统计-获取站点列表",
+        "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getSiteList",
+        "Methord": "POST",
+        "ApiParas": null
+      },
+      {
+        "ApiCode": "003",
+        "ApiName": "百度统计-获取地域分布统计",
+        "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getData",
+        "Methord": "POST",
+        "ApiParas": null
+      }
+    ]
+  }
+}

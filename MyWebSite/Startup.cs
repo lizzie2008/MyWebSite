@@ -1,20 +1,22 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
 using MyWebSite.Models;
 using MyWebSite.Services;
 using MyWebSite.Services.Interfaces;
 using System;
+using System.IO;
+using MyWebSite.Datas.Config;
 
 namespace MyWebSite
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -40,8 +42,9 @@ namespace MyWebSite
             services.AddScoped<INavMenuService, NavMenuService>();
 
             services.AddSession();
-
             services.AddMvc();
+
+            InitAppConfig(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +81,22 @@ namespace MyWebSite
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        /// <summary>
+        /// 初始化配置
+        /// </summary>
+        /// <param name="services"></param>
+        private void InitAppConfig(IServiceCollection services)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("Datas/Config/MyProfile.json")
+                .AddJsonFile("Datas/Config/MyRequest.json");
+            var config = builder.Build();
+
+            services.Configure<MyProfile>(config.GetSection("MyProfile"));
+            services.Configure<MyRequest>(config.GetSection("MyRequest"));
         }
     }
 }

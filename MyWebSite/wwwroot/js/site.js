@@ -32,7 +32,7 @@ BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '确定';
 
 $(function () {
     //表格控件初始化
-    var table = $('.table').DataTable({
+    var table = $('.datatables').DataTable({
         "lengthChange": false,
         "searching": false,
         "scrollX": true,

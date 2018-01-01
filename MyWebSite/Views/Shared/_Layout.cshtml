@@ -13,6 +13,7 @@
     <title>@ViewData["Title"] - @ViewData["loading"] LanceL0t</title>
 
     @await Html.PartialAsync("_SiteCssPartial")
+    @RenderSection("Styles", required: false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini" >
     <div class="wrapper">
