@@ -2,7 +2,7 @@
   "MyRequest": {
     "ApiRequests": [
       {
-        "ApiCode": "001",
+        "ApiCode": "MobileLocation",
         "ApiName": "手机号码归属地",
         "Url": "http://apis.juhe.cn/mobile/get",
         "Methord": "GET",
@@ -31,18 +31,20 @@
         ]
       },
       {
-        "ApiCode": "002",
+        "ApiCode": "BaiduGetSites",
         "ApiName": "百度统计-获取站点列表",
         "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getSiteList",
         "Methord": "POST",
-        "ApiParas": null
+        "ApiParas": null,
+        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{}}"
       },
       {
-        "ApiCode": "003",
+        "ApiCode": "BaiduGetVisitDistrict",
         "ApiName": "百度统计-获取地域分布统计",
         "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getData",
         "Methord": "POST",
-        "ApiParas": null
+        "ApiParas": null,
+        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"visit/district/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,avg_visit_pages,avg_visit_time,bounce_ratio\",\"order\":\"pv_count,desc\"}}"
       }
     ]
   }

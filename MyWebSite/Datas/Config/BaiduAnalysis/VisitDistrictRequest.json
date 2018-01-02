@@ -1,0 +1,15 @@
+﻿{
+  "header": {
+    "account_type": 1,
+    "password": "Leigh73269",
+    "token": "50a0aafd2221f0deb066cd2b890cdd42",
+    "username": "lizzie2008"
+  },
+  "body": {
+    "site_id": 11584544,
+    "method": "visit/district/a",
+    "start_date": "30daysago",
+    "end_date": "today",
+    "metrics": "pv_count,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,avg_visit_pages,avg_visit_time,bounce_ratio"
+  }
+}

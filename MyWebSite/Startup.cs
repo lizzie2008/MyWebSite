@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using MyWebSite.Areas.Tools.Models.BaiduAnalysis;
 using MyWebSite.Datas;
+using MyWebSite.Datas.Config;
 using MyWebSite.Extensions;
 using MyWebSite.Models;
 using MyWebSite.Services;
 using MyWebSite.Services.Interfaces;
 using System;
 using System.IO;
-using MyWebSite.Datas.Config;
 
 namespace MyWebSite
 {
@@ -92,11 +92,14 @@ namespace MyWebSite
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("Datas/Config/MyProfile.json")
-                .AddJsonFile("Datas/Config/MyRequest.json");
+                .AddJsonFile("Datas/Config/MyRequest.json")
+                .AddJsonFile("Datas/Config/BaiduAnalysis/VisitDistrictRequest.json");
+
             var config = builder.Build();
 
             services.Configure<MyProfile>(config.GetSection("MyProfile"));
             services.Configure<MyRequest>(config.GetSection("MyRequest"));
+            services.Configure<VisitDistrictRequest>(config.GetSection("VisitDistrictRequest"));
         }
     }
 }

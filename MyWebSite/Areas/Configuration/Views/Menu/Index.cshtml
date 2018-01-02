@@ -14,7 +14,11 @@ new NavCrumb(name:"菜单列表"),
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section Styles{
+    <link rel="stylesheet" href="~/lib/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap3-dialog/dist/css/bootstrap-dialog.css" />
+}
 <div class="row">
     <div class="col-xs-12">
         <div class="box with-border">
@@ -120,8 +124,24 @@ new NavCrumb(name:"菜单列表"),
 </div>
 
 @section Scripts{
+    <script src="~/lib/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
+    <script src="~/lib/bootstrap3-dialog/dist/js/i18n/zh-CN.js"></script>
+    <script src="~/lib/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="~/lib/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+    <script src="~/lib/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
+    <script src="~/lib/AdminLTE/bower_components/select2/dist/js/i18n/zh-CN.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
+        //表格控件初始化
+        var table = $('.datatables').DataTable({
+            "lengthChange": false,
+            "searching": false,
+            "scrollX": true,
+            //"iDisplayLength": '25',
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+            }
+        })
         function onDelete(id, name) {
             BootstrapDialog.show({
                 message: '确认删除菜单-' + name + '[' + id + ']？',

@@ -12,3 +12,7 @@ $('#MenuType').change(function (parameters) {
         $("#Url").val('')
     }
 })
+//下拉框样式
+$('.select2').select2({
+    language: "zh-CN",
+})

@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas.Config;
 using MyWebSite.Extensions;
-using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Tools.Controllers
 {
@@ -35,7 +34,8 @@ namespace MyWebSite.Areas.Tools.Controllers
                 return View("Index", new ApiRequest());
 
             }
-            return View("Index", _myRequest.ApiRequests.FirstOrDefault(s => s.ApiCode == selectedApiCode));
+            var selectedApi = _myRequest.ApiRequests.FirstOrDefault(s => s.ApiCode == selectedApiCode);
+            return View("Index", selectedApi);
         }
 
         /// <summary>

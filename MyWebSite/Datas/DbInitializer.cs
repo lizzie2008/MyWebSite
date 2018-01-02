@@ -15,7 +15,7 @@ namespace ContosoUniversity.Data
 
             if (!context.ApplicationUsers.AsNoTracking().Any())
             {
-                var userAdmin = new ApplicationUser { UserName = @"34878936@qq.com", Email = @"34878936@qq.com", NickName = "许立" };
+                var userAdmin = new ApplicationUser { UserName = @"34878936@qq.com", Email = @"34878936@qq.com", NickName = "原子蛋" };
                 userManager.CreateAsync(userAdmin, @"@Lizzie08");
             }
 
