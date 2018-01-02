@@ -35,21 +35,21 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </div>
-                                    <input type="text" class="form-control" id="dateRange" >
+                                    <input type="text" class="form-control" id="dateRange">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="margin-r-10">
-                                    <input type="radio" name="r3" class="flat-red margin-r-15"> 今天
+                                    <input type="radio" name="rdDateRange" class="margin-r-15" id="rdToday" checked> 今天
                                 </label>
                                 <label class="margin-r-10">
-                                    <input type="radio" name="r3" class="flat-red margin-r-15"> 昨天
+                                    <input type="radio" name="rdDateRange" class="margin-r-15" id="rdYesterday"> 昨天
                                 </label>
                                 <label class="margin-r-10">
-                                    <input type="radio" name="r3" class="flat-red margin-r-15"> 最近7天
+                                    <input type="radio" name="rdDateRange" class="margin-r-15" id="rdLast7Days"> 最近7天
                                 </label>
                                 <label class="margin-r-10">
-                                    <input type="radio" name="r3" class="flat-red margin-r-15" checked> 最近30天
+                                    <input type="radio" name="rdDateRange" class="margin-r-15" id="rdLast30Days"> 最近30天
                                 </label>
                             </div>
                         </form>
@@ -69,46 +69,6 @@
                                     <th>省份</th>
                                     <th>浏览量(PV)</th>
                                     <th>占比</th>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
-                                    <td>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-red">55%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Clean database</td>
-                                    <td>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-yellow">70%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td>Cron job running</td>
-                                    <td>
-                                        <div class="progress progress-xs progress-striped active">
-                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-light-blue">30%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>4.</td>
-                                    <td>Fix and squish bugs</td>
-                                    <td>
-                                        <div class="progress progress-xs progress-striped active">
-                                            <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-green">90%</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -195,35 +155,37 @@
             '黑龙江': 'CN-23',
             '吉林': 'CN-22',
             '辽宁': 'CN-21'
-        };
+        }
 
-        var queryVisitDistrictAnalytics = function () {
+        var queryVisitDistrictAnalytics = function (startDate, endDate) {
+            $('#dateRange').data('daterangepicker').setStartDate(startDate);
+            $('#dateRange').data('daterangepicker').setEndDate(endDate);
             $.ajax({
                 type: 'GET',
-                url: '/Tools/SiteAnalytics/GetVisitDistrictAnalytics',
+                url: '/Tools/SiteAnalytics/GetVisitDistrictAnalytics'
+                    + '?' + 'startDate=' + startDate.format('YYYYMMDD')
+                    + '&' + 'endDate=' + endDate.format('YYYYMMDD'),
                 success: function (data) {
                     //获得站点数据
-                    var result = JSON.parse(data).body.data[0].result
+                    var result = JSON.parse(data).body.data[0].result;
 
-                    var dicDistrictAnalytics = [];
-                    var visitorsData = []
-
+                    var visitorsData = [];
                     var html = ''
                     for (var i = 0; i < result.total; i++) {
                         var districtName = result.items[0][i][0].name
                         var districtCode = dicProvince[districtName]
                         var districtData = result.items[1][i]
                         visitorsData[districtCode] = districtData[0]
-                        html += '<tr>'
+                        html += '<tr>';
                         //序号
-                        html += '<td>' + (i + 1) + '</td>'
+                        html += '<td>' + (i + 1) + '</td>';
                         //省份
-                        html += '<td>' + districtName + '</td>'
+                        html += '<td>' + districtName + '</td>';
                         //浏览量(PV)
-                        html += '<td>' + districtData[0] + '</td>'
+                        html += '<td>' + districtData[0] + '</td>';
                         //占比
-                        html += '<td><span class="badge bg-teal">' + districtData[1] + '%' + '</span></td>'
-                        html += '</tr>'
+                        html += '<td><span class="badge bg-teal">' + districtData[1] + '%' + '</span></td>';
+                        html += '</tr>';
                     }
                     //初始化Map数据
                     var options = {
@@ -272,29 +234,54 @@
         });
         //时间范围选择
         var drp = $('#dateRange').daterangepicker({
-            timePicker: false,
-            startDate: moment().subtract(29, 'days'),
-            endDate: moment(),
-            locale: {
-                format: 'YYYY-MM-DD',
-                separator: ' 至 ',
-                applyLabel: "确定",
-                cancelLabel: "取消",
-                resetLabel: "重置",
-            }
-        }, function (start, end, label) {
-            //选择日期触发事件
+                timePicker: false,
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    separator: ' 至 ',
+                    applyLabel: "确定",
+                    cancelLabel: "取消",
+                    resetLabel: "重置"
+                }
+            },
+            function (startDate, endDate) {
+                queryVisitDistrictAnalytics(startDate, endDate);
+                $('input[type="radio"]').iCheck('uncheck');
+            });
 
-        })
         //时间单选框
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        $('input[type="radio"]').iCheck({
             checkboxClass: 'icheckbox_flat-green',
             radioClass: 'iradio_flat-green'
-        })
-
+        });
+        $("input:radio[name='rdDateRange']").on('ifChecked', function () {
+            var startDate = moment();
+            var endDate = moment();
+            switch($(this).attr("id"))
+            {
+                case 'rdToday':
+                    startDate = moment();
+                    endDate = moment();
+                break;
+                case 'rdYesterday':
+                    startDate = moment().subtract(1, 'days');
+                    endDate = moment().subtract(1, 'days');
+                break;
+                case 'rdLast7Days':
+                    startDate = moment().subtract(6, 'days');
+                    endDate = moment();
+                break;
+                case 'rdLast30Days':
+                    startDate = moment().subtract(29, 'days');
+                    endDate = moment();
+                break;
+            default:
+                console.log("单选框选择有误！");
+            }
+            queryVisitDistrictAnalytics(startDate,endDate);
+        });
 
         //请求百度访客区域统计数据
-        queryVisitDistrictAnalytics()
+        queryVisitDistrictAnalytics(moment(), moment());
 
         //$('#world-map-markers').vectorMap({
         //    map: 'cn_mill',
