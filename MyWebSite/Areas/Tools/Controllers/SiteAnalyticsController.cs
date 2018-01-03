@@ -7,17 +7,18 @@ using MyWebSite.Extensions;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MyWebSite.Areas.Tools.Controllers
 {
     [Area("Tools")]
     public class SiteAnalyticsController : AppController
     {
-        private readonly ApiRequest _request;
+        private readonly IList<ApiRequest> _requests;
 
         public SiteAnalyticsController(IOptions<MyRequest> myRequest)
         {
-            _request = myRequest.Value.ApiRequests.FirstOrDefault(s => s.ApiCode == "BaiduGetVisitDistrict");
+            _requests = myRequest.Value.ApiRequests;
         }
 
         public IActionResult Index()
@@ -32,9 +33,21 @@ namespace MyWebSite.Areas.Tools.Controllers
         public async Task<JsonResult> GetVisitDistrictAnalytics(string startDate, string endDate)
         {
             var hc = new HttpClient();
-            var data = _request.ApiDatas;
-            data = data.Replace("30daysago", startDate).Replace("today", endDate);
-            return Json(await hc.HttpPostAsync(_request.Url, data));
+            var request = _requests.FirstOrDefault(s => s.ApiCode == "BaiduGetVisitDistrict");
+            var data = request.ApiDatas.Replace("30daysago", startDate).Replace("today", endDate);
+            return Json(await hc.HttpPostAsync(request.Url, data));
+        }
+
+        /// <summary>
+        /// 获取百度趋势分析数据
+        /// </summary>
+        /// <returns></returns>
+        public async Task<JsonResult> GetTrendAnalytics(string startDate, string endDate)
+        {
+            var hc = new HttpClient();
+            var request = _requests.FirstOrDefault(s => s.ApiCode == "BaiduGetTrend");
+            var data = request.ApiDatas.Replace("30daysago", startDate).Replace("today", endDate);
+            return Json(await hc.HttpPostAsync(request.Url, data));
         }
     }
 }

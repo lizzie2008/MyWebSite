@@ -44,3 +44,18 @@ td {
 .label-sm {
     padding: .1em .6em .1em;
 }
+
+.summary-table > tbody > tr > th,
+.summary-table > tbody > tr > td {
+    padding: 8px;
+    vertical-align: top;
+    color: #787a7d
+}
+
+.question-tooltip {
+    color: #a2c7ea
+}
+
+.tooltip-inner {
+    text-align: left;
+}

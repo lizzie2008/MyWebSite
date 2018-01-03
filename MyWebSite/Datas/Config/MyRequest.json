@@ -32,7 +32,7 @@
       },
       {
         "ApiCode": "BaiduGetSites",
-        "ApiName": "百度统计-获取站点列表",
+        "ApiName": "百度统计-站点列表",
         "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getSiteList",
         "Methord": "POST",
         "ApiParas": null,
@@ -40,11 +40,19 @@
       },
       {
         "ApiCode": "BaiduGetVisitDistrict",
-        "ApiName": "百度统计-获取地域分布统计",
+        "ApiName": "百度统计-地域分布统计",
         "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getData",
         "Methord": "POST",
         "ApiParas": null,
-        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"visit/district/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,avg_visit_pages,avg_visit_time,bounce_ratio\",\"order\":\"pv_count,desc\"}}"
+        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"visit/district/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,pv_ratio,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,ip_count,bounce_ratio,avg_visit_time,avg_visit_pages,trans_count,trans_ratio\",\"order\":\"pv_count,desc\"}}"
+      },
+      {
+        "ApiCode": "BaiduGetTrend",
+        "ApiName": "百度统计-趋势分析",
+        "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getData",
+        "Methord": "POST",
+        "ApiParas": null,
+        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"trend/time/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,pv_ratio,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,ip_count,bounce_ratio,avg_visit_time,avg_visit_pages,trans_count,trans_ratio,avg_trans_cost,income,profit,roi\",\"gran\":\"day\"}}"
       }
     ]
   }

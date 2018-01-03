@@ -5986,6 +5986,10 @@ table.text-center th {
     margin-right: 15px;
 }
 
+.margin-r-20 {
+    margin-right: 20px;
+}
+
 .inline {
     display: inline;
 }
