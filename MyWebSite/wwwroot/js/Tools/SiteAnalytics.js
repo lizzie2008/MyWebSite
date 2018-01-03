@@ -55,19 +55,36 @@ var options = {
         ]
     },
     onRegionLabelShow: function (e, el, code) {
-        if (typeof visitorsData[code] != 'undefined')
-            el.html(el.html() + ': ' + visitorsData[code] + ' 访客');
+        var html = '';
+        html += '<div style="width:120px;">';
+        html += '<div style="border-bottom:1px solid;padding-bottom:5px;">' + el.html() + '</div>';
+        html += '<div style="margin-top:5px;"><i class="fa fa-circle text-success margin-r-5"></i>浏览量(PV)<span class="pull-right">';
+        if (typeof visitorsData[code] != 'undefined') {
+            html += visitorsData[code];
+        } else {
+            html += 0;
+        }
+        html += '</div>';
+        html += '<div style="margin-top:5px;"><i class="fa fa-circle text-primary margin-r-5"></i>占比<span class="pull-right">';
+        if (typeof pecentData[code] != 'undefined') {
+            html += pecentData[code];
+        } else {
+            html += 0;
+        }
+        html += ' %</div>';
+        el.html(html);
     }
 }
+
 $('#map-markers').vectorMap(options);
 var mapObject = $('#map-markers').vectorMap('get', 'mapObject');
 var visitorsData = [];
-
+var pecentData = [];
 //请求区域分析数据
 var queryVisitDistrictAnalytics = function (startDate, endDate) {
     $('#dateRange').data('daterangepicker').setStartDate(startDate);
     $('#dateRange').data('daterangepicker').setEndDate(endDate);
-
+    //请求百度数据
     $.ajax({
         type: 'GET',
         url: '/Tools/SiteAnalytics/GetVisitDistrictAnalytics'
@@ -78,6 +95,7 @@ var queryVisitDistrictAnalytics = function (startDate, endDate) {
             var result = JSON.parse(data).body.data[0].result;
 
             visitorsData = [];
+            pecentData = [];
             //统计表格数据
             var html = ''
             for (var i = 0; i < result.items[0].length; i++) {
@@ -85,6 +103,7 @@ var queryVisitDistrictAnalytics = function (startDate, endDate) {
                 var districtCode = dicProvince[districtName]
                 var districtData = result.items[1][i]
                 visitorsData[districtCode] = districtData[0]
+                pecentData[districtCode] = districtData[1];
                 html += '<tr>';
                 //序号
                 html += '<td>' + (i + 1) + '</td>';
@@ -132,6 +151,7 @@ var queryTrendAnalytics = function (startDate, endDate) {
             var arr_visitor_count = [];
             var arr_ip_count = [];
             var arr_avg_visit_time = [];
+            //构造柱状图
             for (var i = result.items[1].length - 1; i >= 0; i--) {
                 if (isNaN(parseInt(result.items[1][i][0]))) {
                     arr_pv_count.push(0);
@@ -158,7 +178,6 @@ var queryTrendAnalytics = function (startDate, endDate) {
             $('#trend_visitor_count >div').html(arr_visitor_count.join(','));
             $('#trend_ip_count >div').html(arr_ip_count.join(','));
             $('#trend_avg_visit_time >div').html(arr_avg_visit_time.join(','));
-            //初始化柱状图
             $('.sparkbar').each(function () {
                 var $this = $(this);
                 $this.sparkline('html', {
@@ -167,7 +186,6 @@ var queryTrendAnalytics = function (startDate, endDate) {
                     barColor: $this.data('color')
                 });
             });
-
             //刷新趋势统计
             $('#trend_pv_count >h5').html(result.pageSum[0][0]);
             $('#trend_visitor_count >h5').html(result.pageSum[0][3]);
