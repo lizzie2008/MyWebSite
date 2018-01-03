@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="~/lib/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css" />
     <link rel="stylesheet" href="~/lib/AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="~/lib/AdminLTE/plugins/iCheck/all.css" />
-    <style>
-    </style>
 }
 
 <div class="row">
@@ -60,23 +58,23 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <span class="text">浏览量(PV)<i class="fa fa-question-circle red-tooltip question-tooltip" data-toggle="tooltip" data-placement="bottom" title="即通常说的Page View(PV)，用户每打开一个网站页面就被记录1次。用户多次打开同一页面，浏览量值累计。"></i></span>
+                                                <span class="text">浏览量(PV)<i class="fa fa-question-circle question-tooltip" data-toggle="tooltip" data-placement="bottom" title="即通常说的Page View(PV)，用户每打开一个网站页面就被记录1次。用户多次打开同一页面，浏览量值累计。"></i></span>
                                                 <div id="pv_count"></div>
                                             </td>
                                             <td>
-                                                <span class="text">访客数(UV)<i class="fa fa-question-circle red-tooltip question-tooltip" data-toggle="tooltip" data-placement="bottom" title="一天之内您网站的独立访客数(以Cookie为依据)，一天内同一访客多次访问您网站只计算1个访客。"></i></span>
+                                                <span class="text">访客数(UV)<i class="fa fa-question-circle question-tooltip" data-toggle="tooltip" data-placement="bottom" title="一天之内您网站的独立访客数(以Cookie为依据)，一天内同一访客多次访问您网站只计算1个访客。"></i></span>
                                                 <div id="visitor_count"></div>
                                             </td>
                                             <td>
-                                                <span class="text">IP数<i class="fa fa-question-circle red-tooltip question-tooltip" data-toggle="tooltip" data-placement="bottom" title="一天之内您网站的独立访问ip数。"></i></span>
+                                                <span class="text">IP数<i class="fa fa-question-circle question-tooltip" data-toggle="tooltip" data-placement="bottom" title="一天之内您网站的独立访问ip数。"></i></span>
                                                 <div id="ip_count"></div>
                                             </td>
                                             <td>
-                                                <span class="text">跳出率<i class="fa fa-question-circle red-tooltip question-tooltip" data-toggle="tooltip" data-placement="bottom" title="只浏览了一个页面便离开了网站的访问次数占总的访问次数的百分比。"></i></span>
+                                                <span class="text">跳出率<i class="fa fa-question-circle question-tooltip" data-toggle="tooltip" data-placement="bottom" title="只浏览了一个页面便离开了网站的访问次数占总的访问次数的百分比。"></i></span>
                                                 <div id="bounce_ratio"></div>
                                             </td>
                                             <td class="last">
-                                                <span class="text">平均访问时长<i class="fa fa-question-circle red-tooltip question-tooltip" data-toggle="tooltip" data-placement="bottom" title="访客在一次访问中，平均打开网站的时长。即每次访问中，打开第一个页面到关闭最后一个页面的平均值，打开一个页面时计算打开关闭的时间差。"></i></span>
+                                                <span class="text">平均访问时长<i class="fa fa-question-circle question-tooltip" data-toggle="tooltip" data-placement="bottom" title="访客在一次访问中，平均打开网站的时长。即每次访问中，打开第一个页面到关闭最后一个页面的平均值，打开一个页面时计算打开关闭的时间差。"></i></span>
                                                 <div id="avg_visit_time"></div>
                                             </td>
                                         </tr>
@@ -87,13 +85,15 @@
                         </form>
                     </div>
                     <!-- 分布地图 -->
-                    <div class="col-md-5 col-sm-5">
-                        <div class="pad">
-                            <div id="map-markers" style="height: 420px;"></div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="box-body">
+                            <div id="map-markers" class="text-center" style="height: 420px;">
+                                <div>浏览量地域分布</div>
+                            </div>
                         </div>
                     </div>
                     <!-- 分布表格 -->
-                    <div class="col-md-5 col-sm-5" style="height: 420px; overflow: auto;">
+                    <div class="col-md-4 col-sm-4" style="height: 440px; overflow: auto;">
                         <table class="table table-bordered" id="districtTable">
                             <tbody>
                                 <tr>
@@ -146,6 +146,7 @@
     <script src="~/lib/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="~/lib/AdminLTE/plugins/jvectormap/jquery-jvectormap-cn-mill.js"></script>
     <script src="~/lib/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/lib/AdminLTE/plugins/jvectormap/jquery-jvectormap-usa-en.js"></script>
     <script src="~/lib/AdminLTE/bower_components/chart.js/Chart.js"></script>
     <script src="~/lib/AdminLTE/bower_components/jquery-sparkline/dist/jquery.sparkline.js"></script>
     <script src="~/lib/AdminLTE/bower_components/moment/moment.js"></script>

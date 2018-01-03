@@ -38,15 +38,32 @@ var options = {
     map: 'cn_mill',
     backgroundColor: 'transparent',
     regionStyle: {
-        initial: {
-            fill: '#e4e4e4',
-            'fill-opacity': 1,
-            stroke: 'none',
-            'stroke-width': 0,
-            'stroke-opacity': 1
-        }
+        initial      : {
+        fill            : 'rgba(210, 214, 222, 1)',
+        'fill-opacity'  : 1,
+        stroke          : 'none',
+        'stroke-width'  : 0,
+        'stroke-opacity': 1
+      },
+      hover        : {
+        'fill-opacity': 0.7,
+        cursor        : 'pointer'
+      },
+      selected     : {
+        fill: 'yellow'
+      },
+      selectedHover: {}
     },
     series: {
+        markers: [{
+            attribute: 'fill',
+            scale: ['#C8EEFF', '#0071A4'],
+            normalizeFunction: 'polynomial',
+            values: [408, 512, 550, 781],
+            legend: {
+                vertical: true
+            }
+        }],
         regions: [
             {
                 scale: ['#ebf4f9', '#92c1dc'],
@@ -97,12 +114,12 @@ var queryVisitDistrictAnalytics = function (startDate, endDate) {
             visitorsData = [];
             pecentData = [];
             //统计表格数据
-            var html = ''
+            var html = "";
             for (var i = 0; i < result.items[0].length; i++) {
-                var districtName = result.items[0][i][0].name
-                var districtCode = dicProvince[districtName]
-                var districtData = result.items[1][i]
-                visitorsData[districtCode] = districtData[0]
+                var districtName = result.items[0][i][0].name;
+                var districtCode = dicProvince[districtName];
+                var districtData = result.items[1][i];
+                visitorsData[districtCode] = districtData[0];
                 pecentData[districtCode] = districtData[1];
                 html += '<tr>';
                 //序号
@@ -131,7 +148,7 @@ var queryVisitDistrictAnalytics = function (startDate, endDate) {
             mapObject.series.regions[0].setValues(visitorsData);
 
             //刷新统计表格
-            $('#districtTable tr:gt(0)').remove()
+            $('#districtTable tr:gt(0)').remove();
             $("#districtTable tbody").append(html);
         }
     });
@@ -147,37 +164,37 @@ var queryTrendAnalytics = function (startDate, endDate) {
             //获得站点数据
             var result = JSON.parse(data).body.data[0].result;
 
-            var arr_pv_count = [];
-            var arr_visitor_count = [];
-            var arr_ip_count = [];
-            var arr_avg_visit_time = [];
+            var arrPvCount = [];
+            var arrVisitorCount = [];
+            var arrIpCount = [];
+            var arrAvgVisitTime = [];
             //构造柱状图
             for (var i = result.items[1].length - 1; i >= 0; i--) {
                 if (isNaN(parseInt(result.items[1][i][0]))) {
-                    arr_pv_count.push(0);
+                    arrPvCount.push(0);
                 } else {
-                    arr_pv_count.push(result.items[1][i][0]);
+                    arrPvCount.push(result.items[1][i][0]);
                 }
                 if (isNaN(parseInt(result.items[1][i][3]))) {
-                    arr_visitor_count.push(0);
+                    arrVisitorCount.push(0);
                 } else {
-                    arr_visitor_count.push(result.items[1][i][3]);
+                    arrVisitorCount.push(result.items[1][i][3]);
                 }
                 if (isNaN(parseInt(result.items[1][i][6]))) {
-                    arr_ip_count.push(0);
+                    arrIpCount.push(0);
                 } else {
-                    arr_ip_count.push(result.items[1][i][6]);
+                    arrIpCount.push(result.items[1][i][6]);
                 }
                 if (isNaN(parseInt(result.items[1][i][8]))) {
-                    arr_avg_visit_time.push(0);
+                    arrAvgVisitTime.push(0);
                 } else {
-                    arr_avg_visit_time.push(result.items[1][i][8]);
+                    arrAvgVisitTime.push(result.items[1][i][8]);
                 }
             }
-            $('#trend_pv_count >div').html(arr_pv_count.join(','));
-            $('#trend_visitor_count >div').html(arr_visitor_count.join(','));
-            $('#trend_ip_count >div').html(arr_ip_count.join(','));
-            $('#trend_avg_visit_time >div').html(arr_avg_visit_time.join(','));
+            $('#trend_pv_count >div').html(arrPvCount.join(','));
+            $('#trend_visitor_count >div').html(arrVisitorCount.join(','));
+            $('#trend_ip_count >div').html(arrIpCount.join(','));
+            $('#trend_avg_visit_time >div').html(arrAvgVisitTime.join(','));
             $('.sparkbar').each(function () {
                 var $this = $(this);
                 $this.sparkline('html', {
