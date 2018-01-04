@@ -37,7 +37,8 @@ namespace MyWebSite.Areas.Tools.Controllers
 
             }
             var selectedApi = _myRequest.ApiRequests.FirstOrDefault(s => s.ApiCode == selectedApiCode);
-            selectedApi.ApiDatas = selectedApi.ApiDatas.ToJsonString();
+            if (selectedApi != null && selectedApi.Methord == "POST")
+                selectedApi.ApiDatas = selectedApi.ApiDatas.ToJsonString();
             return View("Index", selectedApi);
         }
 
@@ -59,14 +60,14 @@ namespace MyWebSite.Areas.Tools.Controllers
                 }
 
                 ViewBag.SendContent = getUrl;
-                ViewBag.ReturnResult = await hc.HttpGetAsync(getUrl);
+                ViewBag.ReturnResult = (await hc.HttpGetAsync(getUrl)).ToJsonString();
             }
             else if (request.Methord == "POST")
             {
                 if (!string.IsNullOrEmpty(request.ApiDatas))
                 {
                     ViewBag.SendContent = request.Url;
-                    ViewBag.ReturnResult = await hc.HttpPostAsync(request.Url, request.ApiDatas);
+                    ViewBag.ReturnResult = (await hc.HttpPostAsync(request.Url, request.ApiDatas)).ToJsonString();
                 }
                 else
                 {
