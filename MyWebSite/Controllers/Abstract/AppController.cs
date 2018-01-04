@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyWebSite.Services;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace MyWebSite.Controllers.Abstract
 {
-    public class AppController : Controller
+    public abstract  class AppController : Controller
     {
-        public AppController()
-        {
 
-        }
     }
 }

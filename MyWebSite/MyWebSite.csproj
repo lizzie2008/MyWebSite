@@ -3451,6 +3451,7 @@
     <Folder Include="Areas\Configuration\Data\" />
     <Folder Include="Areas\Tools\Data\" />
     <Folder Include="Areas\Tools\Models\BaiduAnalysis\" />
+    <Folder Include="Core\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>

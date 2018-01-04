@@ -10,11 +10,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using MyWebSite.Areas.Configuration.ViewModels;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {
     [Area("Configuration")]
+    [Authorize]
     public class MenuController : AppController
     {
         private readonly ApplicationDbContext _context;

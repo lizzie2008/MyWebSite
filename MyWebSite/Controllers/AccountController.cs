@@ -11,26 +11,30 @@ using MyWebSite.ViewModels.AccountViewModels;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace MyWebSite.Controllers
 {
-    [Authorize]
     [Route("[controller]/[action]")]
-    public class AccountController : AppController
+    [Authorize]
+    public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            IHttpContextAccessor httpContextAccessor,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _httpContextAccessor = httpContextAccessor;
             _emailSender = emailSender;
             _logger = logger;
         }
@@ -244,6 +248,8 @@ namespace MyWebSite.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            //清除全局Cookies
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete("menuids_open");
             _logger.LogInformation("User logged out.");
             return RedirectToAction(nameof(Login));
         }

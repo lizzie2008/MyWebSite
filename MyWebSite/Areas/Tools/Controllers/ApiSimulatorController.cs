@@ -8,10 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyWebSite.Areas.Tools.Controllers
 {
     [Area("Tools")]
+    [Authorize]
     public class ApiSimulatorController : AppController
     {
         private readonly MyRequest _myRequest;
@@ -35,6 +37,7 @@ namespace MyWebSite.Areas.Tools.Controllers
 
             }
             var selectedApi = _myRequest.ApiRequests.FirstOrDefault(s => s.ApiCode == selectedApiCode);
+            selectedApi.ApiDatas = selectedApi.ApiDatas.ToJsonString();
             return View("Index", selectedApi);
         }
 

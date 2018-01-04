@@ -8,10 +8,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyWebSite.Areas.Tools.Controllers
 {
     [Area("Tools")]
+    [Authorize]
     public class SiteAnalyticsController : AppController
     {
         private readonly IList<ApiRequest> _requests;

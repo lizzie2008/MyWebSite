@@ -2,12 +2,13 @@
 
 namespace MyWebSite.Datas.Config
 {
+    /// <summary>
+    /// 个人资料
+    /// </summary>
     public class MyProfile
     {
         public IEnumerable<Project> Projects { set; get; }
     }
-
-
     
     /// <summary>
     /// 项目经历

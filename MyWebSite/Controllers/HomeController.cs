@@ -1,39 +1,31 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
+using MyWebSite.Datas.Config;
 using MyWebSite.Models;
 using MyWebSite.Services.Interfaces;
 using MyWebSite.ViewModels;
 using System.Diagnostics;
-using Microsoft.Extensions.Options;
-using MyWebSite.Datas.Config;
 
 namespace MyWebSite.Controllers
 {
+    [Authorize]
     public class HomeController : AppController
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IOptions<MyProfile> _myProfile;
 
 
-        public HomeController(SignInManager<ApplicationUser> signInManager, INavMenuService navMenuService, IOptions<MyProfile> myProfile)
+        public HomeController(SignInManager<ApplicationUser> signInManager, IOptions<MyProfile> myProfile)
         {
             _signInManager = signInManager;
             _myProfile = myProfile;
         }
-
         public IActionResult Index()
         {
-            //如果已经登录，返回主页面
-            if (_signInManager.IsSignedIn(User))
-            {
-                return View("Index", _myProfile.Value);
-            }
-            //如果未登录，跳转登录界面
-            else
-            {
-                return RedirectToAction(nameof(AccountController.Login), "Account");
-            }
+            return View("Index", _myProfile.Value);
         }
 
         public IActionResult About()
