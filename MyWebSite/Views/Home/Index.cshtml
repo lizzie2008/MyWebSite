@@ -357,11 +357,9 @@
 @section Scripts {
     <script>
         $('.img-more').click(function () {
-            var file = $(this).attr('src')
-            var fileNames = file.split('.')
-            $("#myModal").find("#img_show").html("<image src='" +
-                fileNames[0] + '-lg.' + fileNames[1] +
-                "' class='carousel-inner img-responsive img-rounded' />")
+            var file = $(this).attr('src');
+            $("#myModal").find("#img_show").html("<image src='" + file +
+                "' class='carousel-inner img-responsive img-rounded' />");
             $("#myModal").modal();
         })
     </script>
