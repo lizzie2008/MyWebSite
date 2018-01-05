@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace MyWebSite.Areas.Tools.Controllers
 {
     [Area("Tools")]
-    [Authorize]
     public class ApiSimulatorController : AppController
     {
         private readonly MyRequest _myRequest;

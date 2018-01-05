@@ -3452,6 +3452,7 @@
     <Folder Include="Areas\Tools\Data\" />
     <Folder Include="Areas\Tools\Models\BaiduAnalysis\" />
     <Folder Include="Core\" />
+    <Folder Include="wwwroot\lib\easyrocketstudio\dist\img\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>

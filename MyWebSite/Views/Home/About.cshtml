@@ -1,7 +1,116 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    Layout = null;
+    ViewData["Title"] = "欢迎";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LanceL0t</title>
+    <link rel="stylesheet" href="~/lib/easyrocketstudio/dist/css/main.css" />
+</head>
+<body>
+    <div class="menu-container">
+        <a href="" class="btn-menu j-btn-menu" data-menu="site-menu"></a>
+        <div class="menu-list" id="site-menu" style="display: none;">
+            <ul>
+                <li><a href="#0" data-screen="1">About</a></li>
+                <li><a href="#0" data-screen="2">E-Sports</a></li>
+                <li><a href="#0" data-screen="3">Our projects</a></li>
+                <li><a href="#0" data-screen="6">System modules</a></li>
+                <li><a href="#0" data-screen="7">Support</a></li>
+                <li><a href="#0" data-screen="8">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-wrapper page" style="width: 1349px;">
+        <div class="user-menu">
+            <a href="/downloads/easyrocketstudio-en.pdf" target="_blank" class="btn btn-small">Download presentation</a>
+        </div>
+        <img src="~/lib/easyrocketstudio/dist/img/asteroids-left.png" alt="pic" class="a-left" style="left: 1070.41px; top: 1004.25px;">
+        <img src="~/lib/easyrocketstudio/dist/img/asteroids-right.png" alt="pic" class="a-right" style="left: -487.785px; top: 2668.5px;">
+        <img src="~/lib/easyrocketstudio/dist/img/asteroids-left.png" alt="pic" class="b-left" style="left: 1321.68px; top: 4013.25px;">
+        <img src="~/lib/easyrocketstudio/dist/img/asteroids-right.png" alt="pic" class="b-right" style="left: -177.937px; top: 4950px;">
+        <div class="container" style="padding-top: 0;">
+            <div class="center">
+                <div class="screen-7">
+                    <div class="block" style="margin-top: 0;">
+                        <h3 class="title title-medium">Tech support</h3>
+                        <p class="text"> We care about the quality of our product and do our best to make sure, that your workflow with Big Deal Engine is stable and comfortable. </p>
+                    </div>
+                    <div class="planet-3-area centered" style="cursor: pointer;">
+                        <canvas id="canvasMagneto" class="magneto" width="700" height="500" style="cursor: inherit;"></canvas>
+                        <div class="planet-3-obits">
+                            <span class="text-huge"> 进入首页 </span>
+                            <p class="text-small">you can be sure in tech support for your product</p>
+                        </div>
+                        <div class="plus plus-1">
+                            <span>Patches are released</span>
+                            <p class="text-small">monthly</p>
+                        </div>
+                        <div class="plus plus-2">
+                            <span>New modules are released</span>
+                            <p class="text-small">and modernized</p>
+                        </div>
+                        <div class="block-bordered text-small"> System setup is being made on your dedicated server by our specialists, allowing us to launch your e-Sports website in really short terms. Our tech support team is available 24/7, that’s why you can always count on our help in difficult situations. </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screen-8">
+            <div class="block-bottom">
+                <div class="block-bottom-top"></div>
+                <div class="block-bottom-main">
+                    <div id="clouds">
+                        <div class="cloud cloud-1"></div>
+                        <div class="cloud cloud-2"></div>
+                        <div class="cloud cloud-3"></div>
+                        <div class="cloud cloud-4"></div>
+                        <div class="cloud cloud-5"></div>
+                        <div class="cloud cloud-6"></div>
+                    </div>
+                    <div class="container">
+                        <div class="observatory">
+                            <div class="navigator"></div>
+                        </div>
+                        <div class="block-bottom-content">
+                            <a href="/downloads/easyrocketstudio-en.pdf" target="_blank" class="btn btn-small">Download presentation</a>
+                            <h3 class="title title-medium">Let's talk business</h3>
+                            <p class="text"> To get started just conact us via e-mail and our managers will provide you with all necessary information for start of your own e-Sports platform. </p>
+                            <div class="questions">
+                                <p>If you have questions, adress them here</p> <a href="mailto:rocket@easyrocketstudio.com">rocket@easyrocketstudio.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper-nebula">
+            <div id="container" class="container-nebula">
+                <div id="output" class="container-nebula">
+                    <canvas id="myCanvas" width="1349" height="1000" style="display: block;"></canvas>
+                </div>
+            </div>
+        </div>
+        <canvas id="bg-stars" class="bg-stars" width="1349" height="623" style="cursor: inherit;"> </canvas>
+        <canvas id="world" class="planet-3-orbit" width="800" height="600"></canvas>
+        <canvas id="world-2" class="planet-3-orbit" width="800" height="600"></canvas>
+        <canvas id="world-3" class="planet-3-orbit" width="800" height="600"></canvas>
+        <canvas id="stars-cursor"></canvas>
+    </div>
+    <script type="text/javascript"> var isMobile = false; if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) { isMobile = true; } </script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/easyrocketstudio/dist/js/pixi.js"></script>
+    <script src="~/lib/easyrocketstudio/dist/js/bg-stars-pixi.js"></script>
+    <script src="~/lib/easyrocketstudio/dist/js/magneto-min.js"></script>
+    <script src="~/lib/easyrocketstudio/dist/js/main-min.js"></script>
+    <script src="~/lib/easyrocketstudio/dist/js/asteroids-min.js"></script>
+    <script type="text/javascript">
+        $('.planet-3-area').click(function () {
+            window.location.href = "/Home/Index";
+        });
+    </script>
+</body>
+</html>

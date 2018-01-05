@@ -2,7 +2,7 @@
 @inject UserManager<ApplicationUser> UserManagerIns
 
 @{
-    var user = await UserManagerIns.GetUserAsync(User);
+    var user = await UserManagerIns.GetUserAsync(User) ?? new ApplicationUser { NickName = "游客" };
 }
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     @await Html.PartialAsync("_SiteCssPartial")
     @RenderSection("Styles", required: false)
 </head>
-<body class="hold-transition skin-blue sidebar-mini pace-done" >
+<body class="hold-transition skin-blue sidebar-mini pace-done">
     <div class="wrapper">
         <!-- 顶部区域 -->
         @await Html.PartialAsync("_LayoutHeaderPartial", user)

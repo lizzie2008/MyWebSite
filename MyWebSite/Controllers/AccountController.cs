@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MyWebSite.Controllers.Abstract;
 using MyWebSite.Models;
 using MyWebSite.Services;
 using MyWebSite.Services.Interfaces;
@@ -11,12 +11,10 @@ using MyWebSite.ViewModels.AccountViewModels;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
 namespace MyWebSite.Controllers
 {
     [Route("[controller]/[action]")]
-    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -66,6 +64,9 @@ namespace MyWebSite.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    //重置菜单Cookies
+                    _httpContextAccessor.HttpContext.Response.Cookies.Delete("menuids_open");
+
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -248,10 +249,8 @@ namespace MyWebSite.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            //清除全局Cookies
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete("menuids_open");
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction(nameof(HomeController.Welcome), "Home");
         }
 
         [HttpPost]
