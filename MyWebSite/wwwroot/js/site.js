@@ -8,16 +8,16 @@ s.parentNode.insertBefore(hm, s);
 
 //记录菜单展开状态,防止导航菜单折叠
 $('.main-sidebar a').click(function () {
-    var href = $(this).attr('href')
-    if (href === null || href === "#") return
+    var href = $(this).attr('href');
+    if (href === null || href === "#") return;
     var menuids = [];
     $('.menu-open').each(function () {
-        menuids.push($(this).attr('menuid'))
-    })
-    $.cookie('menuids_open', menuids.join(','), { path: "/" })
-})
+        menuids.push($(this).attr('menuid'));
+    });
+    $.cookie('menuids_open', menuids.join(','), { path: "/" });
+});
 
 //ajax请求Pace效果
 $(document).ajaxStart(function () {
-    Pace.restart()
+    Pace.restart();
 })

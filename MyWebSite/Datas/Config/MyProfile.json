@@ -114,8 +114,8 @@
           "本产品用于部门内列控中心站场图的生成、临时限速服务器站场图的生成、TSRT终端站场图的生成，兼容各个版本和工具的要求"
         ],
         "ProjectImgs": [
-          "/images/profile/6-1-lg.png",
-          "/images/profile/6-2-lg.png"
+          "6-1",
+          "6-2"
         ]
       },
       //项目7
@@ -135,15 +135,15 @@
           "友好性人机交互，站场图动态回放/暂停、加速、减速，并支持拖动进度条进行跳跃式播放，报警自动触发和显示"
         ],
         "ProjectImgs": [
-          "/images/profile/7-1-lg.png",
-          "/images/profile/7-2-lg.png",
-          "/images/profile/7-3-lg.png",
-          "/images/profile/7-4-lg.png",
-          "/images/profile/7-5-lg.png",
-          "/images/profile/7-6-lg.png",
-          "/images/profile/7-7-lg.png",
-          "/images/profile/7-8-lg.png",
-          "/images/profile/7-9-lg.png"
+          "7-1",
+          "7-2",
+          "7-3",
+          "7-4",
+          "7-5",
+          "7-6",
+          "7-7",
+          "7-8",
+          "7-9"
         ]
       },
       //项目8
@@ -162,12 +162,12 @@
           "KPI告警闪烁、电压越限着色、故障信息定位、告警分析提升"
         ],
         "ProjectImgs": [
-          "/images/profile/8-1-lg.png",
-          "/images/profile/8-2-lg.png",
-          "/images/profile/8-3-lg.png",
-          "/images/profile/8-4-lg.png",
-          "/images/profile/8-5-lg.png",
-          "/images/profile/8-6-lg.png"
+          "8-1",
+          "8-2",
+          "8-3",
+          "8-4",
+          "8-5",
+          "8-6"
         ]
       },
       //项目9
@@ -187,9 +187,9 @@
           "在电商大数据量的特性下，部署多台负载均衡服务器，满足处理实时性和正确性要求"
         ],
         "ProjectImgs": [
-          "/images/profile/9-1-lg.png",
-          "/images/profile/9-2-lg.png",
-          "/images/profile/9-3-lg.png"
+          "9-1",
+          "9-2",
+          "9-3"
         ]
       }
     ]

@@ -19,20 +19,17 @@ namespace MyWebSite.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IHttpContextAccessor httpContextAccessor,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _httpContextAccessor = httpContextAccessor;
             _emailSender = emailSender;
             _logger = logger;
         }
@@ -64,9 +61,6 @@ namespace MyWebSite.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    //重置菜单Cookies
-                    _httpContextAccessor.HttpContext.Response.Cookies.Delete("menuids_open");
-
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -250,7 +244,7 @@ namespace MyWebSite.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Welcome), "Home");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         [HttpPost]

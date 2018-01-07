@@ -23,7 +23,7 @@
                         <b>粉丝</b> <a class="pull-right">13,287</a>
                     </li>
                 </ul>
-                <img class="img-responsive thumbnail center-block" src="~/images/profile/qrcode.jpg" alt="Photo">
+                <img class="img-responsive thumbnail center-block" src="~/images/profile/qrcode.jpg" alt="Photo" style="width: 80%">
                 <a href="#" class="btn btn-primary btn-block"><b><i class="fa fa-heart-o margin-r-5"></i> 关注我</b></a>
             </div>
         </div>
@@ -263,8 +263,9 @@
                                                 @foreach (var projectImg in project.ProjectImgs)
                                                 {
                                                     <div class="col-sm-6 col-md-4">
-                                                        <img style="cursor: pointer; height: 150px;" src="@projectImg"
-                                                             alt="..." class="img-responsive thumbnail center-block img-more">
+                                                        <img style="cursor: pointer; height: 150px;" 
+                                                             src="/images/profile/@(projectImg)-sm.jpg" data-src="/images/profile/@(projectImg)-lg.jpg"
+                                                             alt="..." class="img-responsive thumbnail center-block lazyload">
                                                     </div>
                                                 }
                                             </div>
@@ -355,9 +356,11 @@
     </div>
 </div>
 @section Scripts {
+    <script src="~/lib/lazyload/dist/lazyload.min.js"></script>
     <script>
-        $('.img-more').click(function () {
-            var file = $(this).attr('src');
+        //延迟加载图片
+        $("img.lazyload").lazyload().click(function () {
+            var file = $(this).attr('data-src');
             $("#myModal").find("#img_show").html("<image src='" + file +
                 "' class='carousel-inner img-responsive img-rounded' />");
             $("#myModal").modal();

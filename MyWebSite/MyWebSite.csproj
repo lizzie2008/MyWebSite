@@ -3453,6 +3453,7 @@
     <Folder Include="Areas\Tools\Models\BaiduAnalysis\" />
     <Folder Include="Core\" />
     <Folder Include="wwwroot\lib\easyrocketstudio\dist\img\" />
+    <Folder Include="wwwroot\lib\lazyload\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>

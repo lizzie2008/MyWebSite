@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas.Config;
-using MyWebSite.Models;
 using MyWebSite.ViewModels;
 using System.Diagnostics;
 
@@ -11,12 +10,10 @@ namespace MyWebSite.Controllers
 {
     public class HomeController : AppController
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IOptions<MyProfile> _myProfile;
 
-        public HomeController(SignInManager<ApplicationUser> signInManager, IOptions<MyProfile> myProfile)
+        public HomeController(IOptions<MyProfile> myProfile)
         {
-            _signInManager = signInManager;
             _myProfile = myProfile;
         }
 
