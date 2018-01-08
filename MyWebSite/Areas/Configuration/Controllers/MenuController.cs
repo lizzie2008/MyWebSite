@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace MyWebSite.Areas.Configuration.Controllers
 {
     [Area("Configuration")]
-    //[Authorize]
+    [Authorize]
     public class MenuController : AppController
     {
         private readonly ApplicationDbContext _context;

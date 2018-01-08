@@ -84,7 +84,7 @@ namespace MyWebSite
 
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
-                //DefaultRequestCulture = new RequestCulture("zh-CN"),
+                DefaultRequestCulture = new RequestCulture("zh-CN"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             });

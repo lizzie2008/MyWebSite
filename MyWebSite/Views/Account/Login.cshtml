@@ -16,9 +16,13 @@
     <link rel="stylesheet" href="~/lib/AdminLTE/plugins/iCheck/square/blue.css">
 </head>
 <body class="hold-transition login-page">
+    <div id="alert" class="alert alert-warning" hidden>
+        <a href="#" class="close" onclick="">&times;</a>
+        <strong>警告！</strong>目前尚未开放外部人员注册权限,请与管理员联系.
+    </div>
     <div class="login-box">
         <div class="login-box-body">
-            <p class="login-box-msg">欢迎，由此登录</p>
+            <p class="login-box-msg">访问受限,需要管理员权限,由此登录</p>
             <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group has-feedback">
@@ -44,17 +48,19 @@
             </form>
             <div class="social-auth-links text-center">
                 <p>- 或者 -</p>
-                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                <a name="register" href="#" class="btn btn-block btn-social btn-facebook btn-flat">
                     <i class="fa fa-facebook"></i> Sign in using
                     Facebook
                 </a>
-                <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                <a name="register" href="#" class="btn btn-block btn-social btn-google btn-flat">
                     <i class="fa fa-google-plus"></i> Sign in using
                     Google+
                 </a>
             </div>
-            <a asp-action="ForgotPassword">忘记密码</a><br>
-            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text-center">立即注册</a>
+            @*<a asp-action="ForgotPassword">忘记密码</a><br>
+                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text-center">立即注册</a>*@
+            <a name="register" href="#">忘记密码</a><br>
+            <a name="register" href="#">立即注册</a>
         </div>
     </div>
 </body>
@@ -69,5 +75,12 @@
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' // optional
+    })
+    //警告框
+    $('a[name="register"]').click(function () {
+        $('#alert').show();
+    })
+    $('.close').click(function () {
+        $('#alert').hide();
     })
 </script>
