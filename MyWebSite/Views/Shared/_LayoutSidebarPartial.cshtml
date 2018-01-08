@@ -1,4 +1,6 @@
-﻿        <!-- Control Sidebar -->
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor  HttpContextAccessorIns
+
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -102,6 +104,20 @@
         <!-- Settings tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
+                <h3 class="control-sidebar-heading">语言设置</h3>
+                <div class="form-group">
+                    @{
+                        string language = HttpContextAccessorIns.HttpContext.Request.Cookies[".AspNetCore.Culture"]?? "c=zh-CN|uic=zh-CN";
+                    }
+                    <label class="control-sidebar-subheading">
+                        中文
+                        <input type="radio" name="languageOpts" data-culture="zh" class="pull-right" @( language == "c=zh-CN|uic=zh-CN" ? "checked" : "")>
+                    </label>
+                    <label class="control-sidebar-subheading">
+                        英文
+                        <input type="radio" name="languageOpts" data-culture="en" class="pull-right" @(language == "c=en-US|uic=en-US" ? "checked" : "")>
+                    </label>
+                </div>
                 <h3 class="control-sidebar-heading">General Settings</h3>
                 <div class="form-group">
                     <label class="control-sidebar-subheading">

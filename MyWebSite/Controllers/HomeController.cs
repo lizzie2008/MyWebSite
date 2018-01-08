@@ -32,6 +32,7 @@ namespace MyWebSite.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+
             return View("Index", _myProfile.Value);
         }
 

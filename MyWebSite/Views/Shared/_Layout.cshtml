@@ -1,8 +1,20 @@
-﻿@using MyWebSite.ViewModels
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@using MyWebSite.ViewModels
 @inject UserManager<ApplicationUser> UserManagerIns
 
 @{
-    var user = await UserManagerIns.GetUserAsync(User) ?? new ApplicationUser { NickName = "游客" };
+    var user = await UserManagerIns.GetUserAsync(User);
+    var vm = new LayoutVM { NetState = Localizer["Online"].Value };
+    if (user != null)
+    {
+        vm.NickName = user.NickName;
+    }
+    else
+    {
+        vm.NickName = Localizer["Guest"].Value;
+    }
 }
 
 <!DOCTYPE html>
@@ -10,7 +22,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - @ViewData["loading"] LanceL0t</title>
+    <title>@ViewData["Title"] - LanceL0t</title>
 
     @await Html.PartialAsync("_SiteCssPartial")
     @RenderSection("Styles", required: false)
@@ -18,16 +30,16 @@
 <body class="hold-transition skin-blue sidebar-mini pace-done">
     <div class="wrapper">
         <!-- 顶部区域 -->
-        @await Html.PartialAsync("_LayoutHeaderPartial", user)
+        @await Html.PartialAsync("_LayoutHeaderPartial", vm)
         <!-- 导航栏 -->
-        @await Html.PartialAsync("_LayoutNavbarPartial", user)
+        @await Html.PartialAsync("_LayoutNavbarPartial", vm)
 
         <!-- 内容区域 -->
         <div class="content-wrapper">
             <section class="content-header">
                 @{
                     var breadCrumb = ViewBag.BreadCrumb as BreadCrumb;
-                    breadCrumb = breadCrumb ?? new BreadCrumb("主页", "Version 2.0", new List<NavCrumb>());
+                    breadCrumb = breadCrumb ?? new BreadCrumb(SharedLocalizer["Home"].Value, "Version 2.0", new List<NavCrumb>());
                 }
                 <h1>
                     @breadCrumb.Title

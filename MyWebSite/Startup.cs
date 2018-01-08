@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using MyWebSite.Areas.Tools.Models.BaiduAnalysis;
 using MyWebSite.Datas;
 using MyWebSite.Datas.Config;
@@ -12,6 +15,8 @@ using MyWebSite.Models;
 using MyWebSite.Services;
 using MyWebSite.Services.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace MyWebSite
@@ -37,13 +42,19 @@ namespace MyWebSite
                 .AddDefaultTokenProviders()
                 .AddErrorDescriber<IdentityExtensions>();
 
-            // Add application services.
+            //添加应用程序服务
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<INavMenuService, NavMenuService>();
 
             services.AddSession();
-            services.AddMvc();
 
+            //全球化和本地化
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
+
+            //初始化应用配置
             InitAppConfig(services);
         }
 
@@ -64,6 +75,19 @@ namespace MyWebSite
                 app.UseExceptionHandler("/Home/Error/500");
                 app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
             }
+
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("zh-CN"),
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                //DefaultRequestCulture = new RequestCulture("zh-CN"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseStaticFiles();
 

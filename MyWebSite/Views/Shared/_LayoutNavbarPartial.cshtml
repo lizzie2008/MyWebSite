@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.Localization
 @using MyWebSite.Areas.Configuration.ViewModels
 @using MyWebSite.Services.Interfaces
-@model MyWebSite.Models.ApplicationUser
+@inject IViewLocalizer Localizer
+@model MyWebSite.ViewModels.LayoutVM
 
 @inject IHttpContextAccessor  HttpContextAccessorIns
 @inject INavMenuService NavMenuServiceIns
@@ -14,7 +16,7 @@
             </div>
             <div class="pull-left info">
                 <p>@Model.NickName</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> @Model.NetState</a>
             </div>
         </div>
         <form action="#" method="get" class="sidebar-form">

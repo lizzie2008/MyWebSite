@@ -229,7 +229,7 @@ $('#dateRange').daterangepicker({
     });
 
 //时间单选框
-$('input[type="radio"]').iCheck({
+$("input:radio[name='rdDateRange']").iCheck({
     checkboxClass: 'icheckbox_flat-green',
     radioClass: 'iradio_flat-green'
 });

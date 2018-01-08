@@ -1,5 +1,7 @@
-﻿@using MyWebSite.Areas.Configuration.Models
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using MyWebSite.Areas.Configuration.Models
 @using MyWebSite.Areas.Configuration.ViewModels
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 @model MyWebSite.Areas.Configuration.ViewModels.NavMenuVM
 
 
@@ -9,7 +11,7 @@
     {
         <li menuid="@navMenu.Id" class="treeview @(Model.MenuidsOpen.Contains(navMenu.Id) ? "menu-open" : "")">
             <a href="#">
-                <i class="fa @navMenu.Icon"></i> <span>@navMenu.Name</span>
+                <i class="fa @navMenu.Icon"></i> <span>@SharedLocalizer[navMenu.Name]</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -27,7 +29,7 @@
     {
         <li menuid="@navMenu.Id">
             <a href="@navMenu.Url" @(navMenu.Url != null && navMenu.Url.StartsWith("http") ? @"target=_blank" : "")>
-                <i class="fa @navMenu.Icon"></i><span>@navMenu.Name</span>
+                <i class="fa @navMenu.Icon"></i><span>@SharedLocalizer[navMenu.Name]</span>
             </a>
         </li>
     }

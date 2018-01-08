@@ -1,9 +1,12 @@
-﻿@{
-    ViewData["Title"] = "主页";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using MyWebSite
+@model MyWebSite.Datas.Config.MyProfile
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@{
+    ViewData["Title"] = SharedLocalizer["Home"];
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model MyWebSite.Datas.Config.MyProfile
 
 <div class="row">
     <div class="col-md-3">
@@ -263,7 +266,7 @@
                                                 @foreach (var projectImg in project.ProjectImgs)
                                                 {
                                                     <div class="col-sm-6 col-md-4">
-                                                        <img style="cursor: pointer; height: 150px;" 
+                                                        <img style="cursor: pointer; height: 150px;"
                                                              src="/images/profile/@(projectImg)-sm.jpg" data-src="/images/profile/@(projectImg)-lg.jpg"
                                                              alt="..." class="img-responsive thumbnail center-block lazyload">
                                                     </div>
@@ -362,7 +365,7 @@
         $("img.lazyload").lazyload().click(function () {
             var file = $(this).attr('data-src');
             $("#myModal").find("#img_show").html("<image src='" + file +
-                "' class='carousel-inner img-responsive img-rounded' />");
+                "' class='img-responsive img-rounded' />");
             $("#myModal").modal();
         })
     </script>

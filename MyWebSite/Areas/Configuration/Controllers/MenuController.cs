@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Configuration.Models;
+using MyWebSite.Areas.Configuration.ViewModels;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas;
 using MyWebSite.Extensions;
@@ -10,13 +12,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using MyWebSite.Areas.Configuration.ViewModels;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {
     [Area("Configuration")]
-    [Authorize]
+    //[Authorize]
     public class MenuController : AppController
     {
         private readonly ApplicationDbContext _context;

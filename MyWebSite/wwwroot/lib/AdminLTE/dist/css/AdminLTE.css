@@ -3289,7 +3289,7 @@ a {
  * Component: Table
  * ----------------
  */
-.table > thead > tr > th,
+/*.table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
 .table > thead > tr > td,
@@ -3300,13 +3300,13 @@ a {
 
 .table > thead > tr > th {
     border-bottom: 2px solid #f4f4f4;
-}
+}*/
 
 .table tr td .progress {
     margin-top: 5px;
 }
 
-.table-bordered {
+/*.table-bordered {
     border: 1px solid #f4f4f4;
 }
 
@@ -3322,7 +3322,7 @@ a {
     .table-bordered > thead > tr > th,
     .table-bordered > thead > tr > td {
         border-bottom-width: 2px;
-    }
+    }*/
 
 .table.no-border,
 .table.no-border td,

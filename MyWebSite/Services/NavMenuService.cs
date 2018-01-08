@@ -38,7 +38,7 @@ namespace MyWebSite.Services
         /// <returns></returns>
         public void InitOrUpdate()
         {
-            NavMenus = new List<NavMenu>();
+            var navMenus = new List<NavMenu>();
 
             var rootMenus = _context.Menus
                 .Where(s => string.IsNullOrEmpty(s.ParentId))
@@ -48,8 +48,10 @@ namespace MyWebSite.Services
 
             foreach (var rootMenu in rootMenus)
             {
-                NavMenus.Add(GetOneNavMenu(rootMenu));
+                navMenus.Add(GetOneNavMenu(rootMenu));
             }
+
+            NavMenus = navMenus;
         }
         /// <summary>
         /// 根据给定的Menu，生成对应的导航菜单
