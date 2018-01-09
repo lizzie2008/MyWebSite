@@ -44,7 +44,7 @@
         "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getData",
         "Methord": "POST",
         "ApiParas": null,
-        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"visit/district/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,pv_ratio,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,ip_count,bounce_ratio,avg_visit_time,avg_visit_pages,trans_count,trans_ratio\",\"order\":\"pv_count,desc\"}}"
+        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"visit/district/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,pv_ratio,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,ip_count,bounce_ratio,avg_visit_time,avg_visit_pages,trans_count,trans_ratio\",\"order\":\"pv_count,desc\",\"max_results\":0}}"
       },
       {
         "ApiCode": "BaiduGetTrend",
@@ -52,7 +52,7 @@
         "Url": "https://api.baidu.com/json/tongji/v1/ReportService/getData",
         "Methord": "POST",
         "ApiParas": null,
-        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"trend/time/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,pv_ratio,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,ip_count,bounce_ratio,avg_visit_time,avg_visit_pages,trans_count,trans_ratio,avg_trans_cost,income,profit,roi\",\"gran\":\"day\"}}"
+        "ApiDatas": "{\"header\":{\"account_type\":1,\"password\":\"Leigh73269\",\"token\":\"50a0aafd2221f0deb066cd2b890cdd42\",\"username\":\"lizzie2008\"},\"body\":{\"site_id\":11584544,\"method\":\"trend/time/a\",\"start_date\":\"30daysago\",\"end_date\":\"today\",\"metrics\":\"pv_count,pv_ratio,visit_count,visitor_count,new_visitor_count,new_visitor_ratio,ip_count,bounce_ratio,avg_visit_time,avg_visit_pages,trans_count,trans_ratio,avg_trans_cost,income,profit,roi\",\"gran\":\"day\",\"max_results\":0}}"
       }
     ]
   }

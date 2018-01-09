@@ -57,8 +57,6 @@
                     Google+
                 </a>
             </div>
-            @*<a asp-action="ForgotPassword">忘记密码</a><br>
-                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text-center">立即注册</a>*@
             <a name="register" href="#">忘记密码</a><br>
             <a name="register" href="#">立即注册</a>
         </div>
@@ -74,13 +72,13 @@
     $('.icheck input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
+        increaseArea: '20%' 
     })
     //警告框
     $('a[name="register"]').click(function () {
-        $('.alert').fadeIn(500);  
+        $('.alert').fadeIn(500);
     })
     $('.close').click(function () {
-        $('.alert').fadeOut(500);  
+        $('.alert').fadeOut(500);
     })
 </script>
