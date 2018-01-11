@@ -8,7 +8,7 @@ namespace MyWebSite.Extensions
     public static class HttpClientExtensions
     {
         /// <summary>
-        /// Post请求API
+        /// Get请求API
         /// </summary>
         /// <param name="client"></param>
         /// <param name="url"></param>

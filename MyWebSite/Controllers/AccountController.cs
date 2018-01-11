@@ -202,7 +202,7 @@ namespace MyWebSite.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+    [Authorize]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -344,7 +344,7 @@ namespace MyWebSite.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult ForgotPassword()
         {
             return View();

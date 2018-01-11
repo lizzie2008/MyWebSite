@@ -36,3 +36,4 @@ $("input[name='languageOpts']").change(function() {
             console.log("语言选择有误！");
     }
 })
+

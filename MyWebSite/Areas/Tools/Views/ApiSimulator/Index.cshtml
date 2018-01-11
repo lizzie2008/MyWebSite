@@ -62,29 +62,37 @@ new NavCrumb(name:"API模拟请求"),
                                                     <tr>
                                                         <td>
                                                             <span>@Model.ApiParas[i].ParaName</span>
-                                                            @Html.TextBoxFor(a => a.ApiParas[i].ParaName, new { @class = "form-control input-sm", type = "hidden" })
+                                                            @Html.TextBoxFor(a => a.ApiParas[i].ParaName,
+                                                           new { @class = "form-control input-sm", type = "hidden" })
                                                         </td>
                                                         <td>
                                                             <span> @Model.ApiParas[i].ParaType</span>
-                                                            @Html.TextBoxFor(a => a.ApiParas[i].ParaType, new { @class = "form-control input-sm", type = "hidden" })
+                                                            @Html.TextBoxFor(a => a.ApiParas[i].ParaType,
+                                                           new { @class = "form-control input-sm", type = "hidden" })
                                                         </td>
                                                         <td>
                                                             <span>@(Model.ApiParas[i].Required ? "是" : "否")</span>
-                                                            @Html.TextBoxFor(a => a.ApiParas[i].Required, new { @class = "form-control input-sm", type = "hidden" })
+                                                            @Html.TextBoxFor(a => a.ApiParas[i].Required,
+                                                           new { @class = "form-control input-sm", type = "hidden" })
                                                         </td>
                                                         <td>
                                                             <span>@Model.ApiParas[i].Description</span>
-                                                            @Html.TextBoxFor(a => a.ApiParas[i].Description, new { @class = "form-control input-sm", type = "hidden" })
+                                                            @Html.TextBoxFor(a => a.ApiParas[i].Description,
+                                                           new { @class = "form-control input-sm", type = "hidden" })
                                                         </td>
-                                                        <td>@Html.TextBoxFor(a => a.ApiParas[i].ParaValue, new { @class = "form-control input-sm" })</td>
-                                                    </tr>
+                                                        <td>
+                                                            @Html.TextBoxFor(a => a.ApiParas[i].ParaValue,
+                                                           new { @class = "form-control input-sm" })
+                                                    </td>
+                                                </tr>
                                                 }
                                             </tbody>
                                         </table>
                                     </div>}
                                 else if ((Model.Methord == "POST"))
                                 {
-                                    @Html.TextAreaFor(m => m.ApiDatas, new { @class = "form-control", rows = "8", placeholder = "输入Json格式 ..." })
+                                    @Html.TextAreaFor(m => m.ApiDatas, 
+                                   new { @class = "form-control", rows = "8", placeholder = "输入Json格式 ..." })
                                 }
                             </div>
                             <button type="submit" class="btn btn-success"><i class="fa fa-send-o margin-r-5"></i>发送请求</button>
@@ -94,7 +102,6 @@ new NavCrumb(name:"API模拟请求"),
                     </div>
                 </form>
             </div>
-
         </div>
         <!-- 请求与返回 -->
         <div class="col-md-4">
