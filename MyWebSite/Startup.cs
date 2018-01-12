@@ -115,12 +115,14 @@ namespace MyWebSite
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
                 .AddJsonFile("Datas/Config/MyProfile.json")
                 .AddJsonFile("Datas/Config/MyRequest.json")
                 .AddJsonFile("Datas/Config/BaiduAnalysis/VisitDistrictRequest.json");
 
             var config = builder.Build();
 
+            services.Configure<PrivateInfo>(config.GetSection("PrivateInfo"));
             services.Configure<MyProfile>(config.GetSection("MyProfile"));
             services.Configure<MyRequest>(config.GetSection("MyRequest"));
             services.Configure<VisitDistrictRequest>(config.GetSection("VisitDistrictRequest"));

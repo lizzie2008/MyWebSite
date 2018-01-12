@@ -15,10 +15,12 @@ namespace MyWebSite.Areas.Tools.Controllers
     public class ApiSimulatorController : AppController
     {
         private readonly MyRequest _myRequest;
+        private readonly PrivateInfo _privateInfo;
 
-        public ApiSimulatorController(IOptions<MyRequest> myRequest)
+        public ApiSimulatorController(IOptions<MyRequest> myRequest, IOptions<PrivateInfo> privateInfo)
         {
             _myRequest = myRequest.Value;
+            _privateInfo = privateInfo.Value;
         }
 
         /// <summary>
@@ -56,7 +58,11 @@ namespace MyWebSite.Areas.Tools.Controllers
                 {
                     getUrl += "&" + para.ParaName + "=" + para.ParaValue;
                 }
-
+                //隐匿隐私信息
+                foreach (var valuePair in _privateInfo.InfoDic)
+                {
+                    getUrl = getUrl.Replace($"<{valuePair.Key}>", valuePair.Value);
+                }
                 ViewBag.SendContent = getUrl;
                 ViewBag.ReturnResult = (await hc.HttpGetAsync(getUrl)).ToJsonString();
             }
@@ -64,6 +70,11 @@ namespace MyWebSite.Areas.Tools.Controllers
             {
                 if (!string.IsNullOrEmpty(request.ApiDatas))
                 {
+                    //隐匿隐私信息
+                    foreach (var valuePair in _privateInfo.InfoDic)
+                    {
+                        request.ApiDatas = request.ApiDatas.Replace($"<{valuePair.Key}>", valuePair.Value);
+                    }
                     ViewBag.SendContent = request.Url;
                     ViewBag.ReturnResult = (await hc.HttpPostAsync(request.Url, request.ApiDatas)).ToJsonString();
                 }

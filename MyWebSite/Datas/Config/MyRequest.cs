@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyWebSite.Datas.Config
 {
+    #region 用户请求格式
     public class MyRequest
     {
         public IList<ApiRequest> ApiRequests { set; get; }
     }
-
     /// <summary>
     /// API调用请求
     /// </summary>
@@ -41,7 +41,6 @@ namespace MyWebSite.Datas.Config
         /// </summary>
         public string ApiDatas { set; get; }
     }
-
     public class ApiPara
     {
         /// <summary>
@@ -65,5 +64,13 @@ namespace MyWebSite.Datas.Config
         /// </summary>
         public string ParaValue { set; get; }
     }
+    #endregion
 
+    /// <summary>
+    /// 私密信息
+    /// </summary>
+    public class PrivateInfo
+    {
+        public Dictionary<string,string> InfoDic { set; get; }
+    }
 }
