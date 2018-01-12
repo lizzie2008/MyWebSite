@@ -14,10 +14,12 @@ namespace MyWebSite.Areas.Tools.Controllers
     public class SiteAnalyticsController : AppController
     {
         private readonly IList<ApiRequest> _requests;
+        private readonly PrivateInfo _privateInfo;
 
-        public SiteAnalyticsController(IOptions<MyRequest> myRequest)
+        public SiteAnalyticsController(IOptions<MyRequest> myRequest, IOptions<PrivateInfo> privateInfo)
         {
             _requests = myRequest.Value.ApiRequests;
+            _privateInfo = privateInfo.Value;
         }
 
         public IActionResult Index()
@@ -33,6 +35,11 @@ namespace MyWebSite.Areas.Tools.Controllers
         {
             var hc = new HttpClient();
             var request = _requests.FirstOrDefault(s => s.ApiCode == "BaiduGetVisitDistrict");
+            //隐匿隐私信息
+            foreach (var valuePair in _privateInfo.InfoDic)
+            {
+                request.ApiDatas = request.ApiDatas.Replace($"<{valuePair.Key}>", valuePair.Value);
+            }
             var data = request.ApiDatas.Replace("30daysago", startDate).Replace("today", endDate);
             return Json(await hc.HttpPostAsync(request.Url, data));
         }
@@ -45,6 +52,11 @@ namespace MyWebSite.Areas.Tools.Controllers
         {
             var hc = new HttpClient();
             var request = _requests.FirstOrDefault(s => s.ApiCode == "BaiduGetTrend");
+            //隐匿隐私信息
+            foreach (var valuePair in _privateInfo.InfoDic)
+            {
+                request.ApiDatas = request.ApiDatas.Replace($"<{valuePair.Key}>", valuePair.Value);
+            }
             var data = request.ApiDatas.Replace("30daysago", startDate).Replace("today", endDate);
             return Json(await hc.HttpPostAsync(request.Url, data));
         }
