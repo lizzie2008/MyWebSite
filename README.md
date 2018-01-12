@@ -16,7 +16,7 @@
   "PrivateInfo": {
     "InfoDic": {
       //电话归属地私密信息
-      "TokenMobileApi": "<聚合数据>",
+      "TokenMobileApi": "<聚合数据Token>",
       //百度私密信息
       "TokenBaiduApi": "<百度统计Token>",
       "UserNameBaiduApi": "<百度统计用户名>",
