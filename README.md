@@ -2,7 +2,7 @@
 个人网站
 
 调试说明：appsettings.json文件请自行添加，格式如下：
-{
+```{
   "ConnectionStrings": {
     "DefaultConnection": "Data Source=<Database IP>;Initial Catalog=MyWebSite;Persist Security Info=True;User ID=<UserID>;Password=<Password>"
   },
