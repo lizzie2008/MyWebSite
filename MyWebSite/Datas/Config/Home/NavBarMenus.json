@@ -1,0 +1,150 @@
+﻿{
+  "NavBarMenus": {
+    "NavMenus": [
+      //主页
+      {
+        "Name": "Home",
+        "TemplateUrl": "Home",
+        "Icon": "fa-home"
+      },
+      //配置管理
+      {
+        "Name": "Configuration",
+        "TemplateUrl": "",
+        "Icon": "fa-cog",
+        "SubNavMenus": [
+          //用户管理
+          {
+            "Name": "UserManagement",
+            "TemplateUrl": "UserManagement",
+            "Icon": "fa-user"
+          },
+          //角色管理
+          {
+            "Name": "RoleManagement",
+            "TemplateUrl": "",
+            "Icon": "fa-user-secret",
+            "SubNavMenus": [
+              //角色信息
+              {
+                "Name": "RoleInfo",
+                "TemplateUrl": "RoleInfo",
+                "Icon": "fa-circle-o"
+              },
+              //角色菜单
+              {
+                "Name": "RoleMenu",
+                "TemplateUrl": "RoleMenu",
+                "Icon": "fa-circle-o"
+              }
+            ]
+          },
+          //菜单信息
+          {
+            "Name": "MenuInfo",
+            "TemplateUrl": "MenuInfo",
+            "Icon": "fa-bars"
+          }
+        ]
+      },
+      {
+        //我的博客
+        "Name": "MyBlog",
+        "TemplateUrl": "",
+        "Icon": "fa-firefox",
+        "SubNavMenus": [
+          //Unity3D手机斗地主
+          {
+            "Name": "Unity3D手机斗地主",
+            "TemplateUrl": "",
+            "Icon": "fa-rebel",
+            "SubNavMenus": [
+              //01.发牌功能实现
+              {
+                "Name": "01.发牌功能实现",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/7761586.html",
+                "Icon": "fa-circle-o"
+              },
+              //02.叫地主功能实现
+              {
+                "Name": "02.叫地主功能实现",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/7771713.html",
+                "Icon": "fa-circle-o"
+              },
+              //03.地主牌和出牌逻辑
+              {
+                "Name": "03.地主牌和出牌逻辑",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/7794466.html",
+                "Icon": "fa-circle-o"
+              },
+              //04.出牌判断大小
+              {
+                "Name": "04.出牌判断大小",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/7977040.html",
+                "Icon": "fa-circle-o"
+              }
+            ]
+          },
+          //.Net Core个人网站
+          {
+            "Name": ".Net Core个人网站",
+            "TemplateUrl": "",
+            "Icon": "fa-sitemap",
+            "SubNavMenus": [
+              //01.环境搭建
+              {
+                "Name": "01.环境搭建",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/7943128.html",
+                "Icon": "fa-circle-o"
+              },
+              //02.一键部署和注册登录
+              {
+                "Name": "02.一键部署和注册登录",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/7999851.html",
+                "Icon": "fa-circle-o"
+              },
+              //03.菜单管理
+              {
+                "Name": "03.菜单管理",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8136442.html",
+                "Icon": "fa-circle-o"
+              },
+              //04.主页和登录验证
+              {
+                "Name": "04.主页和登录验证",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8193133.html",
+                "Icon": "fa-circle-o"
+              },
+              //05.主页和登录验证
+              {
+                "Name": "05.主页和登录验证",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8258904.html",
+                "Icon": "fa-circle-o"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        //工具箱
+        "Name": "Tools",
+        "TemplateUrl": "",
+        "Icon": "fa-cogs",
+        "SubNavMenus": [
+          //API模拟
+          {
+            "Name": "API模拟",
+            "TemplateUrl": "ApiSimulator",
+            "Icon": "fa-bug"
+          },
+          //网站分析
+          {
+            "Name": "网站分析",
+            "TemplateUrl": "SiteAnalytics",
+            "Icon": "fa-line-chart"
+          }
+        ]
+      }
+    ]
+  }
+}

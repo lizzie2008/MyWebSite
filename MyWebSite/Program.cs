@@ -1,11 +1,7 @@
-﻿using ContosoUniversity.Data;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MyWebSite.Datas;
-using MyWebSite.Models;
 using System;
 
 namespace MyWebSite

@@ -5990,6 +5990,22 @@ table.text-center th {
     margin-right: 20px;
 }
 
+.margin-t-5 {
+    margin-top: 5px;
+}
+
+.margin-t-10 {
+    margin-top: 10px;
+}
+
+.margin-t-15 {
+    margin-top: 15px;
+}
+
+.margin-t-20 {
+    margin-top: 20px;
+}
+
 .inline {
     display: inline;
 }

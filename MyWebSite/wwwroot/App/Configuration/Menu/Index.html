@@ -1,0 +1,768 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="box with-border">
+            <form class="form" action="/Configuration/Menu" method="post">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-search margin-r-5">查询条件</i></h3>
+                    <div class="box-tools pull-right">
+                        <button type="submit" class="btn btn-success margin-r-5"><i class="fa fa-search margin-r-5"></i>查询</button>
+                        <a class="btn btn-primary" href="/Configuration/Menu/Create"><i class="fa fa-plus margin-r-5"></i>新建</a>
+                    </div>
+                    <div class="text-danger validation-summary-valid" data-valmsg-summary="true">
+                        <ul>
+                            <li style="display:none"></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Query_QName">菜单名称:</label>
+                                <input class="form-control input-sm" type="text" id="Query_QName" name="Query.QName" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Query_QId">菜单编码:</label>
+                                <input class="form-control input-sm" type="text" id="Query_QId" name="Query.QId" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Query_QParentId">父级菜单:</label>
+                                <select class="form-control input-sm select2" id="Query_QParentId" name="Query.QParentId">
+                                    <option value="">-- 请选择 --</option>
+                                    <option value="M02">M02(Configuration)</option>
+                                    <option value="M02_02">M02_02(RoleManagement)</option>
+                                    <option value="M03">M03(MyBlog)</option>
+                                    <option value="M03_01">M03_01(Unity3D手机斗地主)</option>
+                                    <option value="M03_02">M03_02(.Net Core个人网站)</option>
+                                    <option value="M04">M04(Tools)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="Query_QMenuType">菜单类型:</label>
+                                <select class="form-control input-sm select2" id="Query_QMenuType" name="Query.QMenuType">
+                                    <option value="">-- 请选择 --</option>
+                                    <option value="0">导航菜单</option>
+                                    <option value="1">操作菜单</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8KTY291p_s9LvxBeL5gYATtfRugL6HxrSTg1USH8pX0CvCCI03v8Y78lwBgURf4i5gJcCQ22i5sFPEz3F-LpF5BbSZuWLyrNn3oAyGwzwYNbEmvie6ZmbjPjJXolJvL_JDeJJjfRcg4zepViBkwuu2GvL6NLamkTMOLyWUSdJaRRCfOKWsgwklJG_dcMXLdT_A">
+            </form>
+            <div class="box-body">
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row">
+                        <div class="col-sm-12">
+                            <div class="dataTables_scroll">
+                                <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1143px; padding-right: 0px;">
+                                        <table class="table table-striped table-bordered table-hover datatables dataTable no-footer" style="width: 1143px; margin-left: 0px;" role="grid">
+                                            <thead>
+                                                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 21px;" aria-sort="ascending" aria-label="#: 以降序排列此列">#</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 131px;" aria-label="菜单名称: 以升序排列此列">菜单名称</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 87px;" aria-label="菜单编号: 以升序排列此列">菜单编号</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px;" aria-label="父级编号: 以升序排列此列">父级编号</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px;" aria-label="组内排序: 以升序排列此列">组内排序</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px;" aria-label="菜单类型: 以升序排列此列">菜单类型</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px;" aria-label="菜单图标: 以升序排列此列">菜单图标</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px;" aria-label="菜单路径: 以升序排列此列">菜单路径</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 112px;" aria-label="操作: 以升序排列此列">操作</th></tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;">
+                                    <table class="table table-striped table-bordered table-hover datatables dataTable no-footer" style="width: 100%;" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                        <thead>
+                                            <tr role="row" style="height: 0px;"><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 21px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">#</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 131px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">菜单名称</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 87px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">菜单编号</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">父级编号</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">组内排序</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">菜单类型</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">菜单图标</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 88px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">菜单路径</div></th><th class="sorting" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 112px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div></th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    001
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M01">主页</a>
+                                                </td>
+                                                <td>
+                                                    <span>M01</span>
+                                                </td>
+                                                <td>
+                                                    <span>无</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-home" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-home"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="Home.Index"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M01', 'Home');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    002
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M02">后台管理</a>
+                                                </td>
+                                                <td>
+                                                    <span>M02</span>
+                                                </td>
+                                                <td>
+                                                    <span>无</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>导航菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-cog" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-cog"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="无"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M02', 'Configuration');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    003
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M02_01">用户管理</a>
+                                                </td>
+                                                <td>
+                                                    <span>M02_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>M02</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-user" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-user"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="/Configuration/User/Index"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M02_01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M02_01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M02_01', 'UserManagement');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    004
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M02_02">角色管理</a>
+                                                </td>
+                                                <td>
+                                                    <span>M02_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>M02</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>导航菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-user-secret" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-user-secret"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="无"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M02_02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M02_02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M02_02', 'RoleManagement');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    005
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M02_02_01">角色信息</a>
+                                                </td>
+                                                <td>
+                                                    <span>M02_02_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>M02_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="/Configuration/Role/RoleInfo"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M02_02_01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M02_02_01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M02_02_01', 'RoleInfo');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    006
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M02_02_02">角色菜单</a>
+                                                </td>
+                                                <td>
+                                                    <span>M02_02_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>M02_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="/Configuration/Role/RoleMenu"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M02_02_02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M02_02_02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M02_02_02', 'RoleMenu');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    007
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M02_03">菜单管理</a>
+                                                </td>
+                                                <td>
+                                                    <span>M02_03</span>
+                                                </td>
+                                                <td>
+                                                    <span>M02</span>
+                                                </td>
+                                                <td>
+                                                    <span>3</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-bars" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-bars"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="Configuration.Menu.Index"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M02_03">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M02_03">详情</a>|
+                                                    <a href="#" onclick="onDelete('M02_03', 'MenuManagement');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    008
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03">我的博客</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03</span>
+                                                </td>
+                                                <td>
+                                                    <span>无</span>
+                                                </td>
+                                                <td>
+                                                    <span>3</span>
+                                                </td>
+                                                <td>
+                                                    <span>导航菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-firefox" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-firefox"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="无"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03', 'MyBlog');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    009
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_01">Unity3D手机斗地主</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>导航菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-rebel" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-rebel"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="无"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_01', 'Unity3D手机斗地主');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    010
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_01_01">01.发牌功能实现</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/7761586.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_01_01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_01_01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_01_01', '01.发牌功能实现');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    011
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_01_02">02.叫地主功能实现</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/7771713.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_01_02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_01_02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_01_02', '02.叫地主功能实现');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    012
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_01_03">03.地主牌和出牌逻辑</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01_03</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>3</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/7794466.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_01_03">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_01_03">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_01_03', '03.地主牌和出牌逻辑');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    013
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_01_04">04.出牌判断大小</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01_04</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>4</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/7977040.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_01_04">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_01_04">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_01_04', '04.出牌判断大小');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    014
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_02">.Net Core个人网站</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>导航菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-sitemap" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-sitemap"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="无"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_02', '.Net Core个人网站');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    015
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_02_01">01.环境搭建</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/7943128.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_02_01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_02_01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_02_01', '01.环境搭建');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    016
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_02_02">02.一键部署和注册登录</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/7999851.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_02_02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_02_02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_02_02', '02.一键部署和注册登录');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    017
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_02_03">03.菜单管理</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02_03</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>3</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/8136442.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_02_03">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_02_03">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_02_03', '03.菜单管理');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    018
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_02_04">04.主页和登录验证</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02_04</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>4</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/8193133.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_02_04">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_02_04">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_02_04', '04.主页和登录验证');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    019
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M03_02_05">05.Api模拟和网站分析</a>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02_05</span>
+                                                </td>
+                                                <td>
+                                                    <span>M03_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>5</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-circle-o" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-circle-o"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="http://www.cnblogs.com/lizzie-xhu/p/8258904.html"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M03_02_05">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M03_02_05">详情</a>|
+                                                    <a href="#" onclick="onDelete('M03_02_05', '05.Api模拟和网站分析');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    020
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M04">工具箱</a>
+                                                </td>
+                                                <td>
+                                                    <span>M04</span>
+                                                </td>
+                                                <td>
+                                                    <span>无</span>
+                                                </td>
+                                                <td>
+                                                    <span>4</span>
+                                                </td>
+                                                <td>
+                                                    <span>导航菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-cogs" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-cogs"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="无"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M04">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M04">详情</a>|
+                                                    <a href="#" onclick="onDelete('M04', 'Tools');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    021
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M04_01">API模拟</a>
+                                                </td>
+                                                <td>
+                                                    <span>M04_01</span>
+                                                </td>
+                                                <td>
+                                                    <span>M04</span>
+                                                </td>
+                                                <td>
+                                                    <span>1</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-bug" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-bug"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="/Tools/ApiSimulator/Index"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M04_01">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M04_01">详情</a>|
+                                                    <a href="#" onclick="onDelete('M04_01', 'ApiSimulator');">删除</a>
+                                                </td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="sorting_1">
+                                                    022
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Details/M04_02">网站分析</a>
+                                                </td>
+                                                <td>
+                                                    <span>M04_02</span>
+                                                </td>
+                                                <td>
+                                                    <span>M04</span>
+                                                </td>
+                                                <td>
+                                                    <span>2</span>
+                                                </td>
+                                                <td>
+                                                    <span>操作菜单</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-line-chart" data-toggle="tooltip" data-placement="right" title="" data-original-title="fa-line-chart"></i>
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-ellipsis-h" data-toggle="tooltip" data-placement="left" title="" data-original-title="/Tools/SiteAnalytics/Index"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="/Configuration/Menu/Edit/M04_02">编辑</a>|
+                                                    <a href="/Configuration/Menu/Details/M04_02">详情</a>|
+                                                    <a href="#" onclick="onDelete('M04_02', 'SiteAnalytics');">删除</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">显示第 1 至 22 项结果，共 22 项</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0">上页</a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">下页</a></li></ul></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

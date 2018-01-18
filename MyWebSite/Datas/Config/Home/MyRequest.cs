@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyWebSite.Datas.Config
+namespace MyWebSite.Datas.Config.Home
 {
     #region 用户请求格式
     public class MyRequest

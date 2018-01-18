@@ -202,7 +202,7 @@ namespace MyWebSite.Controllers
         }
 
         [HttpGet]
-    [Authorize]
+        [Authorize]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -446,14 +446,7 @@ namespace MyWebSite.Controllers
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
+            return Redirect(returnUrl);
         }
 
         #endregion

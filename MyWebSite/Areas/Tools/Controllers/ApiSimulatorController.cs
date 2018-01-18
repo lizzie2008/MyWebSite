@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
-using MyWebSite.Datas.Config;
+using MyWebSite.Core;
+using MyWebSite.Datas.Config.Home;
 using MyWebSite.Extensions;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Tools.Controllers
 {
+    [ApiAuthorize]
     [Area("Tools")]
     public class ApiSimulatorController : AppController
     {
@@ -21,25 +21,22 @@ namespace MyWebSite.Areas.Tools.Controllers
         {
             _myRequest = myRequest.Value;
             _privateInfo = privateInfo.Value;
+
+            //格式化Json
+            _myRequest.ApiRequests.ToList().ForEach(s =>
+            {
+                if (s.Methord == "POST")
+                    s.ApiDatas = s.ApiDatas.ToJsonString();
+            });
         }
 
         /// <summary>
-        /// API模拟主页
+        /// 获取API请求列表
         /// </summary>
-        /// <param name="selectedApiCode"></param>
         /// <returns></returns>
-        public IActionResult Index(string selectedApiCode = null)
+        public IActionResult GetApiRequestList()
         {
-            UpdateDropDownList(selectedApiCode);
-            if (selectedApiCode == null)
-            {
-                return View("Index", new ApiRequest());
-
-            }
-            var selectedApi = _myRequest.ApiRequests.FirstOrDefault(s => s.ApiCode == selectedApiCode);
-            if (selectedApi != null && selectedApi.Methord == "POST")
-                selectedApi.ApiDatas = selectedApi.ApiDatas.ToJsonString();
-            return View("Index", selectedApi);
+            return new JsonResult(_myRequest.ApiRequests);
         }
 
         /// <summary>
@@ -47,7 +44,8 @@ namespace MyWebSite.Areas.Tools.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<IActionResult> InvokApi(ApiRequest request)
+        [HttpPost]
+        public async Task<IActionResult> InvokApi([FromBody]ApiRequest request)
         {
             var hc = new HttpClient();
 
@@ -63,8 +61,12 @@ namespace MyWebSite.Areas.Tools.Controllers
                 {
                     getUrl = getUrl.Replace($"<{valuePair.Key}>", valuePair.Value);
                 }
-                ViewBag.SendContent = getUrl;
-                ViewBag.ReturnResult = (await hc.HttpGetAsync(getUrl)).ToJsonString();
+
+                return new JsonResult(new
+                {
+                    SendContent = getUrl,
+                    ReturnResult = (await hc.HttpGetAsync(getUrl)).ToJsonString()
+                });
             }
             else if (request.Methord == "POST")
             {
@@ -75,39 +77,21 @@ namespace MyWebSite.Areas.Tools.Controllers
                     {
                         request.ApiDatas = request.ApiDatas.Replace($"<{valuePair.Key}>", valuePair.Value);
                     }
-                    ViewBag.SendContent = request.Url;
-                    ViewBag.ReturnResult = (await hc.HttpPostAsync(request.Url, request.ApiDatas)).ToJsonString();
+                    return new JsonResult(new
+                    {
+                        SendContent = request.Url,
+                        ReturnResult = (await hc.HttpPostAsync(request.Url, request.ApiDatas)).ToJsonString()
+                    });
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "请输入Json格式请求参数");
+                    return new BadRequestResult();
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "请求方式非法");
+                return new BadRequestResult();
             }
-
-            UpdateDropDownList(request.ApiCode);
-            return View("Index", request);
-        }
-
-        /// <summary>
-        /// 初始化下拉选择框
-        /// </summary>
-        private void UpdateDropDownList(string selectedApiCode = null)
-        {
-            List<SelectListItem> listApiName = new List<SelectListItem>();
-            foreach (var request in _myRequest.ApiRequests.Select(s => new { s.ApiName, s.ApiCode }))
-            {
-                listApiName.Add(new SelectListItem
-                {
-                    Value = request.ApiCode,
-                    Text = request.ApiName,
-                    Selected = request.ApiCode == selectedApiCode
-                });
-            }
-            ViewBag.ApiCodes = listApiName;
         }
     }
 }

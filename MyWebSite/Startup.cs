@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Options;
 using MyWebSite.Areas.Tools.Models.BaiduAnalysis;
 using MyWebSite.Datas;
 using MyWebSite.Datas.Config;
+using MyWebSite.Datas.Config.Home;
 using MyWebSite.Extensions;
 using MyWebSite.Models;
 using MyWebSite.Services;
@@ -44,7 +47,7 @@ namespace MyWebSite
 
             //添加应用程序服务
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddScoped<INavMenuService, NavMenuService>();
+            //services.AddScoped<INavMenuService, NavMenuService>();
 
             services.AddSession();
 
@@ -103,7 +106,7 @@ namespace MyWebSite
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Welcome}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
@@ -116,12 +119,14 @@ namespace MyWebSite
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile("Datas/Config/MyProfile.json")
-                .AddJsonFile("Datas/Config/MyRequest.json")
+                .AddJsonFile("Datas/Config/Home/NavBarMenus.json")
+                .AddJsonFile("Datas/Config/Home/MyProfile.json")
+                .AddJsonFile("Datas/Config/Home/MyRequest.json")
                 .AddJsonFile("Datas/Config/BaiduAnalysis/VisitDistrictRequest.json");
 
             var config = builder.Build();
 
+            services.Configure<NavBarMenus>(config.GetSection("NavBarMenus"));
             services.Configure<PrivateInfo>(config.GetSection("PrivateInfo"));
             services.Configure<MyProfile>(config.GetSection("MyProfile"));
             services.Configure<MyRequest>(config.GetSection("MyRequest"));

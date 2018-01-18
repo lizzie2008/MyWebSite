@@ -93,6 +93,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\App\Home\Index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
     <Content Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css" />
@@ -614,6 +618,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\App\Home\Home.html" />
     <None Include="wwwroot\js\Configuration\Menu.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
@@ -3451,7 +3456,6 @@
     <Folder Include="Areas\Configuration\Data\" />
     <Folder Include="Areas\Tools\Data\" />
     <Folder Include="Areas\Tools\Models\BaiduAnalysis\" />
-    <Folder Include="Core\" />
     <Folder Include="wwwroot\lib\easyrocketstudio\dist\img\" />
     <Folder Include="wwwroot\lib\lazyload\" />
   </ItemGroup>

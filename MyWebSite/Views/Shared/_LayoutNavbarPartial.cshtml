@@ -1,12 +1,9 @@
-﻿@using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Mvc.Localization
-@using MyWebSite.Areas.Configuration.ViewModels
-@using MyWebSite.Services.Interfaces
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@using MyWebSite.Datas.Config.Home
 @inject IViewLocalizer Localizer
 @model MyWebSite.ViewModels.LayoutVM
-
-@inject IHttpContextAccessor  HttpContextAccessorIns
-@inject INavMenuService NavMenuServiceIns
+@inject IOptions<NavBarMenus> NavBarMenus
 
 <aside class="main-sidebar">
     <section class="sidebar">
@@ -31,15 +28,8 @@
         </form>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">菜单导航</li>
-            @{
-                var navMenus = NavMenuServiceIns.GetNavMenus();
-                var cookieMenuidsOpen = HttpContextAccessorIns.HttpContext.Request.Cookies["menuids_open"] ?? "";
-            }
-            @await Html.PartialAsync("_NavMenu", new NavMenuVM
-       {
-           NavMenus = navMenus,
-           MenuidsOpen = cookieMenuidsOpen == null ? new string[] { } : cookieMenuidsOpen.Split(",")
-       })
+
+            @await Html.PartialAsync("_NavMenu", NavBarMenus.Value)
 
             <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>

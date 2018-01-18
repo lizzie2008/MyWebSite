@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MyWebSite.Datas.Config
+namespace MyWebSite.Datas.Config.Home
 {
     /// <summary>
     /// 个人资料

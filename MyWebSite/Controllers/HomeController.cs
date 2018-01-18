@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
-using MyWebSite.Datas.Config;
+using MyWebSite.Datas.Config.Home;
 using MyWebSite.ViewModels;
 using System.Diagnostics;
 
@@ -32,8 +32,16 @@ namespace MyWebSite.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            return View("Index");
+        }
 
-            return View("Index", _myProfile.Value);
+        /// <summary>
+        /// 获取个人信息
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult GetMyProfile()
+        {
+            return new JsonResult(_myProfile.Value);
         }
 
         public IActionResult About()

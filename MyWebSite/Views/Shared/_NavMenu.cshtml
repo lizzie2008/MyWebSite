@@ -1,36 +1,40 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
-@using MyWebSite.Areas.Configuration.Models
-@using MyWebSite.Areas.Configuration.ViewModels
+@using MyWebSite.Datas.Config.Home
+@model NavBarMenus
 @inject IHtmlLocalizer<SharedResource> SharedLocalizer
-@model MyWebSite.Areas.Configuration.ViewModels.NavMenuVM
 
 
 @foreach (var navMenu in Model.NavMenus)
 {
-    if (navMenu.MenuType == MenuTypes.导航菜单)
+    if (navMenu.SubNavMenus != null && navMenu.SubNavMenus.Any())
     {
-        <li menuid="@navMenu.Id" class="treeview @(Model.MenuidsOpen.Contains(navMenu.Id) ? "menu-open" : "")">
+        <li class="treeview">
             <a href="#">
                 <i class="fa @navMenu.Icon"></i> <span>@SharedLocalizer[navMenu.Name]</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
-            <ul class="treeview-menu" @(Model.MenuidsOpen.Contains(navMenu.Id) ? @"style=display:block;" : "")>
-                @await Html.PartialAsync("_NavMenu", new NavMenuVM
-           {
-               NavMenus = navMenu.SubNavMenus,
-               MenuidsOpen = Model.MenuidsOpen
-           })
+            <ul class="treeview-menu">
+                @await Html.PartialAsync("_NavMenu", new NavBarMenus { NavMenus = navMenu.SubNavMenus })
             </ul>
         </li>
     }
-    else if ((navMenu.MenuType == MenuTypes.操作菜单))
+    else
     {
-        <li menuid="@navMenu.Id">
-            <a href="@navMenu.Url" @(navMenu.Url != null && navMenu.Url.StartsWith("http") ? @"target=_blank" : "")>
-                <i class="fa @navMenu.Icon"></i><span>@SharedLocalizer[navMenu.Name]</span>
-            </a>
+        <li>
+            @if (navMenu.TemplateUrl != null && navMenu.TemplateUrl.StartsWith("http"))
+            {
+                <a href="@navMenu.TemplateUrl" target="_blank">
+                    <i class="fa @navMenu.Icon"></i><span>@SharedLocalizer[navMenu.Name]</span>
+                </a>
+            }
+            else
+            {
+                <a ui-sref="@navMenu.TemplateUrl">
+                    <i class="fa @navMenu.Icon"></i><span>@SharedLocalizer[navMenu.Name]</span>
+                </a>
+            }
         </li>
     }
 }
