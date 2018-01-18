@@ -44,8 +44,7 @@ namespace MyWebSite.Areas.Tools.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> InvokApi([FromBody]ApiRequest request)
+        public async Task<IActionResult> InvokApi(ApiRequest request)
         {
             var hc = new HttpClient();
 
