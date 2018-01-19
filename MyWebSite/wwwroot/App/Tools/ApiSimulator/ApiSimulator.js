@@ -1,4 +1,4 @@
-﻿app.controller('ApiSimulatorController', function ($scope, $http) {
+﻿app.controller('ApiSimulatorController', function ($scope) {
     //获取API请求列表
     $.ajax({
         type: 'GET',
@@ -31,15 +31,5 @@
                 $scope.submitting = false;
             }
         });
-        //$http({
-        //    method: 'POST',
-        //    url: '/Tools/ApiSimulator/InvokApi',
-        //    data: $scope.selectedApi
-        //}).then(function successCallback(response) {
-        //    $scope.response = response.data;
-        //    $scope.submitting = false;
-        //}, function errorCallback(response) {
-        //    $scope.submitting = false;
-        //});
     };
 });

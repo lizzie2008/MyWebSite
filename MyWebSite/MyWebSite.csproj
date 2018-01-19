@@ -3453,8 +3453,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Configuration\Data\" />
-    <Folder Include="Areas\Tools\Data\" />
     <Folder Include="Areas\Tools\Models\BaiduAnalysis\" />
     <Folder Include="wwwroot\lib\easyrocketstudio\dist\img\" />
     <Folder Include="wwwroot\lib\lazyload\" />

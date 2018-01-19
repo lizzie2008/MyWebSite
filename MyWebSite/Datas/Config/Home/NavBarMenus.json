@@ -41,8 +41,8 @@
           },
           //菜单信息
           {
-            "Name": "MenuInfo",
-            "TemplateUrl": "MenuInfo",
+            "Name": "MenuManagement",
+            "TemplateUrl": "MenuManagement",
             "Icon": "fa-bars"
           }
         ]

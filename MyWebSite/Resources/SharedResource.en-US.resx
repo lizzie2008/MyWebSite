@@ -126,8 +126,8 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="MenuInfo" xml:space="preserve">
-    <value>Menu Info</value>
+  <data name="MenuManagement" xml:space="preserve">
+    <value>Menu Management</value>
   </data>
   <data name="MyBlog" xml:space="preserve">
     <value>My Blog</value>

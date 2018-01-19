@@ -126,8 +126,8 @@
   <data name="Home" xml:space="preserve">
     <value>主页</value>
   </data>
-  <data name="MenuInfo" xml:space="preserve">
-    <value>菜单信息</value>
+  <data name="MenuManagement" xml:space="preserve">
+    <value>菜单管理</value>
   </data>
   <data name="MyBlog" xml:space="preserve">
     <value>我的博客</value>

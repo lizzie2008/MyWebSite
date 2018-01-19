@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Core;
@@ -10,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace MyWebSite.Areas.Tools.Controllers
 {
-    [ApiAuthorize]
     [Area("Tools")]
     public class ApiSimulatorController : AppController
     {
@@ -47,7 +47,6 @@ namespace MyWebSite.Areas.Tools.Controllers
         public async Task<IActionResult> InvokApi(ApiRequest request)
         {
             var hc = new HttpClient();
-
             if (request.Methord == "GET")
             {
                 var getUrl = request.Url + "?";

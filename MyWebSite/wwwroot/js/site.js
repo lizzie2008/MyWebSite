@@ -35,13 +35,36 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         //主页
         url: '/',
         templateUrl: 'App/Home/Home.html'
-    }).state('MenuInfo', {
-        //菜单信息
-        url: '/Configuration/Menus',
-        templateUrl: 'App/Configuration/Menu/Index.html'
+    }).state('MenuManagement', {
+        //菜单管理
+        url: '/Configuration/MenuManagement',
+        templateUrl: 'App/Configuration/MenuManagement/MenuManagement.html'
     }).state('ApiSimulator', {
         //API模拟
         url: '/Tools/ApiSimulator',
         templateUrl: 'App/Tools/ApiSimulator/ApiSimulator.html'
+    }).state('SiteAnalytics', {
+        //网站分析
+        url: '/Tools/SiteAnalytics',
+        templateUrl: 'App/Tools/SiteAnalytics/SiteAnalytics.html'
     });
+});
+//可折叠菜单视图
+app.directive('accordion', function ($compile) {
+    return {
+        restrict: 'EA',
+        replace: true,
+        scope: {
+            expander: '=',
+            child: '='
+        },
+        template: "<ol class='dd-list'><li class='dd-item' data-id='{{expander.name}}'><div class='dd-handle'><span class='pull-right'> 15:00 pm </span><span class='label label-warning'><i class='fa fa-users'></i></span> {{expander.name}}.</div></li></ol>",
+        link: function (scope, elm) {
+            if (scope.child) {
+                var html = $compile("<accordion expander='expander' child='expander.subNavMenus' ng-repeat='expander in child'></accordion>")(scope);
+                elm.append(html)
+            }
+
+        }
+    };
 });
