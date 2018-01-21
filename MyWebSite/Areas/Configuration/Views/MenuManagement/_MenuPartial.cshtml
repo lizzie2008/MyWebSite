@@ -1,0 +1,23 @@
+﻿@model IList<MyWebSite.Datas.Config.Home.NavMenu>
+
+
+
+<ol class='dd-list'>
+    @foreach (var menu in Model)
+    {
+        <li class='dd-item dd3-item' data-name='@menu.Name'>
+            <div class='dd-handle dd3-handle'>
+                <i class='fa @menu.Icon'></i>
+            </div>
+            <div class="dd3-content">
+                <span class='pull-right'> 15:00 pm </span>
+                <span class='label label-warning'></span>@menu.Name
+            </div>
+            @if (menu.SubNavMenus != null && menu.SubNavMenus.Any())
+            {
+                @await Html.PartialAsync("_MenuPartial", menu.SubNavMenus);
+            }
+        </li>
+    }
+</ol>
+

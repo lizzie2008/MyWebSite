@@ -21,7 +21,7 @@ namespace MyWebSite.Areas.Configuration.Controllers
         /// <returns></returns>
         public IActionResult GetMenus()
         {
-            return new JsonResult(_navBarMenus);
+            return PartialView("_MenuPartial", _navBarMenus.NavMenus);
         }
     }
 }

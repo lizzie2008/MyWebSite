@@ -110,6 +110,7 @@ body {
     min-height: 100%;
     background-color: #ecf0f5;
     z-index: 800;
+    background: #e9ebec url("../img/body-bg.png");
 }
 
 .main-footer {
@@ -3827,7 +3828,7 @@ table.text-center th {
     }
 
         .treeview-menu > li > a {
-            padding: 5px 5px 5px 15px;
+            padding: 5px 5px 5px 35px;
             display: block;
             font-size: 14px;
         }

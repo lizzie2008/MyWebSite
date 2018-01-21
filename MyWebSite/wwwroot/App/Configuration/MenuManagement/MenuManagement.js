@@ -4,10 +4,14 @@
         type: 'GET',
         url: '/Configuration/MenuManagement/GetMenus',
         success: function (data) {
-            $scope.navMenus = data.navMenus;
-            $scope.$apply();
+            //$scope.navMenus = data.navMenus;
+            //$scope.$apply();
 
-            $('#nestable2').nestable();
+            $('.dd').append(data);
+            $('.dd').nestable().on('change', function(e) {
+                //var list = e.length ? e : $(e.target);
+                //var json = list.nestable('serialize');
+            });
             $('.dd').nestable('collapseAll');
         },
         error: function (xhr) {
