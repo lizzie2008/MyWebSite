@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
+using MyWebSite.Core;
 using MyWebSite.Datas.Config.Home;
 
 namespace MyWebSite.Areas.Configuration.Controllers
 {
     [Area("Configuration")]
+    [ApiAuthorize]
     public class MenuManagementController : AppController
     {
         private readonly NavBarMenus _navBarMenus;
