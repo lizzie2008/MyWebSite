@@ -1,23 +1,59 @@
 ﻿app.controller('MenuManagementController', function ($scope) {
-    //获取API请求列表
-    $.ajax({
-        type: 'GET',
-        url: '/Configuration/MenuManagement/GetMenus',
-        success: function (data) {
-            //$scope.navMenus = data.navMenus;
-            //$scope.$apply();
+    //编辑菜单
+    $scope.editMenu = function (item) {
+        $scope.selectedMenu = item;
+    };
+    //新增菜单
+    $scope.addMenu = function () {
+        var newMenu = { name: "<新增菜单>", icon: "fa-circle-o", templateUrl: "" };
+        $scope.navMenus.push(newMenu);
+        $scope.selectedMenu = newMenu;
+    };
+    //删除菜单
+    $scope.deleteMenu = function (item, $event) {
+        BootstrapDialog.show({
+            message: '确认删除菜单？',
+            size: BootstrapDialog.SIZE_SMALL,
+            draggable: true,
+            buttons: [
+                {
+                    icon: 'fa fa-check',
+                    label: '确定',
+                    cssClass: 'btn-primary',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                        $($event.target).closest('li').remove();
+                    }
+                }, {
+                    icon: 'fa fa-close',
+                    label: '取消',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }
+            ]
+        });
+    };
 
-            $('.dd').append(data);
-            $('.dd').nestable().on('change', function(e) {
-                //var list = e.length ? e : $(e.target);
-                //var json = list.nestable('serialize');
-            });
-            $('.dd').nestable('collapseAll');
-        },
-        error: function (xhr) {
-            if (xhr.status === 401)
-                window.location.href = "/Account/Login?ReturnUrl="
-                    + encodeURIComponent(window.location.href);
-        }
-    });
+    //保存菜单
+    $scope.save = function (menus) {
+
+    }
+    //重置菜单
+    $scope.reset = function () {
+        $.ajax({
+            type: 'GET',
+            url: '/Configuration/MenuManagement/GetMenus',
+            success: function (data) {
+                $scope.navMenus = data;
+                $scope.$apply();
+                setTimeout(function () {
+                    $('.dd').nestable();
+                }, 100);
+            }
+        });
+    }
+
+    $scope.selectedMenu = {};
+    $scope.reset();
 });

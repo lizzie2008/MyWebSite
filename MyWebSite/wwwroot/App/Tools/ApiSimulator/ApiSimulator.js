@@ -8,11 +8,6 @@
             $scope.apiList = data;
             $scope.selectedApi = null;
             $scope.$apply();
-        },
-        error:function(xhr) {
-            if (xhr.status === 401)
-                window.location.href = "/Account/Login?ReturnUrl="
-                    + encodeURIComponent(window.location.href);
         }
     });
     //提交查询
@@ -21,14 +16,14 @@
         $.ajax({
             type: 'POST',
             url: '/Tools/ApiSimulator/InvokApi',
-            data:$scope.selectedApi,
+            data: $scope.selectedApi,
             success: function (data) {
                 $scope.response = data;
-                $scope.submitting = false;
                 $scope.$apply();
             },
-            error: function () {
+            complete: function () {
                 $scope.submitting = false;
+                $scope.$apply();
             }
         });
     };

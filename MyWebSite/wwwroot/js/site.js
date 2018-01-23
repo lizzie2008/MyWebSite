@@ -5,6 +5,24 @@ hm.src = "https://hm.baidu.com/hm.js?ba97b9ac7e6eb8c1d4e5e331e329edd0";
 var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hm, s);
 
+// 设置jQuery Ajax全局的参数  
+$.ajaxSetup({
+    type: "POST",
+    error: function (jqXHR, textStatus, errorThrown) {
+        switch (jqXHR.status) {
+            case (500):
+                window.location.href = "/#!/Error?code=" + jqXHR.status;
+                break;
+            case (401):
+                window.location.href = "/Account/Login?ReturnUrl="
+                    + encodeURIComponent(window.location.href);
+                break;
+            default:
+                window.location.href = "/#!/Error?code=" + jqXHR.status;
+        }
+    }
+});
+
 //ajax请求Pace效果
 $(document).ajaxStart(function () {
     window.Pace.restart();
@@ -47,24 +65,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         //网站分析
         url: '/Tools/SiteAnalytics',
         templateUrl: 'App/Tools/SiteAnalytics/SiteAnalytics.html'
+    }).state('Error', {
+        url: '/Error',
+        templateUrl: 'App/Home/Error.html'
     });
 });
-//可折叠菜单视图
-app.directive('accordion', function ($compile) {
-    return {
-        restrict: 'EA',
-        replace: true,
-        scope: {
-            expander: '=',
-            child: '='
-        },
-        template: "<ol class='dd-list'><li class='dd-item' data-id='{{expander.name}}'><div class='dd-handle'><span class='pull-right'> 15:00 pm </span><span class='label label-warning'><i class='fa fa-users'></i></span> {{expander.name}}.</div></li></ol>",
-        link: function (scope, elm) {
-            if (scope.child) {
-                var html = $compile("<accordion expander='expander' child='expander.subNavMenus' ng-repeat='expander in child'></accordion>")(scope);
-                elm.append(html)
-            }
 
-        }
-    };
-});
+

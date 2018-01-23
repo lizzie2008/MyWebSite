@@ -228,7 +228,7 @@ td {
     margin: 0;
     left: 0;
     top: 0;
-    cursor: pointer;
+    cursor: move;
     width: 30px;
     text-indent: 100%;
     white-space: nowrap;
@@ -259,3 +259,8 @@ td {
     .dd3-handle:hover {
         background: #ddd;
     }
+
+/* 模态框居中 */
+.modal-dialog {
+    margin: 200px auto;
+}  

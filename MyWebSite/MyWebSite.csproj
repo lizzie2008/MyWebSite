@@ -618,8 +618,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\App\Home\Error.html" />
     <None Include="wwwroot\App\Home\Home.html" />
-    <None Include="wwwroot\js\Configuration\Menu.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />

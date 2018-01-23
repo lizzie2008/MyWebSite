@@ -7,7 +7,6 @@ using MyWebSite.Datas.Config.Home;
 namespace MyWebSite.Areas.Configuration.Controllers
 {
     [Area("Configuration")]
-    [ApiAuthorize]
     public class MenuManagementController : AppController
     {
         private readonly NavBarMenus _navBarMenus;
@@ -23,7 +22,8 @@ namespace MyWebSite.Areas.Configuration.Controllers
         /// <returns></returns>
         public IActionResult GetMenus()
         {
-            return PartialView("_MenuPartial", _navBarMenus.NavMenus);
+            return new JsonResult(_navBarMenus.NavMenus);
+           // return PartialView("_MenuPartial", _navBarMenus.NavMenus);
         }
     }
 }

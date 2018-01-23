@@ -789,6 +789,10 @@
         border-left: 1px solid #d2d6de;
     }
 }
+.skin-black  .bootstrap-dialog  .modal-header {
+    color: #ffffff;
+    background: #4d4d4d url(../../img/bg-grey.jpg) !important;
+}
 /*
  * Skin: Green
  * -----------

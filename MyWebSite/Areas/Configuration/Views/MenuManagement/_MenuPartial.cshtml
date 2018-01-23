@@ -1,17 +1,20 @@
 ﻿@model IList<MyWebSite.Datas.Config.Home.NavMenu>
 
-
-
 <ol class='dd-list'>
     @foreach (var menu in Model)
     {
-        <li class='dd-item dd3-item' data-name='@menu.Name'>
-            <div class='dd-handle dd3-handle'>
-                <i class='fa @menu.Icon'></i>
-            </div>
+        <li class="dd-item dd3-item" 
+            data-name="@menu.Name"
+            data-icon="@menu.Icon"
+            data-template-Url="@menu.TemplateUrl">
+            <div class='dd-handle dd3-handle'></div>
             <div class="dd3-content">
-                <span class='pull-right'> 15:00 pm </span>
+                <i class="fa @menu.Icon margin-r-5"></i>
                 <span class='label label-warning'></span>@menu.Name
+                <span class='pull-right'>
+                    <a style="cursor: pointer" onclick="editMenu(this)"><i class="fa fa-edit text-success margin-r-5"></i></a>
+                    <a style="cursor: pointer" onclick="addMenu(this)"><i class="fa fa-plus text-success margin-r-5"></i></a>
+                </span>
             </div>
             @if (menu.SubNavMenus != null && menu.SubNavMenus.Any())
             {
