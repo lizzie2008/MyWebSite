@@ -482,7 +482,7 @@
 }
 
 .skin-black .sidebar-menu > li.header {
-    color: #999999;
+    color: #bbbbbb;
     background: url(../../img/side-bar-list-bg.png);
 }
 
@@ -508,7 +508,7 @@
 }
 
 .skin-black .sidebar a {
-    color: #999999;
+    color: #cccccc;
 }
 
     .skin-black .sidebar a:hover {
@@ -516,7 +516,7 @@
     }
 
 .skin-black .sidebar-menu .treeview-menu > li > a {
-    color: #999999;
+    color: #cccccc;
 }
 
     .skin-black .sidebar-menu .treeview-menu > li.active > a,

@@ -130,7 +130,7 @@
                     //浏览量(PV)
                     html += '<td>' + districtData[0] + '</td>';
                     //占比
-                    html += '<td><span class="badge bg-teal">' + districtData[1] + '%' + '</span></td>';
+                    html += '<td><span class="badge bg-olive">' + districtData[1] + '%' + '</span></td>';
                     html += '</tr>';
                 }
                 //更新汇总指标
