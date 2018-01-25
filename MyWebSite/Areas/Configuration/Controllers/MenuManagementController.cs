@@ -23,7 +23,12 @@ namespace MyWebSite.Areas.Configuration.Controllers
         public IActionResult GetMenus()
         {
             return new JsonResult(_navBarMenus.NavMenus);
-           // return PartialView("_MenuPartial", _navBarMenus.NavMenus);
+        }
+
+        [ApiAuthorize]
+        public IActionResult Save()
+        {
+            return new StatusCodeResult(401);
         }
     }
 }

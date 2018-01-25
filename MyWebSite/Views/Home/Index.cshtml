@@ -35,12 +35,9 @@
         <!-- 导航栏 -->
         @await Html.PartialAsync("_LayoutNavbarPartial", vm)
 
-
         <!-- 内容区域 -->
         <div class="content-wrapper">
-            <section class="content">
-                <div ui-view></div>
-            </section>
+            <div ui-view></div>
         </div>
         <!-- 底部区域 -->
         @await Html.PartialAsync("_LayoutFooterPartial")

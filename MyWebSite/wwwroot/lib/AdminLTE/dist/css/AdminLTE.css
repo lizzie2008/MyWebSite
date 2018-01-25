@@ -2159,7 +2159,7 @@ a {
 .box-header > .ion,
 .box-header .box-title {
     display: inline-block;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
     line-height: 1;
 }
@@ -3111,7 +3111,7 @@ a {
             }
 
             .nav-tabs-custom > .nav-tabs > li.active {
-                border-top-color: #3c8dbc;
+                border-top-color: #d2d6de;
             }
 
                 .nav-tabs-custom > .nav-tabs > li.active > a,

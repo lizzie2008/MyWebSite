@@ -1,117 +1,130 @@
-﻿<div class="row" ng-controller="ApiSimulatorController">
-    <!-- 参数配置 -->
-    <div class="col-md-8">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">参数配置</h3>
-            </div>
-            <form ng-submit="onSubmit(theForm.$valid)" novalidate="novalidate" name="theForm">
-                <div class="text-danger margin-t-10">
-                    <ul>
-                        <li ng-show="theForm.selectedApi.$dirty
+﻿<section class="content-header">
+    <h1>
+        API 模拟
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i></a></li>
+        <li>工具箱</li>
+        <li class="active">API 模拟</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row" ng-controller="ApiSimulatorController">
+        <!-- 参数配置 -->
+        <div class="col-md-8">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">参数配置</h3>
+                </div>
+                <form ng-submit="onSubmit(theForm.$valid)" novalidate="novalidate" name="theForm">
+                    <div class="text-danger margin-t-10">
+                        <ul>
+                            <li ng-show="theForm.selectedApi.$dirty
                             && theForm.selectedApi.$error.required">请选择测试API</li>
-                    </ul>
+                        </ul>
+                    </div>
+                    <div class="box-body row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="selectedApi">API名称:</label>
+                                <select class="form-control"
+                                        id="selectedApi"
+                                        name="selectedApi"
+                                        required
+                                        ng-model="selectedApi"
+                                        ng-options="api.apiName for api in apiList"
+                                        ng-change="response = { sendContent: '', returnResult: ''};">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="url">API地址:</label>
+                                <input class="form-control"
+                                       type="text"
+                                       id="url"
+                                       name="url"
+                                       readonly
+                                       ng-model="selectedApi.url">
+                            </div>
+                            <div class="form-group">
+                                <label for="methord">请求方式:</label>
+                                <input class="form-control"
+                                       type="text"
+                                       id="methord"
+                                       name="methord"
+                                       readonly
+                                       ng-model="selectedApi.methord">
+                            </div>
+                            <div class="form-group">
+                                <label for="params" class="">请求参数：</label>
+                                <div style="overflow-x:auto;" ng-if="selectedApi.methord=='GET'">
+                                    <table class="table table-bordered table-striped table-condensed" id="params">
+                                        <thead>
+                                            <tr>
+                                                <td>参数名</td>
+                                                <td>类型</td>
+                                                <td>是否必填</td>
+                                                <td>说明</td>
+                                                <td>值</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="apiPara in selectedApi.apiParas">
+                                                <td>
+                                                    <span>{{apiPara.paraName}}</span>
+                                                </td>
+                                                <td>
+                                                    <span>{{apiPara.paraType}}</span>
+                                                </td>
+                                                <td>
+                                                    <span>{{apiPara.required}}</span>
+                                                </td>
+                                                <td>
+                                                    <span>{{apiPara.description}}</span>
+                                                </td>
+                                                <td>
+                                                    <input ng-model="apiPara.paraValue" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div ng-if="selectedApi.methord=='POST'">
+                                    <textarea class="form-control" rows="8" placeholder="输入Json格式 ..." ng-model="selectedApi.apiDatas"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-github" ng-submit="onSubmit()"
+                                    ng-disabled="theForm.selectedApi.$invalid || submitting"
+                                    ladda="submitting"
+                                    data-style="expand-right">
+                                <i class="fa fa-send-o margin-r-5"></i>发送请求
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 请求与返回 -->
+        <div class="col-md-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">请求与返回</h3>
                 </div>
                 <div class="box-body row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="selectedApi">API名称:</label>
-                            <select class="form-control"
-                                    id="selectedApi"
-                                    name="selectedApi"
-                                    required
-                                    ng-model="selectedApi"
-                                    ng-options="api.apiName for api in apiList"
-                                    ng-change="response = { sendContent: '', returnResult: ''};">
-                                <option value="">请选择</option>
-                            </select>
+                            <label>请求详情:</label>
+                            <textarea class="form-control" rows="3" readonly ng-bind="response.sendContent"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="url">API地址:</label>
-                            <input class="form-control"
-                                   type="text"
-                                   id="url"
-                                   name="url"
-                                   readonly
-                                   ng-model="selectedApi.url">
+                            <label>请求返回:</label>
+                            <div class="well" style="height: 320px; overflow: auto;">{{response.returnResult}}</div>
                         </div>
-                        <div class="form-group">
-                            <label for="methord">请求方式:</label>
-                            <input class="form-control"
-                                   type="text"
-                                   id="methord"
-                                   name="methord"
-                                   readonly
-                                   ng-model="selectedApi.methord">
-                        </div>
-                        <div class="form-group">
-                            <label for="params" class="">请求参数：</label>
-                            <div style="overflow-x:auto;" ng-if="selectedApi.methord=='GET'">
-                                <table class="table table-bordered table-striped table-condensed" id="params">
-                                    <thead>
-                                        <tr>
-                                            <td>参数名</td>
-                                            <td>类型</td>
-                                            <td>是否必填</td>
-                                            <td>说明</td>
-                                            <td>值</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="apiPara in selectedApi.apiParas">
-                                            <td>
-                                                <span>{{apiPara.paraName}}</span>
-                                            </td>
-                                            <td>
-                                                <span>{{apiPara.paraType}}</span>
-                                            </td>
-                                            <td>
-                                                <span>{{apiPara.required}}</span>
-                                            </td>
-                                            <td>
-                                                <span>{{apiPara.description}}</span>
-                                            </td>
-                                            <td>
-                                                <input ng-model="apiPara.paraValue" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div ng-if="selectedApi.methord=='POST'">
-                                <textarea class="form-control" rows="8" placeholder="输入Json格式 ..." ng-model="selectedApi.apiDatas"></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success" ng-submit="onSubmit()"
-                           ng-disabled="theForm.selectedApi.$invalid || submitting"
-                           ladda="submitting"
-                           data-style="expand-right">
-                            <i class="fa fa-send-o margin-r-5"></i>发送请求
-                        </button>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-    <!-- 请求与返回 -->
-    <div class="col-md-4">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">请求与返回</h3>
-            </div>
-            <div class="box-body row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>请求详情:</label>
-                        <textarea class="form-control" rows="3" readonly ng-bind="response.sendContent"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>请求返回:</label>
-                        <div class="well" style="height: 320px; overflow: auto;">{{response.returnResult}}</div>
-                    </div>
-                </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
+</section>

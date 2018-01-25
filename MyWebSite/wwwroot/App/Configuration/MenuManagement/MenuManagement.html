@@ -1,32 +1,56 @@
-﻿<div class="box box-primary" ng-controller="MenuManagementController">
-    <div class="row">
-        <div class="box-body">
-            <div class="col-md-7 dd">
-                <ol class='dd-list'>
-                    <li class="dd-item dd3-item" ng-repeat="item in navMenus" ng-include="'App/Configuration/MenuManagement/_MenuPartial.html'"></li>
-                </ol>
+﻿<section class="content-header">
+    <h1>
+        菜单管理
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i></a></li>
+        <li>后台管理</li>
+        <li class="active">菜单管理</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box" ng-controller="MenuManagementController">
+        <div class="box-body row">
+            <div class="col-md-7">
+                <div class="dd">
+                    <ol class='dd-list'>
+                        <li class="dd-item dd3-item" ng-repeat="item in navMenus" ng-include="'App/Configuration/MenuManagement/_MenuPartial.html'"></li>
+                    </ol>
+                </div>
             </div>
             <div class="col-md-5">
-                <form class="form">
-                    <div class="form-group">
-                        <label for="name">菜单名称:</label>
-                        <input class="form-control" type="text" id="name" ng-model="selectedMenu.name">
+                <div class="box box-solid">
+                    <div class="box-header">
+                        <i class="fa fa-bars"></i>
+                        <h3 class="box-title">编辑菜单</h3>
                     </div>
-                    <div class="form-group">
-                        <label for="icon">菜单图标:</label>
-                        <input class="form-control" type="text" id="icon" ng-model="selectedMenu.icon">
-                    </div>
-                    <div class="form-group">
-                        <label for="templateUrl">菜单路径:</label>
-                        <input class="form-control" type="text" id="templateUrl" ng-model="selectedMenu.templateUrl">
-                    </div>
-                    <div class="pull-right">
-                        <a ng-click="addMenu()" class="btn bg-olive margin"><i class="fa fa-plus margin-r-5"></i>新增</a>
-                        <a ng-click="reset()" class="btn bg-olive margin"><i class="fa fa-undo margin-r-5"></i>重置</a>
-                        <a ng-click="save(navMenus)" class="btn bg-olive margin"><i class="fa fa-save margin-r-5"></i>保存</a>
-                    </div>
-                </form>
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="name">菜单名称:</label>
+                            <input class="form-control" type="text" id="name" ng-model="selectedMenu.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="icon">菜单图标:</label>
+                            <input class="form-control" type="text" id="icon" ng-model="selectedMenu.icon">
+                        </div>
+                        <div class="form-group">
+                            <label for="templateUrl">菜单路径:</label>
+                            <input class="form-control" type="text" id="templateUrl" ng-model="selectedMenu.templateUrl">
+                        </div>
+                        <div class="pull-right">
+                            <a ng-click="addMenu()"
+                               class="btn btn-social btn-github margin"><i class="fa fa-plus margin-r-5"></i>新增</a>
+                            <a ng-click="reset()"
+                               ng-disabled="resetSubmitting"
+                               class="btn btn-social btn-github margin"><i class="fa fa-undo margin-r-5"></i>重置</a>
+                            <a ng-click="save(navMenus)"
+                               ng-disabled="saveSubmitting"
+                               class="btn btn-social btn-github margin"><i class="fa fa-save margin-r-5"></i>保存</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>

@@ -260,7 +260,7 @@
         queryVisitDistrictAnalytics(startDate, endDate);
     });
     //默认请求当天百度访客区域统计数据
-    queryVisitDistrictAnalytics(moment(), moment());
+    queryVisitDistrictAnalytics(moment().subtract(29, 'days'), moment());
     //默认请求7天内百度访客区域统计数据
     queryTrendAnalytics(moment().subtract(6, 'days'), moment());
 });
