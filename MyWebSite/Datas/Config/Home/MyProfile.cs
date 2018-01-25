@@ -55,6 +55,10 @@ namespace MyWebSite.Datas.Config.Home
         /// 项目图片
         /// </summary>
         public IList<string> ProjectImgs { set; get; }
+        /// <summary>
+        /// 项目图片路径
+        /// </summary>
+        public IList<string> ProjectImgsPath { set; get; }
     }
 
 }

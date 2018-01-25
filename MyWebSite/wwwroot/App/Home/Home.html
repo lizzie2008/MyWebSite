@@ -252,9 +252,9 @@
                                     </h3>
                                     <div class="timeline-body">
                                         <div class="row">
-                                            <div class="col-sm-6 col-md-4" ng-repeat="projectImg in project.projectImgs">
+                                            <div class="col-sm-6 col-md-4" ng-repeat="path in project.projectImgsPath">
                                                 <img style="cursor: pointer; height: 150px;"
-                                                     data-src="http://mysite.bj.bcebos.com/images%2Fprofile%2F/{{projectImg}}-lg.jpg"
+                                                     data-src="{{path}}-lg.jpg"
                                                      class="img-responsive thumbnail center-block lazyload"
                                                      alt="...">
                                             </div>
