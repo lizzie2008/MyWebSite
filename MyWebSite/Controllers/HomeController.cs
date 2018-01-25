@@ -5,16 +5,17 @@ using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas.Config.Home;
 using MyWebSite.ViewModels;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MyWebSite.Controllers
 {
     public class HomeController : AppController
     {
-        private readonly IOptions<MyProfile> _myProfile;
+        private readonly MyProfile _myProfile;
 
         public HomeController(IOptions<MyProfile> myProfile)
         {
-            _myProfile = myProfile;
+            _myProfile = myProfile.Value;
         }
 
         /// <summary>
@@ -41,7 +42,22 @@ namespace MyWebSite.Controllers
         /// <returns></returns>
         public IActionResult GetMyProfile()
         {
-            return new JsonResult(_myProfile.Value);
+//            _myProfile.Projects.ToList().ForEach(project =>
+//            {
+//                if (project.ProjectImgs != null)
+//                {
+//                    project.ProjectImgs.ToList().ForEach(img =>
+//                    {
+//#if DEBUG
+//                        img = @"/images/profile/" + img;
+//#else 
+//                        img= @"http://mysite.bj.bcebos.com/images%2Fprofile%2F"+img;
+//#endif
+//                    });
+//                }
+//            });
+
+            return new JsonResult(_myProfile);
         }
 
         public IActionResult About()

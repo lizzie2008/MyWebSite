@@ -37,7 +37,7 @@
 
     //保存菜单
     $scope.save = function (menus) {
-        $scope.saveSubmitting = true;
+        $scope.submitting = true;
         $.ajax({
             type: 'POST',
             url: '/Configuration/MenuManagement/Save',
@@ -46,31 +46,23 @@
                //TODO:
             },
             complete: function () {
-                $scope.saveSubmitting = false;
-                $scope.$apply();
-            }
-        });
-    }
-    //重置菜单
-    $scope.reset = function () {
-        $scope.resetSubmitting = true;
-        $.ajax({
-            type: 'GET',
-            url: '/Configuration/MenuManagement/GetMenus',
-            success: function (data) {
-                $scope.navMenus = data;
-                $scope.$apply();
-                setTimeout(function () {
-                    $('.dd').nestable();
-                }, 100);
-            },
-            complete: function () {
-                $scope.resetSubmitting = false;
+                $scope.submitting = false;
                 $scope.$apply();
             }
         });
     }
 
     $scope.selectedMenu = {};
-    $scope.reset();
+    //加载菜单
+    $.ajax({
+        type: 'GET',
+        url: '/Configuration/MenuManagement/GetMenus',
+        success: function (data) {
+            $scope.navMenus = data;
+            $scope.$apply();
+            setTimeout(function () {
+                $('.dd').nestable();
+            }, 100);
+        }
+    });
 });

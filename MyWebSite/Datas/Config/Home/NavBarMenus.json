@@ -7,46 +7,6 @@
         "TemplateUrl": "Home",
         "Icon": "fa-home"
       },
-      //配置管理
-      {
-        "Name": "Configuration",
-        "TemplateUrl": "",
-        "Icon": "fa-cog",
-        "SubNavMenus": [
-          //用户管理
-          {
-            "Name": "UserManagement",
-            "TemplateUrl": "UserManagement",
-            "Icon": "fa-user-secret"
-          },
-          //角色管理
-          {
-            "Name": "RoleManagement",
-            "TemplateUrl": "",
-            "Icon": "fa-user-secret",
-            "SubNavMenus": [
-              //角色信息
-              {
-                "Name": "RoleInfo",
-                "TemplateUrl": "RoleInfo",
-                "Icon": "fa-circle-o"
-              },
-              //角色菜单
-              {
-                "Name": "RoleMenu",
-                "TemplateUrl": "RoleMenu",
-                "Icon": "fa-circle-o"
-              }
-            ]
-          },
-          //菜单信息
-          {
-            "Name": "MenuManagement",
-            "TemplateUrl": "MenuManagement",
-            "Icon": "fa-bars"
-          }
-        ]
-      },
       {
         //我的博客
         "Name": "MyBlog",
@@ -142,6 +102,46 @@
             "Name": "网站分析",
             "TemplateUrl": "SiteAnalytics",
             "Icon": "fa-line-chart"
+          }
+        ]
+      },
+      //后台管理
+      {
+        "Name": "Configuration",
+        "TemplateUrl": "",
+        "Icon": "fa-cog",
+        "SubNavMenus": [
+          //用户管理
+          {
+            "Name": "UserManagement",
+            "TemplateUrl": "UserManagement",
+            "Icon": "fa-user-secret"
+          },
+          //角色管理
+          {
+            "Name": "RoleManagement",
+            "TemplateUrl": "",
+            "Icon": "fa-user-secret",
+            "SubNavMenus": [
+              //角色信息
+              {
+                "Name": "RoleInfo",
+                "TemplateUrl": "RoleInfo",
+                "Icon": "fa-circle-o"
+              },
+              //角色菜单
+              {
+                "Name": "RoleMenu",
+                "TemplateUrl": "RoleMenu",
+                "Icon": "fa-circle-o"
+              }
+            ]
+          },
+          //菜单信息
+          {
+            "Name": "MenuManagement",
+            "TemplateUrl": "MenuManagement",
+            "Icon": "fa-bars"
           }
         ]
       }

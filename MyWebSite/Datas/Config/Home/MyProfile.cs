@@ -50,11 +50,11 @@ namespace MyWebSite.Datas.Config.Home
         /// <summary>
         /// 项目描述
         /// </summary>
-        public IEnumerable<string> ProjectDescs { set; get; }
+        public IList<string> ProjectDescs { set; get; }
         /// <summary>
         /// 项目图片
         /// </summary>
-        public IEnumerable<string> ProjectImgs { set; get; }
+        public IList<string> ProjectImgs { set; get; }
     }
 
 }

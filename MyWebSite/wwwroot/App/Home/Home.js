@@ -8,7 +8,7 @@
             $scope.projects = data.projects.reverse();
             $scope.$apply();
             ////延迟加载图片
-            $("img.lazyload").lazyload().click(function() {
+            $("img.lazyload").lazyload().click(function () {
                 var file = $(this).attr('data-src');
                 $("#myModal").find("#img_show").html("<image src='" +
                     file +

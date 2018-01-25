@@ -5,6 +5,14 @@
     <UserSecretsId>aspnet-MyWebSite-2D8C6744-6A87-440E-8294-55B1ED183AE5</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="bin\**" />
     <Compile Remove="wwwroot\lib\AdminLTE\bower_components\bootstrap-colorpicker\**" />
