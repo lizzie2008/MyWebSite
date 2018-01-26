@@ -11,27 +11,26 @@
     };
     //删除菜单
     $scope.deleteMenu = function (item, $event) {
-        BootstrapDialog.show({
-            message: '确认删除菜单？',
-            size: BootstrapDialog.SIZE_SMALL,
-            draggable: true,
-            buttons: [
-                {
-                    icon: 'fa fa-check',
-                    label: '确定',
-                    cssClass: 'btn-primary',
-                    action: function (dialogRef) {
-                        dialogRef.close();
+        $.confirm({
+            icon: 'fa fa-info',
+            title: '删除',
+            content: '确认删除菜单['+ item.name+']？' ,
+            type: 'dark',
+            closeIcon: true,
+            typeAnimated: true,
+            buttons: {
+                confirm: {
+                    text: '确定',
+                    btnClass: 'btn-dark',
+                    action: function () {
                         $($event.target).closest('li').remove();
                     }
-                }, {
-                    icon: 'fa fa-close',
-                    label: '取消',
-                    action: function (dialogRef) {
-                        dialogRef.close();
-                    }
+                },
+                cancel: {
+                    text: '取消',
+                    btnClass: 'btn-dark'
                 }
-            ]
+            }
         });
     };
 

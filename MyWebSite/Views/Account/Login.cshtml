@@ -16,10 +16,6 @@
     <link rel="stylesheet" href="~/lib/AdminLTE/plugins/iCheck/square/blue.css">
 </head>
 <body class="hold-transition login-page">
-    <div class="alert alert-warning alert-dismissible" hidden>
-        <button type="button" class="close" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-warning"></i> 警告!</h4>目前尚未开放外部人员注册权限,请与管理员联系.
-    </div>
     <div class="login-box">
         <div class="login-box-body">
             <p class="login-box-msg">访问受限,需要管理员权限,由此登录</p>
@@ -75,10 +71,19 @@
         increaseArea: '20%'
     })
     //警告框
-    $('a[name="register"]').click(function () {
-        $('.alert').fadeIn(500);
-    })
-    $('.close').click(function () {
-        $('.alert').fadeOut(500);
-    })
+    $('a[name="register"]').click(function() {
+        $.alert({
+            icon: 'fa fa-warning',
+            title: '警告',
+            type: 'orange',
+            closeIcon: true,
+            content: '目前尚未开放外部人员注册权限,请与管理员联系.',
+            buttons: {
+                close: {
+                    text: '确定',
+                    btnClass: 'btn-warning'
+                }
+            }
+        });
+    });
 </script>

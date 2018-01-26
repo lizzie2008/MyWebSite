@@ -3455,9 +3455,6 @@
     <None Include="wwwroot\lib\AdminLTE\bower_components\select2\dist\js\select2.min.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\select2\Gruntfile.js" />
     <None Include="wwwroot\lib\AdminLTE\bower_components\select2\vendor\jquery-2.1.0.js" />
-    <None Include="wwwroot\lib\bootstrap3-dialog\dist\js\bootstrap-dialog.js" />
-    <None Include="wwwroot\lib\bootstrap3-dialog\dist\js\bootstrap-dialog.min.js" />
-    <None Include="wwwroot\lib\bootstrap3-dialog\dist\less\bootstrap-dialog.less" />
   </ItemGroup>
 
   <ItemGroup>

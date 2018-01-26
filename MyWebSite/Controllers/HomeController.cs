@@ -45,24 +45,24 @@ namespace MyWebSite.Controllers
         /// <returns></returns>
         public IActionResult GetMyProfile()
         {
-            _myProfile.Projects.ToList().ForEach(project =>
-            {
-                if (project.ProjectImgs != null)
-                {
-                    project.ProjectImgsPath = new List<string>();
-                    for (int i = 0; i < project.ProjectImgs.Count; i++)
-                    {
-                        if (_env.IsDevelopment())
-                        {
-                            project.ProjectImgsPath.Add(@"/images/profile/" + project.ProjectImgs[i]);
-                        }
-                        else
-                        {
-                            project.ProjectImgsPath.Add(@"http://mysite.bj.bcebos.com/images%2Fprofile%2F" + project.ProjectImgs[i]);
-                        }
-                    }
-                }
-            });
+            //_myProfile.Projects.ToList().ForEach(project =>
+            //{
+            //    if (project.ProjectImgs != null)
+            //    {
+            //        project.ProjectImgsPath = new List<string>();
+            //        for (int i = 0; i < project.ProjectImgs.Count; i++)
+            //        {
+            //            if (_env.IsDevelopment())
+            //            {
+            //                project.ProjectImgsPath.Add(@"/images/profile/" + project.ProjectImgs[i]);
+            //            }
+            //            else
+            //            {
+            //                project.ProjectImgsPath.Add(@"http://mysite.bj.bcebos.com/images%2Fprofile%2F" + project.ProjectImgs[i]);
+            //            }
+            //        }
+            //    }
+            //});
             return new JsonResult(_myProfile);
         }
 
