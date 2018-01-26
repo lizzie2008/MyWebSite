@@ -20,22 +20,23 @@
 <script src="https://cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 <script src="~/lib/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
 <script src="~/lib/jvectormap/jquery-jvectormap-cn-mill.js"></script>
-<script src="~/js/adminlte.js"></script>
 
 <environment names="Development">
     <script>window.environment = 'DEBUG'</script>
+    <script src="~/js/adminlte.js"></script>
     <script src="~/js/site.js"></script>
+    <script src="~/App/Home/Home.js"></script>
+    <script src="~/App/Home/Error.js"></script>
+    <script src="~/App/Configuration/MenuManagement/MenuManagement.js"></script>
+    <script src="~/App/Tools/ApiSimulator/ApiSimulator.js"></script>
+    <script src="~/App/Tools/SiteAnalytics/SiteAnalytics.js"></script>
 </environment>
 <environment names="Staging,Production">
     <script>window.environment = 'RELEASE'</script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/dist/bundles.min.js" asp-append-version="true"></script>
 </environment>
 
-<script src="~/App/Home/Home.js"></script>
-<script src="~/App/Home/Error.js"></script>
-<script src="~/App/Configuration/MenuManagement/MenuManagement.js"></script>
-<script src="~/App/Tools/ApiSimulator/ApiSimulator.js"></script>
-<script src="~/App/Tools/SiteAnalytics/SiteAnalytics.js"></script>
+
 
 
 

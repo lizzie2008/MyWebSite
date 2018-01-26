@@ -62,7 +62,7 @@ body {
 }
 
 .layout-boxed {
-    background: url('../images/boxed-bg.jpg') repeat fixed;
+    background: url('/images/boxed-bg.jpg') repeat fixed;
 }
 /*
  * Content Wrapper - contains the main content
@@ -110,7 +110,7 @@ body {
     min-height: 100%;
     background-color: #ecf0f5;
     z-index: 800;
-    background: #e9ebec url("../images/body-bg.png");
+    background: #e9ebec url("/images/body-bg.png");
 }
 
 .main-footer {

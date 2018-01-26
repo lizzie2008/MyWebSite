@@ -13,7 +13,6 @@
     <title>@ViewData["Title"] - LanceL0t</title>
 
     @await Html.PartialAsync("_SiteCssPartial")
-    <link rel="stylesheet" href="~/lib/AdminLTE/plugins/iCheck/square/blue.css">
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -62,12 +61,10 @@
 
 @await Html.PartialAsync("_SiteScriptsPartial")
 @await Html.PartialAsync("_ValidationScriptsPartial")
-<script src="~/lib/AdminLTE/plugins/iCheck/icheck.js"></script>
 <script>
     //勾选框样式
     $('.icheck input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
         increaseArea: '20%'
     })
     //警告框

@@ -1,13 +1,19 @@
-﻿<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://cdn.bootcss.com/Ladda/1.0.5/ladda-themeless.min.css"/>
-<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-confirm/3.3.2/jquery-confirm.min.css"/>
+﻿<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.bootcss.com/Ladda/1.0.5/ladda-themeless.min.css" />
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-confirm/3.3.2/jquery-confirm.min.css" />
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.27/daterangepicker.min.css"/>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.27/daterangepicker.min.css" />
 <link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/4.0.0-9/css/ionicons.min.css">
-<link rel="stylesheet" href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css"/>
-<link rel="stylesheet" href="https://fonts.cat.net/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"/>
-<link rel="stylesheet" href="~/lib/jvectormap/jquery-jvectormap-2.0.3.css"/>
-<link rel="stylesheet" href="~/lib/AdminLTE/plugins/pace/pace.min.css"/>
-<link rel="stylesheet" href="~/css/skins/_all-skins.css"/>
-<link rel="stylesheet" href="~/css/adminlte.css"/>
-<link rel="stylesheet" href="~/css/site.css"/>
+<link rel="stylesheet" href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css" />
+<link rel="stylesheet" href="https://fonts.cat.net/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
+<link rel="stylesheet" href="~/lib/jvectormap/jquery-jvectormap-2.0.3.css" />
+<link rel="stylesheet" href="~/lib/pace/pace.min.css" />
+
+<environment names="Development">
+    <link rel="stylesheet" href="~/css/skins/_all-skins.css" />
+    <link rel="stylesheet" href="~/css/adminlte.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+<environment names="Staging,Production">
+    <script src="~/dist/bundles.min.css" asp-append-version="true"></script>
+</environment>
