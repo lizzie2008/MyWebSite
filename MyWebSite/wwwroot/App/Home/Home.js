@@ -1,4 +1,4 @@
-﻿app.controller('HomeController', function ($scope) {
+﻿app.controller('HomeController', ['$scope', function ($scope) {
     //获取主页信息
     $.ajax({
         type: 'GET',
@@ -21,5 +21,5 @@
             });
         }
     });
-});
+}]);
 

@@ -1,4 +1,4 @@
-﻿app.controller('MenuManagementController', function ($scope) {
+﻿app.controller('MenuManagementController', ['$scope', function ($scope) {
     //编辑菜单
     $scope.editMenu = function (item) {
         $scope.selectedMenu = item;
@@ -14,7 +14,7 @@
         $.confirm({
             icon: 'fa fa-info',
             title: '删除',
-            content: '确认删除菜单['+ item.name+']？' ,
+            content: '确认删除菜单[' + item.name + ']？',
             type: 'dark',
             closeIcon: true,
             typeAnimated: true,
@@ -42,7 +42,7 @@
             url: '/Configuration/MenuManagement/Save',
             data: {},
             success: function (data) {
-               //TODO:
+                //TODO:
             },
             complete: function () {
                 $scope.submitting = false;
@@ -64,4 +64,4 @@
             }, 100);
         }
     });
-});
+}]);

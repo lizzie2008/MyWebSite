@@ -1,4 +1,4 @@
-﻿app.controller('SiteAnalyticsController', function ($scope) {
+﻿app.controller('SiteAnalyticsController', ['$scope', function ($scope) {
     //省份编码定义
     var dicProvince = {
         '江苏': 'CN-32',
@@ -250,6 +250,6 @@
     queryVisitDistrictAnalytics(moment().subtract(29, 'days'), moment());
     //默认请求7天内百度访客区域统计数据
     queryTrendAnalytics(moment().subtract(6, 'days'), moment());
-});
+}]);
 
 

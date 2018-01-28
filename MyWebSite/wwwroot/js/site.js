@@ -8,17 +8,17 @@ s.parentNode.insertBefore(hm, s);
 // 设置jQuery Ajax全局的参数  
 $.ajaxSetup({
     type: "POST",
-    error: function (jqXHR, textStatus, errorThrown) {
-        switch (jqXHR.status) {
+    error: function (jqXhr) {
+        switch (jqXhr.status) {
             case (500):
-                window.location.href = "/#!/Error?code=" + jqXHR.status;
+                window.location.href = "/#!/Error?code=" + jqXhr.status;
                 break;
             case (401):
                 window.location.href = "/Account/Login?ReturnUrl="
                     + encodeURIComponent(window.location.href);
                 break;
             default:
-                window.location.href = "/#!/Error?code=" + jqXHR.status;
+                window.location.href = "/#!/Error?code=" + jqXhr.status;
         }
     }
 });
@@ -47,15 +47,15 @@ $("input[name='languageOpts']").change(function () {
 //Angular相关配置
 var app = angular.module('app', ['ui.router', 'angular-ladda']);
 //全局配置
-app.run(function ($rootScope) {
-    if (window.environment == 'RELEASE') {
-        $rootScope.resourcePath = document.location.protocol+'//mysite.bj.bcebos.com/'
+app.run(['$rootScope', function ($rootScope) {
+    if (window.environment == 'Production') {
+        $rootScope.resourcePath = document.location.protocol + '//mysite.bj.bcebos.com/';
     } else {
-        $rootScope.resourcePath = '/'
+        $rootScope.resourcePath = '/';
     }
-});
+}]);
 //路由配置
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider.state('Home', {
         //主页
@@ -77,7 +77,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: '/Error',
         templateUrl: 'App/Home/Error.html'
     });
-});
+}]);
 
 /**
  * AdminLTE Demo Menu

@@ -22,7 +22,7 @@
 <script src="~/lib/jvectormap/jquery-jvectormap-cn-mill.js"></script>
 
 <environment names="Development">
-    <script>window.environment = 'DEBUG'</script>
+    <script>window.environment = 'Development'</script>
     <script src="~/js/adminlte.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/App/Home/Home.js"></script>
@@ -31,8 +31,8 @@
     <script src="~/App/Tools/ApiSimulator/ApiSimulator.js"></script>
     <script src="~/App/Tools/SiteAnalytics/SiteAnalytics.js"></script>
 </environment>
-<environment names="Staging,Production">
-    <script>window.environment = 'RELEASE'</script>
+<environment names="Production">
+    <script>window.environment = 'Production'</script>
     <script src="~/dist/bundles.min.js" asp-append-version="true"></script>
 </environment>
 

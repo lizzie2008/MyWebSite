@@ -1,4 +1,4 @@
-﻿app.controller('ApiSimulatorController', function ($scope) {
+﻿app.controller('ApiSimulatorController', ['$scope',function ($scope) {
     //获取API请求列表
     $.ajax({
         type: 'GET',
@@ -27,4 +27,4 @@
             }
         });
     };
-});
+}]);
