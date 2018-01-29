@@ -1,24 +1,19 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MyWebSite.Controllers.Abstract;
 using MyWebSite.Datas.Config.Home;
 using MyWebSite.ViewModels;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace MyWebSite.Controllers
 {
     public class HomeController : AppController
     {
         private readonly MyProfile _myProfile;
-        private readonly IHostingEnvironment _env;
 
-        public HomeController(IOptions<MyProfile> myProfile, IHostingEnvironment env)
+        public HomeController(IOptions<MyProfile> myProfile)
         {
             _myProfile = myProfile.Value;
-            _env = env;
         }
 
         /// <summary>
@@ -45,24 +40,6 @@ namespace MyWebSite.Controllers
         /// <returns></returns>
         public IActionResult GetMyProfile()
         {
-            //_myProfile.Projects.ToList().ForEach(project =>
-            //{
-            //    if (project.ProjectImgs != null)
-            //    {
-            //        project.ProjectImgsPath = new List<string>();
-            //        for (int i = 0; i < project.ProjectImgs.Count; i++)
-            //        {
-            //            if (_env.IsDevelopment())
-            //            {
-            //                project.ProjectImgsPath.Add(@"/images/profile/" + project.ProjectImgs[i]);
-            //            }
-            //            else
-            //            {
-            //                project.ProjectImgsPath.Add(@"http://mysite.bj.bcebos.com/images%2Fprofile%2F" + project.ProjectImgs[i]);
-            //            }
-            //        }
-            //    }
-            //});
             return new JsonResult(_myProfile);
         }
 

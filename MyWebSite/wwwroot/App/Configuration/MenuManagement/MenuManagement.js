@@ -33,7 +33,6 @@
             }
         });
     };
-
     //保存菜单
     $scope.save = function (menus) {
         $scope.submitting = true;
@@ -50,7 +49,6 @@
             }
         });
     }
-
     $scope.selectedMenu = {};
     //加载菜单
     $.ajax({

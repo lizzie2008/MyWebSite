@@ -80,6 +80,12 @@
                 "Name": "05.主页和登录验证",
                 "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8258904.html",
                 "Icon": "fa-circle-o"
+              },
+              //06.主页和登录验证
+              {
+                "Name": "06.单页模式和优化",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8378256.html",
+                "Icon": "fa-circle-o"
               }
             ]
           }

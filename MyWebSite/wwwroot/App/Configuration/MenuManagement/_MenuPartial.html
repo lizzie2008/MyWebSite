@@ -2,11 +2,16 @@
 <div class="dd3-content" ng-click="editMenu(item)">
     <i class="fa {{item.icon}} margin-r-5"></i>{{item.name}}
     <span class='pull-right'>
-        <a style="cursor: pointer" ng-click="deleteMenu(item,$event);$event.stopPropagation();"><i class="fa fa-minus text-success margin-r-5"></i></a>
+        <a style="cursor: pointer"
+           ng-click="deleteMenu(item,$event);$event.stopPropagation();">
+            <i class="fa fa-minus text-success margin-r-5"></i>
+        </a>
     </span>
 </div>
 <ol class='dd-list' ng-if="item.subNavMenus">
-    <li class="dd-item dd3-item" ng-repeat="item in item.subNavMenus" ng-include="'App/Configuration/MenuManagement/_MenuPartial.html'"></li>
+    <li class="dd-item dd3-item"
+        ng-repeat="item in item.subNavMenus"
+        ng-include="'App/Configuration/MenuManagement/_MenuPartial.html'"></li>
 </ol>
 
 

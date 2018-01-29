@@ -15,7 +15,8 @@
             <div class="col-md-7">
                 <div class="dd">
                     <ol class='dd-list'>
-                        <li class="dd-item dd3-item" ng-repeat="item in navMenus" ng-include="'App/Configuration/MenuManagement/_MenuPartial.html'"></li>
+                        <li class="dd-item dd3-item" ng-repeat="item in navMenus" 
+                            ng-include="'App/Configuration/MenuManagement/_MenuPartial.html'"></li>
                     </ol>
                 </div>
             </div>
@@ -28,22 +29,29 @@
                     <form class="form">
                         <div class="form-group">
                             <label for="name">菜单名称:</label>
-                            <input class="form-control" type="text" id="name" ng-model="selectedMenu.name">
+                            <input class="form-control" type="text" id="name" 
+                                   ng-model="selectedMenu.name">
                         </div>
                         <div class="form-group">
                             <label for="icon">菜单图标:</label>
-                            <input class="form-control" type="text" id="icon" ng-model="selectedMenu.icon">
+                            <input class="form-control" type="text" id="icon" 
+                                   ng-model="selectedMenu.icon">
                         </div>
                         <div class="form-group">
                             <label for="templateUrl">菜单路径:</label>
-                            <input class="form-control" type="text" id="templateUrl" ng-model="selectedMenu.templateUrl">
+                            <input class="form-control" type="text" id="templateUrl" 
+                                   ng-model="selectedMenu.templateUrl">
                         </div>
                         <div class="pull-right">
                             <a ng-click="addMenu()"
-                               class="btn btn-social btn-instagram margin-r-5"><i class="fa fa-plus margin-r-5"></i>新增</a>
+                               class="btn btn-social btn-instagram margin-r-5">
+                                <i class="fa fa-plus margin-r-5"></i>新增
+                            </a>
                             <a ng-click="save(navMenus)"
                                ng-disabled="submitting"
-                               class="btn btn-social btn-instagram"><i class="fa fa-save margin-r-5"></i>保存</a>
+                               class="btn btn-social btn-instagram">
+                                <i class="fa fa-save margin-r-5"></i>保存
+                            </a>
                         </div>
                     </form>
                 </div>
