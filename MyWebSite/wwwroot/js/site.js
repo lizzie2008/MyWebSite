@@ -75,7 +75,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         templateUrl: 'App/Tools/SiteAnalytics/SiteAnalytics.html'
     }).state('EssayIndex', {
         //随笔列表
-        url: '/EssayIndex/page:pageIndex',
+        url: '/EssayIndex',
+        params: { pageIndex: null },
         templateUrl: 'App/Essay/Index.html'
     }).state('EssayCreate', {
         //随笔新建
@@ -96,7 +97,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     });
 }]);
 
-$(window).scroll(function() {
+$(window).scroll(function () {
     var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
     //通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；  
     if (scrollTop > 400) {

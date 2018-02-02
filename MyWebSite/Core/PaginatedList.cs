@@ -10,14 +10,16 @@ namespace MyWebSite.Core
     {
         public int PageIndex { get; set; }
         public int TotalPages { get; set; }
+        public int TotalCount { get; set; }
 
         public IList<T> Items { get; set; }
 
-        public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
+        public PaginatedList(List<T> items, int totalCount, int pageIndex, int pageSize)
         {
             Items = items;
+            TotalCount = totalCount;
             PageIndex = pageIndex;
-            TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
         }
 
         public bool HasPreviousPage

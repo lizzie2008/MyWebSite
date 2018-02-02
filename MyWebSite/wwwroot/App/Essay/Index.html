@@ -11,7 +11,7 @@
             </ul>
             <div class="blogStats">
                 <div id="blog_stats">
-                    随笔- {{essayPaginatedList.items.length}}&nbsp;
+                    随笔- {{essayPaginatedList.totalCount}}&nbsp;
                     评论- 104&nbsp;
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         </li>
                         <li ng-repeat="x in [].constructor(essayPaginatedList.totalPages) track by $index">
                             <a ui-sref="EssayIndex({pageIndex:$index+1})"
-                               class="btn btn-default {{essayPaginatedList.pageIndex==$index+1?'bg-gray':''}}">{{$index+1}}</a>
+                               class="{{essayPaginatedList.pageIndex==$index+1?'bg-gray':''}}">{{$index+1}}</a>
                         </li>
                         <li>
                             <a ui-sref="EssayIndex({pageIndex:essayPaginatedList.pageIndex+1})"

@@ -9,7 +9,7 @@
       },
       {
         "Name": "MyEssay",
-        "TemplateUrl": "EssayIndex({pageIndex:1})",
+        "TemplateUrl": "EssayIndex",
         "Icon": "fa-coffee"
       },
       {
