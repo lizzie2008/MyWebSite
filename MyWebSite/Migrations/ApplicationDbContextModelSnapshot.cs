@@ -177,6 +177,29 @@ namespace MyWebSite.Migrations
                     b.ToTable("RoleMenus");
                 });
 
+            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.Essay", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Catalog");
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<string>("Summary");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<DateTime>("UpdateTime");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Essay");
+                });
+
             modelBuilder.Entity("MyWebSite.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")

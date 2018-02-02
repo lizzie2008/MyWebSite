@@ -132,6 +132,9 @@
   <data name="MyBlog" xml:space="preserve">
     <value>我的博客</value>
   </data>
+  <data name="MyEssay" xml:space="preserve">
+    <value>我的随笔</value>
+  </data>
   <data name="RoleInfo" xml:space="preserve">
     <value>角色信息</value>
   </data>
@@ -149,5 +152,8 @@
   </data>
   <data name="UserManagement" xml:space="preserve">
     <value>用户管理</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎</value>
   </data>
 </root>

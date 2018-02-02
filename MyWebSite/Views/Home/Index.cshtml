@@ -4,7 +4,7 @@
 @using MyWebSite.ViewModels
 @inject UserManager<ApplicationUser> UserManagerIns
 @{
-    ViewData["Title"] = SharedLocalizer["Home"];
+    ViewData["Title"] = SharedLocalizer["Welcome"];
     Layout = null;
 
     var user = await UserManagerIns.GetUserAsync(User);

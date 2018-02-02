@@ -1,33 +1,29 @@
-﻿/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+﻿::-webkit-scrollbar {
+    display: none;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+/* back-to-top */
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    z-index: 9999;
+    opacity: 0.7;
+    writing-mode: vertical-rl;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+#back-to-top a {
+    color: #666;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+#back-to-top a:hover {
+    text-decoration: underline;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+#back-to-top:hover {
+    opacity: 1;
 }
+
 
 .table {
     font-size: 14px;
@@ -260,7 +256,190 @@ td {
         background: #ddd;
     }
 
+/* essay styles */
+#navigator {
+    clear: both;
+    margin: auto;
+    height: 40px;
+    background: url(/images/top_menu.gif) top left;
+}
+
+#navList {
+    min-height: 30px;
+    font-weight: bold;
+    float: left;
+}
+
+    #navList li {
+        list-style: none;
+        float: left;
+    }
+
+    #navList a {
+        height: 22px;
+        float: left;
+        text-align: center;
+        padding-top: 8px;
+        margin-right: 12px;
+        text-decoration: underline;
+    }
+
+    #navList a {
+        color: #333333;
+    }
+
+        #navList a:hover {
+            color: #935A32;
+        }
+
+.blogStats {
+    float: right;
+    color: #333333;
+    margin-top: 8px;
+    text-align: right;
+}
 
 
+.essay {
+    color: #555;
+    background: #fff url(/images/bg_day.jpg) top right no-repeat;
+    padding: 35px;
+}
 
+
+.day {
+    padding: 6px;
+    padding-left: 12px;
+}
+
+.dayTitle {
+    display: none;
+}
+
+.postTitle {
+    border-bottom: 1px solid #FFF9F9;
+    border-left: 6px solid #6B5F55;
+    padding: 3px;
+    padding-left: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0 10px
+}
+
+    .postTitle a:link, .postTitle a:visited, .postTitle a:active {
+        color: #555454;
+        transition: all 0.4s linear 0s;
+    }
+
+    .postTitle a:hover {
+        margin-left: 5px;
+        color: black;
+        text-decoration: none;
+    }
+
+.postCon {
+    overflow: hidden
+}
+
+    .postCon a {
+        color: #666;
+        text-decoration: underline;
+    }
+
+        .postCon a:hover {
+            color: black;
+        }
+
+    .postCon .c_b_p_desc {
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+        line-height: 1.5;
+    }
+
+.postDesc {
+    border-bottom: 0 dotted #999;
+    color: #666;
+    text-align: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    font-size: 11px;
+}
+
+    .postDesc a:link, .postDesc a:active, .postDesc a:visited {
+        color: #666;
+        text-decoration: underline;
+    }
+
+    .postDesc a:hover {
+        color: black;
+        text-decoration: underline
+    }
+
+.postSeparator {
+    border-top: 1px dashed #DCD4D4;
+    height: 1px;
+    margin-top: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.essayHeader {
+    color: #555454;
+    text-align: center;
+    word-break: break-word;
+    font-weight: 400;
+    margin-top: 30px;
+}
+
+.essaySubHeader {
+    color: #999;
+    font-weight: 400;
+    font-size: 11px;
+    text-align: center;
+    word-break: break-word;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+    .essaySubHeader a {
+        color: #999;
+        text-decoration: underline;
+    }
+
+        .essaySubHeader a:hover {
+            color: black;
+        }
+
+.essay blockquote {
+    color: #666;
+    font-size: 13px;
+}
+
+.sidecolumn {
+    padding: 40px;
+}
+
+    .sidecolumn .catListPostCategory {
+        margin-bottom: 20px;
+    }
+
+    .sidecolumn .catListTitle {
+        font-weight: bold;
+    }
+
+    .sidecolumn ul {
+        padding: 0px;
+    }
+
+    .sidecolumn li {
+        list-style: none;
+        display: list-item;
+        text-align: left;
+        text-decoration: underline;
+        font-size: 13px;
+    }
 

@@ -1,4 +1,14 @@
-﻿<div class="error-page" style="margin-top: 100px;" ng-controller="ErrorController">
+﻿<section class="content-header">
+    <h1>
+        错误页
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i></a></li>
+        <li class="active">错误页</li>
+    </ol>
+</section>
+<section class="error-page" style="margin-top: 100px;" ng-controller="ErrorController">
     <!-- 500类型错误 -->
     <div ng-show="code == '500'">
         <h2 class="headline text-red">{{code}}</h2>
@@ -46,4 +56,4 @@
             </form>
         </div>
     </div>
-</div>
+</section>

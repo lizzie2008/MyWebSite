@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Configuration.Models;
+using MyWebSite.Areas.Essays.Models;
 using MyWebSite.Models;
 
 namespace MyWebSite.Datas
@@ -24,5 +25,6 @@ namespace MyWebSite.Datas
 
         public DbSet<Menu> Menus { get; set; }
         public DbSet<RoleMenu> RoleMenus { get; set; }
+        public DbSet<Essay> Essay { get; set; }
     }
 }

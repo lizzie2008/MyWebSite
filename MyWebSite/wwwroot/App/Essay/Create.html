@@ -1,0 +1,26 @@
+﻿<section class="row" ng-controller="EssayCreateController">
+    <div class="col-md-12">
+        <div class="box">
+            <form role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="title">标题</label>
+                        <input type="text" class="form-control input-sm" placeholder="输入文章标题..."
+                               ng-model="essay.title">
+                    </div>
+                    <textarea id="editorEssay"></textarea>
+                    <div id="content"></div>
+                </div>
+                <div class="box-footer">
+                    <a class="btn btn-social btn-instagram margin-r-5"
+                       ng-click="save()">
+                        <i class="fa fa-save margin-r-5"></i>发布
+                    </a>
+                    <a class="btn btn-social btn-instagram margin-r-5" ui-sref="EssayIndex">
+                        <i class="fa fa-undo margin-r-5"></i>取消
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

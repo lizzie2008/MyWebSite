@@ -132,6 +132,9 @@
   <data name="MyBlog" xml:space="preserve">
     <value>My Blog</value>
   </data>
+  <data name="MyEssay" xml:space="preserve">
+    <value>My Essay</value>
+  </data>
   <data name="RoleInfo" xml:space="preserve">
     <value>Role Info</value>
   </data>
@@ -149,5 +152,8 @@
   </data>
   <data name="UserManagement" xml:space="preserve">
     <value>User Management</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
   </data>
 </root>

@@ -8,6 +8,11 @@
         "Icon": "fa-home"
       },
       {
+        "Name": "MyEssay",
+        "TemplateUrl": "EssayIndex({pageIndex:1})",
+        "Icon": "fa-coffee"
+      },
+      {
         //我的博客
         "Name": "MyBlog",
         "TemplateUrl": "",
@@ -77,7 +82,7 @@
               },
               //05.主页和登录验证
               {
-                "Name": "05.主页和登录验证",
+                "Name": "05.Api模拟和网站分析",
                 "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8258904.html",
                 "Icon": "fa-circle-o"
               },

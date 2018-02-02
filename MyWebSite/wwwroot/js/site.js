@@ -73,11 +73,43 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         //网站分析
         url: '/Tools/SiteAnalytics',
         templateUrl: 'App/Tools/SiteAnalytics/SiteAnalytics.html'
+    }).state('EssayIndex', {
+        //随笔列表
+        url: '/EssayIndex/page:pageIndex',
+        templateUrl: 'App/Essay/Index.html'
+    }).state('EssayCreate', {
+        //随笔新建
+        url: '/EssayCreate',
+        templateUrl: 'App/Essay/Create.html'
+    }).state('EssayDetails', {
+        //随笔详情
+        url: '/EssayDetails/:id',
+        templateUrl: 'App/Essay/Details.html'
+    }).state('EssayEdit', {
+        //随笔新建
+        url: '/EssayEdit/:id',
+        templateUrl: 'App/Essay/Edit.html'
     }).state('Error', {
+        //错误页面
         url: '/Error',
         templateUrl: 'App/Home/Error.html'
     });
 }]);
+
+$(window).scroll(function() {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    //通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；  
+    if (scrollTop > 400) {
+        $('#back-to-top').show();
+    } else {
+        $('#back-to-top').hide();
+    }
+});
+$('#back-to-top').click(function () {
+    $("html,body").animate({ scrollTop: 0 }, 500);
+});
+
+
 
 /**
  * AdminLTE Demo Menu
