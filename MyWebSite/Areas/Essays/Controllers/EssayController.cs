@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Areas.Essays.Models;
 using MyWebSite.Core;
@@ -26,8 +27,6 @@ namespace MyWebSite.Areas.Essays.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            int pageSize = 2;
-
             IQueryable<Essay> essayIQ = _context.Essay.AsNoTracking()
                 .Select(s => new Essay
                 {
@@ -39,7 +38,7 @@ namespace MyWebSite.Areas.Essays.Controllers
                 }).OrderByDescending(s => s.CreateTime);
 
             var result = await PaginatedList<Essay>.CreateAsync(
-                essayIQ, pageIndex, pageSize);
+                essayIQ, pageIndex);
 
             return new JsonResult(result);
         }

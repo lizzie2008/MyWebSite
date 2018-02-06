@@ -47,7 +47,6 @@ namespace MyWebSite
 
             //添加应用程序服务
             services.AddTransient<IEmailSender, EmailSender>();
-            //services.AddScoped<INavMenuService, NavMenuService>();
 
             services.AddSession();
 

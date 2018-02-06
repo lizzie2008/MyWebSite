@@ -44,19 +44,47 @@ $("input[name='languageOpts']").change(function () {
     }
 });
 
+var IsAuthenticated = function () {
+    var isAuthenticated = null;
+    $.ajax({
+        type: 'GET',
+        url: '/Account/IsAuthenticated',
+        async: false,//同步
+        success: function (data) {
+            isAuthenticated = data;
+        }
+    });
+    return isAuthenticated;
+}
+
 //Angular相关配置
 var app = angular.module('app', ['ui.router', 'angular-ladda']);
 //全局配置
-app.run(['$rootScope', function ($rootScope) {
+app.run(['$rootScope', '$transitions', '$state', function ($rootScope, $transitions, $state) {
     if (window.environment == 'Production') {
         $rootScope.resourcePath = document.location.protocol + '//mysite.bj.bcebos.com/';
     } else {
         $rootScope.resourcePath = '/';
     }
+
+    //UI权限配置
+    var needAuthStateNames = ['EssayCreate', 'EssayEdit'];
+    $transitions.onStart({}, function (trans) {
+        var isAuthenticated = IsAuthenticated();
+        var toStateName = trans.to().name;
+        //没有权限，跳转登录界面
+        if (!isAuthenticated && $.inArray(toStateName, needAuthStateNames) >= 0) {
+            window.location.href = "/Account/Login?ReturnUrl="
+                + encodeURIComponent(window.location.href);
+            return false;
+        }
+    })
 }]);
 //路由配置
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
+
+
     $stateProvider.state('Home', {
         //主页
         url: '/',
@@ -87,7 +115,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         url: '/EssayDetails/:id',
         templateUrl: 'App/Essay/Details.html'
     }).state('EssayEdit', {
-        //随笔新建
+        //随笔编辑
         url: '/EssayEdit/:id',
         templateUrl: 'App/Essay/Edit.html'
     }).state('Error', {

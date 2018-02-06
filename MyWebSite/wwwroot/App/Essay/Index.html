@@ -26,25 +26,26 @@
                 </div>
                 <div class="clear"></div>
                 <div class="postDesc">
-                    posted @ {{ essay.createTime | date :'yyyy-MM-dd HH:mm'}} | 阅读(-) | 评论(-) <a ui-sref="EssayEdit({id:essay.id})">编辑</a>
+                    posted @ {{ essay.createTime | date :'yyyy-MM-dd HH:mm'}} | 点赞(-) | 评论(-) <a ui-sref="EssayEdit({id:essay.id})">编辑</a>
                 </div>
                 <div class="clear"></div>
                 <div class="postSeparator"></div>
             </div>
             <div>
                 <div class="box-footer">
+                    <span>{{essayPaginatedList.totalCount}}条记录, 共{{essayPaginatedList.totalPages}}页</span>
                     <ul class="pagination pagination-sm no-margin pull-right">
                         <li>
                             <a ui-sref="EssayIndex({pageIndex:essayPaginatedList.pageIndex-1})"
-                               class="btn {{essayPaginatedList.hasPreviousPage?'':'disabled'}}">«</a>
+                               class="btn {{essayPaginatedList.hasPreviousPage?'':'disabled'}}">&lt;上一页</a>
                         </li>
-                        <li ng-repeat="x in [].constructor(essayPaginatedList.totalPages) track by $index">
-                            <a ui-sref="EssayIndex({pageIndex:$index+1})"
-                               class="{{essayPaginatedList.pageIndex==$index+1?'bg-gray':''}}">{{$index+1}}</a>
+                        <li ng-repeat="x in essayPaginatedList.pageList">
+                            <a ui-sref="EssayIndex({pageIndex:x})"
+                               class="{{essayPaginatedList.pageIndex==x?'bg-gray':''}}">{{x}}</a>
                         </li>
                         <li>
                             <a ui-sref="EssayIndex({pageIndex:essayPaginatedList.pageIndex+1})"
-                               class="btn {{essayPaginatedList.hasNextPage?'':'disabled'}}">»</a>
+                               class="btn {{essayPaginatedList.hasNextPage?'':'disabled'}}">下一页&gt;</a>
                         </li>
                     </ul>
                 </div>

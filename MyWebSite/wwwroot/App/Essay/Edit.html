@@ -1,23 +1,27 @@
 ﻿<section class="row" ng-controller="EssayEditController">
     <div class="col-md-12">
         <div class="box">
-            <form role="form">
+            <form role="form" name="myForm" novalidate>
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group {{myForm.title.$dirty && myForm.title.$error.required?'has-error':''}}">
                         <label for="title">标题</label>
-                        <input type="text" class="form-control input-sm" ng-model="essay.title">
+                        <input type="text" name="title"
+                               class="form-control input-sm" placeholder="输入文章标题..."
+                               ng-model="essay.title" required>
                     </div>
                     <textarea id="editorEssay"></textarea>
-                    <div id="content"></div>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-social btn-instagram margin-r-5"
-                       ng-click="save()">
+                    <button type="submit" class="btn btn-instagram"
+                            ng-disabled="myForm.title.$invalid || submitting"
+                            ng-click="onSubmit()"
+                            ladda="submitting"
+                            data-style="expand-right">
                         <i class="fa fa-save margin-r-5"></i>保存
-                    </a>
-                    <a class="btn btn-social btn-instagram margin-r-5" ui-sref="EssayIndex">
+                    </button>
+                    <button class="btn btn-instagram" ui-sref="EssayIndex">
                         <i class="fa fa-undo margin-r-5"></i>取消
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>

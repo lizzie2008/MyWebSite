@@ -37,6 +37,14 @@ namespace MyWebSite.Controllers
         [TempData]
         public string ErrorMessage { get; set; }
 
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult IsAuthenticated()
+        {
+            return new JsonResult(User.Identity.IsAuthenticated);
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)

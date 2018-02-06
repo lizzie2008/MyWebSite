@@ -1,24 +1,35 @@
 ﻿<section class="row" ng-controller="EssayCreateController">
     <div class="col-md-12">
         <div class="box">
-            <form role="form">
+            <form role="form" name="myForm" novalidate>
                 <div class="box-body">
-                    <div class="form-group">
+                    <div class="form-group {{myForm.title.$dirty && myForm.title.$error.required?'has-error':''}}">
                         <label for="title">标题</label>
-                        <input type="text" class="form-control input-sm" placeholder="输入文章标题..."
-                               ng-model="essay.title">
+                        <input type="text" name="title"
+                               class="form-control input-sm" placeholder="输入文章标题..."
+                               ng-model="essay.title" required>
                     </div>
-                    <textarea id="editorEssay"></textarea>
-                    <div id="content"></div>
-                </div>
-                <div class="box-footer">
-                    <a class="btn btn-social btn-instagram margin-r-5"
-                       ng-click="save()">
+                    <div class="form-group">
+                        <label for="editorEssay">内容</label>
+                        <span class="pull-right">
+                            <span id="intervalInfo" class="margin-r-5"></span>
+                            <a class="margin-r-5" ui-sref="">保存数据</a>
+                            <a class="margin-r-5" ui-sref="">恢复数据</a>
+                            <a class="margin-r-5" ui-sref="">清除数据</a>
+                            <span class="text-red">数据已于13:36保存</span>
+                        </span>
+                        <textarea id="editorEssay"></textarea>
+                    </div>
+                    <button class="btn btn-instagram"
+                            ng-disabled="myForm.title.$invalid || submitting"
+                            ng-click="onSubmit()"
+                            ladda="submitting"
+                            data-style="expand-right">
                         <i class="fa fa-save margin-r-5"></i>发布
-                    </a>
-                    <a class="btn btn-social btn-instagram margin-r-5" ui-sref="EssayIndex">
+                    </button>
+                    <button class="btn btn-instagram" ui-sref="EssayIndex">
                         <i class="fa fa-undo margin-r-5"></i>取消
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>
