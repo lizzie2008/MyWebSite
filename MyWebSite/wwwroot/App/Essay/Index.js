@@ -13,14 +13,26 @@
     });
 }])
 .service('EssayService', ['$interval', function ($interval) {
-    var intvalAutoSave = 30;
-    this.autoSaveBeg = function () {
-        $('#intervalInfo').html(intvalAutoSave + '秒后保存');
-        var count = intvalAutoSave / 10;
+    //自动保存开始
+    this.autoSaveBeg = function (options) {
+        var intervalTime = options.intervalTime;
+        var editor = options.editor;
+        //定时保存任务
         essayInterval = $interval(function () {
-            $('#intervalInfo').html(--count * 10 + '秒后保存');
-        }, 10000);
+            //执行保存
+            $.cookie('essayTmp', editor.getData());
+            intervalTime = options.intervalTime;
+            $('#autoSaveInfo').html('数据已于' + new moment().format('HH:mm:ss') + '保存');
+        }, intervalTime);
+
+        //恢复数据
+        $('#recoveryTmpEssay').on('click', function () {
+            var essayTmp = $.cookie('essayTmp')
+            if (essayTmp != null && essayTmp != 'null')
+                editor.setData(essayTmp);
+        });
     };
+    //自动保存停止
     this.autoSaveEnd = function () {
         $interval.cancel(essayInterval);
     }

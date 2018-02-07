@@ -1,4 +1,4 @@
-﻿app.controller('EssayEditController', ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
+﻿app.controller('EssayEditController', ['$scope', '$state', '$stateParams', 'EssayService', function ($scope, $state, $stateParams, EssayService) {
 
     var editor = {};
     //获取随笔数据
@@ -10,6 +10,12 @@
             $scope.$apply();
             editor = CKEDITOR.replace('editorEssay');
             editor.setData(data.content);
+
+            //调用自动定时保存，并在页面离开自动关闭
+            EssayService.autoSaveBeg({ intervalTime: 20000, editor: editor });
+            $scope.$on('$destroy', function () {
+                EssayService.autoSaveEnd();
+            });
         }
     });
 

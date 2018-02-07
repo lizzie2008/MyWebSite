@@ -84,7 +84,6 @@ app.run(['$rootScope', '$transitions', '$state', function ($rootScope, $transiti
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
-
     $stateProvider.state('Home', {
         //主页
         url: '/',

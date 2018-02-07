@@ -2,11 +2,9 @@
     //构造富文本编辑器
     var editor = CKEDITOR.replace('editorEssay');
 
-    //调用自动保存
-    EssayService.autoSaveBeg();
-
+    //调用自动定时保存，并在页面离开自动关闭
+    EssayService.autoSaveBeg({ intervalTime: 20000, editor: editor });
     $scope.$on('$destroy', function () {
-        // Make sure that the interval is destroyed too
         EssayService.autoSaveEnd();
     });
 

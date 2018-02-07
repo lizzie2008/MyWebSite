@@ -9,9 +9,14 @@
                                class="form-control input-sm" placeholder="输入文章标题..."
                                ng-model="essay.title" required>
                     </div>
-                    <textarea id="editorEssay"></textarea>
-                </div>
-                <div class="box-footer">
+                    <div class="form-group">
+                        <label for="editorEssay">内容</label>
+                        <span class="pull-right">
+                            <a class="margin-r-5" style="cursor: pointer" id="recoveryTmpEssay">恢复数据</a>
+                            <span id="autoSaveInfo" class="text-red">数据尚未自动保存</span>
+                        </span>
+                        <textarea id="editorEssay"></textarea>
+                    </div>
                     <button type="submit" class="btn btn-instagram"
                             ng-disabled="myForm.title.$invalid || submitting"
                             ng-click="onSubmit()"
