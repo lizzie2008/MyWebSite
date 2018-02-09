@@ -16,18 +16,22 @@
   <ItemGroup>
     <Compile Remove="bin\**" />
     <Compile Remove="wwwroot\lib\AdminLTE\**" />
+    <Compile Remove="wwwroot\lib\ckeditor\plugins\codesnippetgeshi\**" />
     <Compile Remove="wwwroot\lib\easyrocketstudio\**" />
     <Compile Remove="wwwroot\lib\lazyload\**" />
     <Content Remove="bin\**" />
     <Content Remove="wwwroot\lib\AdminLTE\**" />
+    <Content Remove="wwwroot\lib\ckeditor\plugins\codesnippetgeshi\**" />
     <Content Remove="wwwroot\lib\easyrocketstudio\**" />
     <Content Remove="wwwroot\lib\lazyload\**" />
     <EmbeddedResource Remove="bin\**" />
     <EmbeddedResource Remove="wwwroot\lib\AdminLTE\**" />
+    <EmbeddedResource Remove="wwwroot\lib\ckeditor\plugins\codesnippetgeshi\**" />
     <EmbeddedResource Remove="wwwroot\lib\easyrocketstudio\**" />
     <EmbeddedResource Remove="wwwroot\lib\lazyload\**" />
     <None Remove="bin\**" />
     <None Remove="wwwroot\lib\AdminLTE\**" />
+    <None Remove="wwwroot\lib\ckeditor\plugins\codesnippetgeshi\**" />
     <None Remove="wwwroot\lib\easyrocketstudio\**" />
     <None Remove="wwwroot\lib\lazyload\**" />
   </ItemGroup>
@@ -52,16 +56,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Datas\Config\SiteConfig.json" />
     <None Include="wwwroot\App\Home\Error.html" />
     <None Include="wwwroot\App\Home\Home.html" />
     <None Include="wwwroot\lib\ckeditor\adapters\jquery.js" />
     <None Include="wwwroot\lib\ckeditor\build-config.js" />
-    <None Include="wwwroot\lib\ckeditor\CHANGES.md" />
     <None Include="wwwroot\lib\ckeditor\ckeditor.js" />
     <None Include="wwwroot\lib\ckeditor\config.js" />
     <None Include="wwwroot\lib\ckeditor\lang\en.js" />
     <None Include="wwwroot\lib\ckeditor\lang\zh-cn.js" />
-    <None Include="wwwroot\lib\ckeditor\LICENSE.md" />
     <None Include="wwwroot\lib\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
@@ -128,7 +131,6 @@
     <None Include="wwwroot\lib\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\about\dialogs\about.js" />
-    <None Include="wwwroot\lib\ckeditor\plugins\codesnippetgeshi\README.md" />
     <None Include="wwwroot\lib\ckeditor\plugins\codesnippet\dialogs\codesnippet.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\codesnippet\lang\ar.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\codesnippet\lang\az.js" />
@@ -283,27 +285,6 @@
     <None Include="wwwroot\lib\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
     <None Include="wwwroot\lib\ckeditor\plugins\wsc\LICENSE.md" />
     <None Include="wwwroot\lib\ckeditor\plugins\wsc\README.md" />
-    <None Include="wwwroot\lib\ckeditor\README.md" />
-    <None Include="wwwroot\lib\ckeditor\samples\js\sample.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\js\sf.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\assets\posteddata.php" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\assets\uilanguages\languages.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\dialog\assets\my_dialog.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\sample.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\old\sample_posteddata.php" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
-    <None Include="wwwroot\lib\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
-    <None Include="wwwroot\lib\ckeditor\skins\moono-dark\readme.md" />
     <None Include="wwwroot\lib\ckeditor\skins\moono\readme.md" />
     <None Include="wwwroot\lib\ckeditor\styles.js" />
   </ItemGroup>

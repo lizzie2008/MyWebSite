@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore;
+﻿using ContosoUniversity.Data;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MyWebSite.Datas;
+using MyWebSite.Models;
 using System;
 
 namespace MyWebSite
@@ -17,9 +21,9 @@ namespace MyWebSite
                 var services = scope.ServiceProvider;
                 try
                 {
-                    //var context = services.GetRequiredService<ApplicationDbContext>();
-                    //var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-                    //DbInitializer.Initialize(context, userManager);
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    DbInitializer.Initialize(context, userManager);
                 }
                 catch (Exception ex)
                 {

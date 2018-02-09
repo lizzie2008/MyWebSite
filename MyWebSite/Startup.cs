@@ -118,6 +118,7 @@ namespace MyWebSite
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("Datas/Config/SiteConfig.json")
                 .AddJsonFile("Datas/Config/Home/NavBarMenus.json")
                 .AddJsonFile("Datas/Config/Home/MyProfile.json")
                 .AddJsonFile("Datas/Config/Home/MyRequest.json")
@@ -125,6 +126,7 @@ namespace MyWebSite
 
             var config = builder.Build();
 
+            services.Configure<SiteConfig>(config.GetSection("SiteConfig"));
             services.Configure<NavBarMenus>(config.GetSection("NavBarMenus"));
             services.Configure<PrivateInfo>(config.GetSection("PrivateInfo"));
             services.Configure<MyProfile>(config.GetSection("MyProfile"));

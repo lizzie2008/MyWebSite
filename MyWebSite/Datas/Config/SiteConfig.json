@@ -1,0 +1,5 @@
+﻿{
+    "SiteConfig": {
+        "EssayCatalogs": [ "ASP.NET Core", "ASP.NET MVC", "Golang", "Redis" ]
+    }
+}

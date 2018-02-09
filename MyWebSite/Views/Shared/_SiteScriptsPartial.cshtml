@@ -19,13 +19,15 @@
 <script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
 <script src="https://cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="~/lib/ckeditor/ckeditor.js"></script>
-<script src="~/lib/ckeditor/config.js"></script>
-<script src="~/lib/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
-<script src="~/lib/jvectormap/jquery-jvectormap-cn-mill.js"></script>
+<script src="https://cdn.bootcss.com/select2/4.0.5/js/select2.full.min.js"></script>
+<script src="https://cdn.bootcss.com/select2/4.0.5/js/i18n/zh-CN.js"></script>
 
 <environment names="Development">
     <script>window.environment = 'Development'</script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/config.js"></script>
+    <script src="~/lib/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="~/lib/jvectormap/jquery-jvectormap-cn-mill.js"></script>
     <script src="~/js/adminlte.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/App/Home/Home.js"></script>
@@ -40,6 +42,10 @@
 </environment>
 <environment names="Production">
     <script>window.environment = 'Production'</script>
+    <script src="https://mysite.bj.bcebos.com/lib/ckeditor/ckeditor.js"></script>
+    <script src="https://mysite.bj.bcebos.com/lib/ckeditor/config.js"></script>
+    <script src="https://mysite.bj.bcebos.com/lib/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="https://mysite.bj.bcebos.com/lib/jvectormap/jquery-jvectormap-cn-mill.js"></script>
     <script src="~/dist/bundles.min.js" asp-append-version="true"></script>
 </environment>
 

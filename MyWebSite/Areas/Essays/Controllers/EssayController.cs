@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MyWebSite.Areas.Essays.Models;
 using MyWebSite.Core;
 using MyWebSite.Datas;
+using MyWebSite.Datas.Config;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,10 +15,12 @@ namespace MyWebSite.Areas.Essays.Controllers
     public class EssayController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly SiteConfig _siteConfig;
 
-        public EssayController(ApplicationDbContext context)
+        public EssayController(ApplicationDbContext context, IOptions<SiteConfig> siteConfig)
         {
             _context = context;
+            _siteConfig = siteConfig.Value;
         }
 
         /// <summary>
@@ -27,13 +30,12 @@ namespace MyWebSite.Areas.Essays.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            IQueryable<Essay> essayIQ = _context.Essay.AsNoTracking()
+            IQueryable<Essay> essayIQ = _context.Essays.AsNoTracking()
                 .Select(s => new Essay
                 {
-                    Id = s.Id,
+                    EssayID = s.EssayID,
                     Title = s.Title,
                     Summary = s.Summary,
-                    Catalog = s.Catalog,
                     CreateTime = s.CreateTime
                 }).OrderByDescending(s => s.CreateTime);
 
@@ -55,8 +57,8 @@ namespace MyWebSite.Areas.Essays.Controllers
                 return NotFound();
             }
 
-            var essay = await _context.Essay.AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var essay = await _context.Essays.AsNoTracking()
+                .SingleOrDefaultAsync(m => m.EssayID == id);
             if (essay == null)
             {
                 return NotFound();
@@ -65,6 +67,19 @@ namespace MyWebSite.Areas.Essays.Controllers
             return new JsonResult(essay);
         }
 
+        /// <summary>
+        /// 随笔分类和标签
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return new JsonResult(new
+            {
+                EssayCatalogs = _siteConfig.EssayCatalogs
+            });
+        }
         /// <summary>
         /// 新建随笔
         /// </summary>
@@ -82,7 +97,7 @@ namespace MyWebSite.Areas.Essays.Controllers
 
                 _context.Add(essay);
                 await _context.SaveChangesAsync();
-                return new JsonResult(essay.Id);
+                return new JsonResult(essay.EssayID);
             }
             throw new ArgumentException();
         }
@@ -94,7 +109,7 @@ namespace MyWebSite.Areas.Essays.Controllers
         /// <returns></returns>
         [HttpPost]
         [ApiAuthorize]
-        public async Task<IActionResult> Edit([Bind("Id,Title,Content,Catalog")] Essay essay)
+        public async Task<IActionResult> Edit([Bind("EssayID,Title,Content,Catalog")] Essay essay)
         {
             if (ModelState.IsValid)
             {
@@ -104,13 +119,13 @@ namespace MyWebSite.Areas.Essays.Controllers
                     essay.UpdateTime = DateTime.Now;
 
                     _context.Entry(essay).State = EntityState.Modified;
-                    _context.Entry(essay).Property(x => x.Id).IsModified = false;
+                    _context.Entry(essay).Property(x => x.EssayID).IsModified = false;
                     _context.Entry(essay).Property(x => x.CreateTime).IsModified = false;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EssayExists(essay.Id))
+                    if (!EssayExists(essay.EssayID))
                     {
                         return NotFound();
                     }
@@ -119,7 +134,7 @@ namespace MyWebSite.Areas.Essays.Controllers
                         throw;
                     }
                 }
-                return new JsonResult(essay.Id);
+                return new JsonResult(essay.EssayID);
             }
             throw new ArgumentException();
         }
@@ -132,8 +147,8 @@ namespace MyWebSite.Areas.Essays.Controllers
                 return NotFound();
             }
 
-            var essay = await _context.Essay
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var essay = await _context.Essays
+                .SingleOrDefaultAsync(m => m.EssayID == id);
             if (essay == null)
             {
                 return NotFound();
@@ -144,7 +159,7 @@ namespace MyWebSite.Areas.Essays.Controllers
 
         private bool EssayExists(string id)
         {
-            return _context.Essay.Any(e => e.Id == id);
+            return _context.Essays.Any(e => e.EssayID == id);
         }
     }
 }

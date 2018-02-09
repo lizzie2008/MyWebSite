@@ -1,11 +1,20 @@
-﻿app.controller('EssayCreateController', ['$scope', '$state', 'EssayService', function ($scope, $state, EssayService) {
+﻿app.controller('EssayCreateController', ['$scope', '$state', function ($scope, $state) {
     //构造富文本编辑器
     var editor = CKEDITOR.replace('editorEssay');
 
-    //调用自动定时保存，并在页面离开自动关闭
-    EssayService.autoSaveBeg({ intervalTime: 20000, editor: editor });
-    $scope.$on('$destroy', function () {
-        EssayService.autoSaveEnd();
+    $('.select2').select2({
+        language: 'zh-CN',
+        allowClear: true,
+    })
+
+    //调用创建接口
+    $.ajax({
+        type: 'GET',
+        url: '/Essay/Essay/Create',
+        success: function (data) {
+            $scope.essayCatalogs = data.essayCatalogs;
+            $scope.$apply();
+        }
     });
 
     //保存
@@ -28,19 +37,20 @@
             });
             return false;
         }
-        $scope.submitting = true;
-        $.ajax({
-            type: 'POST',
-            url: '/Essay/Essay/Create',
-            data: {
-                Title: $scope.essay.title,
-                Content: content
-            },
-            success: function (data) {
-                $scope.submitting = false;
-                //保存成功跳转列表页
-                $state.go('EssayDetails', { id: data });
-            }
-        });
+        var selectdatas=$('.select2').val();
+        //$scope.submitting = true;
+        //$.ajax({
+        //    type: 'POST',
+        //    url: '/Essay/Essay/Create',
+        //    data: {
+        //        Title: $scope.essay.title,
+        //        Content: content
+        //    },
+        //    success: function (data) {
+        //        $scope.submitting = false;
+        //        //保存成功跳转列表页
+        //        $state.go('EssayDetails', { id: data });
+        //    }
+        //});
     }
 }]);

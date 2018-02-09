@@ -4,29 +4,50 @@
             <form role="form" name="myForm" novalidate>
                 <div class="box-body">
                     <div class="form-group {{myForm.title.$dirty && myForm.title.$error.required?'has-error':''}}">
-                        <label for="title">标题</label>
+                        <label for="title">标题:</label>
                         <input type="text" name="title"
                                class="form-control input-sm" placeholder="输入文章标题..."
                                ng-model="essay.title" required>
                     </div>
                     <div class="form-group">
-                        <label for="editorEssay">内容</label>
-                        <span class="pull-right">
-                            <a class="margin-r-5" style="cursor: pointer" id="recoveryTmpEssay">恢复数据</a>
-                            <span id="autoSaveInfo" class="text-red">数据尚未自动保存</span>
-                        </span>
+                        <label for="editorEssay">内容:</label>
                         <textarea id="editorEssay"></textarea>
                     </div>
-                    <button class="btn btn-instagram"
-                            ng-disabled="myForm.title.$invalid || submitting"
-                            ng-click="onSubmit()"
-                            ladda="submitting"
-                            data-style="expand-right">
-                        <i class="fa fa-save margin-r-5"></i>发布
-                    </button>
-                    <button class="btn btn-instagram" ui-sref="EssayIndex">
-                        <i class="fa fa-undo margin-r-5"></i>取消
-                    </button>
+                    <div class="form-group">
+                        <label class="margin-r-20">分类:</label>
+                        <div class="checkbox">
+                            <label class="radio-inline">
+                                <input type="radio" name="catalog" ng-model="catalog" class="margin-r-15" checked> 未分类
+                            </label>
+                            <label class="radio-inline" ng-repeat="x in essayCatalogs">
+                                <input type="radio" name="catalog" ng-model="catalog" class="margin-r-15" value="{{x}}">{{x}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="margin-r-20">标签:</label>
+                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="请选择所属标签..." style="width: 100%;" tabindex="-1">
+                            <option value="1">数据结构</option>
+                            <option value="2">操作系统</option>
+                            <option value="3">设计模式</option>
+                            <option value="4">数据库</option>
+                            <option value="5">软件架构</option>
+                            <option value="6">项目管理</option>
+                            <option value="7">企业架构</option>
+                        </select>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-instagram"
+                                ng-disabled="myForm.title.$invalid || submitting"
+                                ng-click="onSubmit()"
+                                ladda="submitting"
+                                data-style="expand-right">
+                            <i class="fa fa-save margin-r-5"></i>发布
+                        </button>
+                        <button class="btn btn-instagram" ui-sref="EssayIndex">
+                            <i class="fa fa-undo margin-r-5"></i>取消
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -13,9 +13,10 @@ using System;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180209084615_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,25 +238,16 @@ namespace MyWebSite.Migrations
                     b.Property<string>("EssayTagID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("EssayID");
+
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("EssayTagID");
 
+                    b.HasIndex("EssayID");
+
                     b.ToTable("EssayTags");
-                });
-
-            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTagAssignment", b =>
-                {
-                    b.Property<string>("EssayID");
-
-                    b.Property<string>("EssayTagID");
-
-                    b.HasKey("EssayID", "EssayTagID");
-
-                    b.HasIndex("EssayTagID");
-
-                    b.ToTable("EssayTagAssignments");
                 });
 
             modelBuilder.Entity("MyWebSite.Models.ApplicationUser", b =>
@@ -384,25 +376,19 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.Essay", b =>
                 {
                     b.HasOne("MyWebSite.Areas.Essays.Models.EssayArchive", "EssayArchive")
-                        .WithMany("Essays")
+                        .WithMany()
                         .HasForeignKey("EssayArchiveID");
 
                     b.HasOne("MyWebSite.Areas.Essays.Models.EssayCatalog", "EssayCatalog")
-                        .WithMany("Essays")
+                        .WithMany()
                         .HasForeignKey("EssayCatalogID");
                 });
 
-            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTagAssignment", b =>
+            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTag", b =>
                 {
-                    b.HasOne("MyWebSite.Areas.Essays.Models.Essay", "Essay")
+                    b.HasOne("MyWebSite.Areas.Essays.Models.Essay")
                         .WithMany("EssayTags")
-                        .HasForeignKey("EssayID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyWebSite.Areas.Essays.Models.EssayTag", "EssayTag")
-                        .WithMany()
-                        .HasForeignKey("EssayTagID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("EssayID");
                 });
 #pragma warning restore 612, 618
         }

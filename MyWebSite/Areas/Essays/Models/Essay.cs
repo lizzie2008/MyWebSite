@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyWebSite.Areas.Essays.Models
 {
+    /// <summary>
+    /// 随笔
+    /// </summary>
     public class Essay
     {
         /// <summary>
         /// 主键ID
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public string EssayID { get; set; }
 
         /// <summary>
         /// 随笔标题
@@ -39,8 +43,20 @@ namespace MyWebSite.Areas.Essays.Models
         public DateTime UpdateTime { get; set; }
 
         /// <summary>
-        /// 分类
+        /// 随笔分类
         /// </summary>
-        public string Catalog { get; set; }
+        public string EssayCatalogID { get; set; }
+        public EssayCatalog EssayCatalog { get; set; }
+
+        /// <summary>
+        /// 随笔归档
+        /// </summary>
+        public string EssayArchiveID { get; set; }
+        public EssayArchive EssayArchive { get; set; }
+
+        /// <summary>
+        /// 随笔标签
+        /// </summary>
+        public ICollection<EssayTagAssignment> EssayTags { get; set; }
     }
 }

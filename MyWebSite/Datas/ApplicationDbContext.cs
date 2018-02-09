@@ -18,6 +18,7 @@ namespace MyWebSite.Datas
             base.OnModelCreating(builder);
 
             builder.Entity<RoleMenu>().HasKey(rm => new { rm.RoleId, rm.MenuId });
+            builder.Entity<EssayTagAssignment>().HasKey(c => new { c.EssayID, c.EssayTagID });
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
@@ -25,6 +26,12 @@ namespace MyWebSite.Datas
 
         public DbSet<Menu> Menus { get; set; }
         public DbSet<RoleMenu> RoleMenus { get; set; }
-        public DbSet<Essay> Essay { get; set; }
+
+        public DbSet<Essay> Essays { get; set; }
+        public DbSet<EssayCatalog> EssayCatalogs { get; set; }
+        public DbSet<EssayTag> EssayTags { get; set; }
+        public DbSet<EssayArchive> EssayArchives { get; set; }
+        public DbSet<EssayTagAssignment> EssayTagAssignments { get; set; }
+
     }
 }
