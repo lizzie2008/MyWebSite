@@ -55,7 +55,8 @@ namespace MyWebSite.Migrations
                 name: "EssayArchives",
                 columns: table => new
                 {
-                    EssayArchiveID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EssayArchiveID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -67,12 +68,26 @@ namespace MyWebSite.Migrations
                 name: "EssayCatalogs",
                 columns: table => new
                 {
-                    EssayCatalogID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EssayCatalogID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EssayCatalogs", x => x.EssayCatalogID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EssayTags",
+                columns: table => new
+                {
+                    EssayTagID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EssayTags", x => x.EssayTagID);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,8 +221,8 @@ namespace MyWebSite.Migrations
                     EssayID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EssayArchiveID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    EssayCatalogID = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    EssayArchiveID = table.Column<int>(type: "int", nullable: false),
+                    EssayCatalogID = table.Column<int>(type: "int", nullable: false),
                     Summary = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -220,13 +235,13 @@ namespace MyWebSite.Migrations
                         column: x => x.EssayArchiveID,
                         principalTable: "EssayArchives",
                         principalColumn: "EssayArchiveID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Essays_EssayCatalogs_EssayCatalogID",
                         column: x => x.EssayCatalogID,
                         principalTable: "EssayCatalogs",
                         principalColumn: "EssayCatalogID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -254,22 +269,27 @@ namespace MyWebSite.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EssayTags",
+                name: "EssayTagAssignments",
                 columns: table => new
                 {
-                    EssayTagID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    EssayID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    EssayID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EssayTagID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EssayTags", x => x.EssayTagID);
+                    table.PrimaryKey("PK_EssayTagAssignments", x => new { x.EssayID, x.EssayTagID });
                     table.ForeignKey(
-                        name: "FK_EssayTags_Essays_EssayID",
+                        name: "FK_EssayTagAssignments_Essays_EssayID",
                         column: x => x.EssayID,
                         principalTable: "Essays",
                         principalColumn: "EssayID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EssayTagAssignments_EssayTags_EssayTagID",
+                        column: x => x.EssayTagID,
+                        principalTable: "EssayTags",
+                        principalColumn: "EssayTagID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -322,9 +342,9 @@ namespace MyWebSite.Migrations
                 column: "EssayCatalogID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EssayTags_EssayID",
-                table: "EssayTags",
-                column: "EssayID");
+                name: "IX_EssayTagAssignments_EssayTagID",
+                table: "EssayTagAssignments",
+                column: "EssayTagID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleMenus_MenuId",
@@ -350,7 +370,7 @@ namespace MyWebSite.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "EssayTags");
+                name: "EssayTagAssignments");
 
             migrationBuilder.DropTable(
                 name: "RoleMenus");
@@ -360,6 +380,9 @@ namespace MyWebSite.Migrations
 
             migrationBuilder.DropTable(
                 name: "Essays");
+
+            migrationBuilder.DropTable(
+                name: "EssayTags");
 
             migrationBuilder.DropTable(
                 name: "Menus");

@@ -13,7 +13,7 @@ namespace MyWebSite.Areas.Essays.Models
         /// 主键ID
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string EssayArchiveID { get; set; }
+        public int EssayArchiveID { get; set; }
 
         /// <summary>
         /// 归档名称

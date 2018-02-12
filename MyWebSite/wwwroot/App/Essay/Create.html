@@ -7,34 +7,36 @@
                         <label for="title">标题:</label>
                         <input type="text" name="title"
                                class="form-control input-sm" placeholder="输入文章标题..."
-                               ng-model="essay.title" required>
+                               ng-model="vm.essay.title" required>
                     </div>
                     <div class="form-group">
                         <label for="editorEssay">内容:</label>
                         <textarea id="editorEssay"></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="margin-r-20">分类:</label>
+                        <label>分类:</label>
                         <div class="checkbox">
                             <label class="radio-inline">
-                                <input type="radio" name="catalog" ng-model="catalog" class="margin-r-15" checked> 未分类
+                                <input type="radio" name="catalog"
+                                       ng-model="vm.essay.essayCatalogID" ng-value=null>
+                                未分类
                             </label>
-                            <label class="radio-inline" ng-repeat="x in essayCatalogs">
-                                <input type="radio" name="catalog" ng-model="catalog" class="margin-r-15" value="{{x}}">{{x}}
+                            <label class="radio-inline" ng-repeat="x in vm.essayCatalogs">
+                                <input type="radio" name="catalog"
+                                       ng-model="vm.essay.essayCatalogID" ng-value="x.essayCatalogID">
+                                {{x.name | limitTo : 10:3}}
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="margin-r-20">标签:</label>
-                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="请选择所属标签..." style="width: 100%;" tabindex="-1">
-                            <option value="1">数据结构</option>
-                            <option value="2">操作系统</option>
-                            <option value="3">设计模式</option>
-                            <option value="4">数据库</option>
-                            <option value="5">软件架构</option>
-                            <option value="6">项目管理</option>
-                            <option value="7">企业架构</option>
-                        </select>
+                        <label>标签:</label>
+                        <div class="checkbox">
+                            <label class="radio-inline" ng-repeat="x in vm.essayTags">
+                                <input type="checkbox" name="tag"
+                                       ng-model="x.selected" ng-value="x.essayTagID">
+                                {{x.name}}
+                            </label>
+                        </div>
                     </div>
                     <div class="pull-right">
                         <button class="btn btn-instagram"

@@ -78,6 +78,7 @@ app.run(['$rootScope', '$transitions', '$state', function ($rootScope, $transiti
                 + encodeURIComponent(window.location.href);
             return false;
         }
+        $("html,body").scrollTop(0);
     })
 }]);
 //路由配置

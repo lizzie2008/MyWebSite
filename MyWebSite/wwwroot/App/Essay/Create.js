@@ -1,18 +1,21 @@
 ﻿app.controller('EssayCreateController', ['$scope', '$state', function ($scope, $state) {
     //构造富文本编辑器
     var editor = CKEDITOR.replace('editorEssay');
-
     $('.select2').select2({
         language: 'zh-CN',
         allowClear: true,
     })
+    //作用域销毁时，销毁富文本编辑器
+    $scope.$on('$destroy', function () {
+        editor.destroy(true);
+    })  
 
     //调用创建接口
     $.ajax({
         type: 'GET',
         url: '/Essay/Essay/Create',
         success: function (data) {
-            $scope.essayCatalogs = data.essayCatalogs;
+            $scope.vm = data;
             $scope.$apply();
         }
     });
@@ -37,20 +40,26 @@
             });
             return false;
         }
-        var selectdatas=$('.select2').val();
-        //$scope.submitting = true;
-        //$.ajax({
-        //    type: 'POST',
-        //    url: '/Essay/Essay/Create',
-        //    data: {
-        //        Title: $scope.essay.title,
-        //        Content: content
-        //    },
-        //    success: function (data) {
-        //        $scope.submitting = false;
-        //        //保存成功跳转列表页
-        //        $state.go('EssayDetails', { id: data });
-        //    }
-        //});
+
+        //获取富文本内容
+        $scope.vm.essay.content = content;
+        //选中的标签
+        var selectedTags = $.map($scope.vm.essayTags, function (obj) {
+            if (obj.selected)
+                return obj.essayTagID;
+        });
+        $scope.submitting = true;
+        $.ajax({
+            type: 'POST',
+            url: '/Essay/Essay/Create',
+            data: { essay: $scope.vm.essay, selectedTags: selectedTags },
+            success: function (data) {
+                //保存成功跳转列表页
+                $state.go('EssayDetails', { id: data });
+            },
+            complete: function () {
+                $scope.submitting = false;
+            }
+        });
     }
 }]);

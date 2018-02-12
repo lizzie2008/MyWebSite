@@ -186,9 +186,9 @@ namespace MyWebSite.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<string>("EssayArchiveID");
+                    b.Property<int?>("EssayArchiveID");
 
-                    b.Property<string>("EssayCatalogID");
+                    b.Property<int?>("EssayCatalogID");
 
                     b.Property<string>("Summary");
 
@@ -208,7 +208,7 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayArchive", b =>
                 {
-                    b.Property<string>("EssayArchiveID")
+                    b.Property<int>("EssayArchiveID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
@@ -221,7 +221,7 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayCatalog", b =>
                 {
-                    b.Property<string>("EssayCatalogID")
+                    b.Property<int>("EssayCatalogID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
@@ -234,7 +234,7 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTag", b =>
                 {
-                    b.Property<string>("EssayTagID")
+                    b.Property<int>("EssayTagID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
@@ -249,7 +249,7 @@ namespace MyWebSite.Migrations
                 {
                     b.Property<string>("EssayID");
 
-                    b.Property<string>("EssayTagID");
+                    b.Property<int>("EssayTagID");
 
                     b.HasKey("EssayID", "EssayTagID");
 
@@ -395,7 +395,7 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTagAssignment", b =>
                 {
                     b.HasOne("MyWebSite.Areas.Essays.Models.Essay", "Essay")
-                        .WithMany("EssayTags")
+                        .WithMany("EssayTagAssignments")
                         .HasForeignKey("EssayID")
                         .OnDelete(DeleteBehavior.Cascade);
 

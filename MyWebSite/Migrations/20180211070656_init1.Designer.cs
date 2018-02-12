@@ -13,8 +13,8 @@ using System;
 namespace MyWebSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180209084615_init")]
-    partial class init
+    [Migration("20180211070656_init1")]
+    partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -187,9 +187,9 @@ namespace MyWebSite.Migrations
 
                     b.Property<DateTime>("CreateTime");
 
-                    b.Property<string>("EssayArchiveID");
+                    b.Property<int?>("EssayArchiveID");
 
-                    b.Property<string>("EssayCatalogID");
+                    b.Property<int?>("EssayCatalogID");
 
                     b.Property<string>("Summary");
 
@@ -209,7 +209,7 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayArchive", b =>
                 {
-                    b.Property<string>("EssayArchiveID")
+                    b.Property<int>("EssayArchiveID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
@@ -222,7 +222,7 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayCatalog", b =>
                 {
-                    b.Property<string>("EssayCatalogID")
+                    b.Property<int>("EssayCatalogID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
@@ -235,19 +235,28 @@ namespace MyWebSite.Migrations
 
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTag", b =>
                 {
-                    b.Property<string>("EssayTagID")
+                    b.Property<int>("EssayTagID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("EssayID");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("EssayTagID");
 
-                    b.HasIndex("EssayID");
-
                     b.ToTable("EssayTags");
+                });
+
+            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTagAssignment", b =>
+                {
+                    b.Property<string>("EssayID");
+
+                    b.Property<int>("EssayTagID");
+
+                    b.HasKey("EssayID", "EssayTagID");
+
+                    b.HasIndex("EssayTagID");
+
+                    b.ToTable("EssayTagAssignments");
                 });
 
             modelBuilder.Entity("MyWebSite.Models.ApplicationUser", b =>
@@ -376,19 +385,25 @@ namespace MyWebSite.Migrations
             modelBuilder.Entity("MyWebSite.Areas.Essays.Models.Essay", b =>
                 {
                     b.HasOne("MyWebSite.Areas.Essays.Models.EssayArchive", "EssayArchive")
-                        .WithMany()
+                        .WithMany("Essays")
                         .HasForeignKey("EssayArchiveID");
 
                     b.HasOne("MyWebSite.Areas.Essays.Models.EssayCatalog", "EssayCatalog")
-                        .WithMany()
+                        .WithMany("Essays")
                         .HasForeignKey("EssayCatalogID");
                 });
 
-            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTag", b =>
+            modelBuilder.Entity("MyWebSite.Areas.Essays.Models.EssayTagAssignment", b =>
                 {
-                    b.HasOne("MyWebSite.Areas.Essays.Models.Essay")
-                        .WithMany("EssayTags")
-                        .HasForeignKey("EssayID");
+                    b.HasOne("MyWebSite.Areas.Essays.Models.Essay", "Essay")
+                        .WithMany("EssayTagAssignments")
+                        .HasForeignKey("EssayID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MyWebSite.Areas.Essays.Models.EssayTag", "EssayTag")
+                        .WithMany()
+                        .HasForeignKey("EssayTagID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

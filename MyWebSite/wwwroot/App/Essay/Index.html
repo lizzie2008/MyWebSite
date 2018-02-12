@@ -19,14 +19,14 @@
         <div class="col-md-10 day">
             <div ng-repeat="essay in essayPaginatedList.items">
                 <div class="postTitle">
-                    <a ui-sref="EssayDetails({id:essay.id})">{{essay.title}}</a>
+                    <a ui-sref="EssayDetails({id:essay.essayID})">{{essay.title}}</a>
                 </div>
                 <div class="postCon">
-                    摘要: {{essay.summary}}...&nbsp;&nbsp;<a ui-sref="EssayDetails({id:essay.id})">阅读全文</a>
+                    摘要: {{essay.summary}}...&nbsp;&nbsp;<a ui-sref="EssayDetails({id:essay.essayID})">阅读全文</a>
                 </div>
                 <div class="clear"></div>
                 <div class="postDesc">
-                    posted @ {{ essay.createTime | date :'yyyy-MM-dd HH:mm'}} | 点赞(-) | 评论(-) <a ui-sref="EssayEdit({id:essay.id})">编辑</a>
+                    posted @ {{ essay.createTime | date :'yyyy-MM-dd HH:mm'}} | 点赞(-) | 评论(-) <a ui-sref="EssayEdit({id:essay.essayID})">编辑</a>
                 </div>
                 <div class="clear"></div>
                 <div class="postSeparator"></div>

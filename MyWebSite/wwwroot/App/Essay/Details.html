@@ -3,12 +3,15 @@
         <img src="/images/post_title.jpg" border="0">
         <ul id="navList">
             <li><a ui-sref="EssayIndex">回到首页</a></li>
-            <li><a ui-sref="EssayEdit({id:essay.id})">编辑随笔</a></li>
+            <li><a ui-sref="EssayEdit({id:essay.essayID})">编辑随笔</a></li>
         </ul>
         <div class="blogStats">
-            <div id="blog_stats">
-                评论- 104&nbsp;
-            </div>
+            <i class="fa fa-tag"></i>
+            <span ng-repeat="x in essay.essayTagAssignments">
+                <a ui-sref="">{{x.essayTag.name}}{{$last?'&nbsp;&nbsp;&nbsp;':','}}</a>
+            </span>
+            <i class="fa fa-commenting-o"></i>
+            <span>104&nbsp;</span>
         </div>
     </div>
     <div class="row">
@@ -17,10 +20,9 @@
             <span class="post-time">
                 <i class="fa fa-calendar-o">&nbsp;&nbsp;发布于&nbsp;&nbsp;{{essay.createTime | date :'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</i>
                 <i class="fa fa-calendar-check-o">&nbsp;&nbsp;更新于&nbsp;&nbsp;{{essay.updateTime | date :'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</i>
-                <i class="fa fa-folder-o">&nbsp;&nbsp;分类于&nbsp;&nbsp;<a ui-sref="">未分类</a>&nbsp;&nbsp;&nbsp;</i>
+                <i class="fa fa-folder-o">&nbsp;&nbsp;分类于&nbsp;&nbsp;<a ui-sref="">{{essay.essayCatalogID==null?'未分类':(essay.essayCatalog.name | limitTo : 10:3)}}</a>&nbsp;&nbsp;&nbsp;</i>
             </span>
         </div>
-        <div class="col-md-10 col-md-offset-1" id="essayContent">
-        </div>
+        <div class="col-md-10 col-md-offset-1" id="essayContent" />
     </div>
 </section>

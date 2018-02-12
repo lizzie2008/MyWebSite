@@ -13,7 +13,7 @@ namespace MyWebSite.Areas.Essays.Models
         /// 主键ID
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string EssayCatalogID { get; set; }
+        public int EssayCatalogID { get; set; }
 
         /// <summary>
         /// 分类名称

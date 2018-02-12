@@ -11,7 +11,6 @@
             $('pre code').each(function (i, block) {
                 hljs.highlightBlock(block);
             });
-            $("html,body").animate({ scrollTop: 0 }, 500);
         }
     });
 }]);

@@ -291,6 +291,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Essays\Data\" />
+    <Folder Include="Areas\Essays\ViewModels\" />
     <Folder Include="Areas\Essays\Views\" />
     <Folder Include="Areas\Tools\Models\BaiduAnalysis\" />
     <Folder Include="wwwroot\dist\" />

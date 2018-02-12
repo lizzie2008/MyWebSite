@@ -12,7 +12,7 @@ namespace MyWebSite.Areas.Essays.Models
         /// 主键ID
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string EssayTagID { get; set; }
+        public int EssayTagID { get; set; }
 
         /// <summary>
         /// 标签名称

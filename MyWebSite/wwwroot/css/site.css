@@ -12,17 +12,17 @@
     writing-mode: vertical-rl;
 }
 
-#back-to-top a {
-    color: #666;
-}
+    #back-to-top a {
+        color: #666;
+    }
 
-#back-to-top a:hover {
-    text-decoration: underline;
-}
+        #back-to-top a:hover {
+            text-decoration: underline;
+        }
 
-#back-to-top:hover {
-    opacity: 1;
-}
+    #back-to-top:hover {
+        opacity: 1;
+    }
 
 
 .table {
@@ -294,11 +294,18 @@ td {
 
 .blogStats {
     float: right;
-    color: #333333;
+    color: #666;
     margin-top: 8px;
     text-align: right;
 }
 
+    .blogStats a {
+        color: #666;
+    }
+
+        .blogStats a:hover {
+            color: black;
+        }
 
 .essay {
     color: #555;
@@ -442,4 +449,3 @@ td {
         text-decoration: underline;
         font-size: 13px;
     }
-

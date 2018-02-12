@@ -8,7 +8,7 @@
         public string EssayID { get; set; }
         public Essay Essay { get; set; }
 
-        public string EssayTagID { get; set; }
+        public int EssayTagID { get; set; }
         public EssayTag EssayTag { get; set; }
     }
 }

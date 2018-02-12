@@ -45,18 +45,18 @@ namespace MyWebSite.Areas.Essays.Models
         /// <summary>
         /// 随笔分类
         /// </summary>
-        public string EssayCatalogID { get; set; }
+        public int? EssayCatalogID { get; set; }
         public EssayCatalog EssayCatalog { get; set; }
 
         /// <summary>
         /// 随笔归档
         /// </summary>
-        public string EssayArchiveID { get; set; }
+        public int? EssayArchiveID { get; set; }
         public EssayArchive EssayArchive { get; set; }
 
         /// <summary>
         /// 随笔标签
         /// </summary>
-        public ICollection<EssayTagAssignment> EssayTags { get; set; }
+        public ICollection<EssayTagAssignment> EssayTagAssignments { get; set; }
     }
 }
