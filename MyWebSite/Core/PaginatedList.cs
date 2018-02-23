@@ -33,13 +33,12 @@ namespace MyWebSite.Core
         /// </summary>
         public IList<T> Items { get; set; }
 
-        public PaginatedList(List<T> items, int totalCount, int pageIndex, int pageSize, int maxPages)
+        public PaginatedList(List<T> items, int totalCount, int totalPages, int pageIndex, int pageSize, int maxPages)
         {
             Items = items;
             TotalCount = totalCount;
+            TotalPages = totalPages;
             PageIndex = pageIndex;
-            TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
-
             var dividedCount = maxPages / 2;
             var suposeBegPage = pageIndex - dividedCount;
             var suposeEndPage = suposeBegPage + (maxPages - 1);
@@ -53,7 +52,7 @@ namespace MyWebSite.Core
             }
             else
             {
-                for (int i = 1; i <= Math.Min(TotalPages,maxPages); i++)
+                for (int i = 1; i <= Math.Min(TotalPages, maxPages); i++)
                 {
                     PageList.Add(i);
                 }
@@ -90,8 +89,10 @@ namespace MyWebSite.Core
         public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize = 10, int maxPages = 10)
         {
             var count = await source.CountAsync();
+            var totalPages = (int)Math.Ceiling(count / (double)pageSize);
+            pageIndex = pageIndex > totalPages ? 1 : pageIndex;
             var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PaginatedList<T>(items, count, pageIndex, pageSize, maxPages);
+            return new PaginatedList<T>(items, count, totalPages, pageIndex, pageSize, maxPages);
         }
     }
 }

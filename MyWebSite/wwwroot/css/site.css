@@ -9,11 +9,11 @@
     right: 10px;
     z-index: 9999;
     opacity: 0.7;
-    writing-mode: vertical-rl;
 }
 
     #back-to-top a {
         color: #666;
+        text-decoration: underline;
     }
 
         #back-to-top a:hover {
@@ -288,10 +288,6 @@ td {
         color: #333333;
     }
 
-        #navList a:hover {
-            color: #935A32;
-        }
-
 .blogStats {
     float: right;
     color: #666;
@@ -324,24 +320,18 @@ td {
 }
 
 .postTitle {
-    border-bottom: 1px solid #FFF9F9;
-    border-left: 6px solid #6B5F55;
+    border-left: 6px solid #ccc;
     padding: 3px;
     padding-left: 5px;
     font-size: 14px;
-    font-weight: bold;
     margin: 20px 0 10px
 }
 
     .postTitle a:link, .postTitle a:visited, .postTitle a:active {
-        color: #555454;
-        transition: all 0.4s linear 0s;
-    }
-
-    .postTitle a:hover {
-        margin-left: 5px;
-        color: black;
+        color: #666666;
         text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
     }
 
 .postCon {
@@ -349,40 +339,33 @@ td {
 }
 
     .postCon a {
-        color: #666;
-        text-decoration: underline;
     }
-
-        .postCon a:hover {
-            color: black;
-        }
 
     .postCon .c_b_p_desc {
         word-wrap: break-word;
         word-break: break-all;
         overflow: hidden;
-        line-height: 1.5;
     }
 
 .postDesc {
     border-bottom: 0 dotted #999;
     color: #666;
     text-align: right;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    vertical-align: middle;
-    font-size: 11px;
 }
 
-    .postDesc a:link, .postDesc a:active, .postDesc a:visited {
-        color: #666;
-        text-decoration: underline;
-    }
+.hvr-pulse-shrink {
+    vertical-align: baseline;
+}
 
-    .postDesc a:hover {
-        color: black;
-        text-decoration: underline
-    }
+.postDesc a:link, .postDesc a:active, .postDesc a:visited {
+    color: #666;
+    text-decoration: underline;
+}
+
+.postDesc a:hover {
+    color: black;
+    text-decoration: underline
+}
 
 .postSeparator {
     border-top: 1px dashed #DCD4D4;
@@ -430,14 +413,6 @@ td {
     padding: 40px;
 }
 
-    .sidecolumn .catListPostCategory {
-        margin-bottom: 20px;
-    }
-
-    .sidecolumn .catListTitle {
-        font-weight: bold;
-    }
-
     .sidecolumn ul {
         padding: 0px;
     }
@@ -449,3 +424,29 @@ td {
         text-decoration: underline;
         font-size: 13px;
     }
+
+.card {
+    border-radius: 4px;
+}
+
+.card-image {
+    display: flex;
+    width: 100%;
+    overflow-x: hidden;
+    background-size: contain;
+    color: #fff;
+}
+
+    .card-image .card-image-cell {
+        margin: auto;
+    }
+
+    .card-image a {
+        color: #fff;
+    }
+
+.card .thumbnail:hover {
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 10px 18px rgba(0,0,0,0.1);
+    opacity: 1;
+}

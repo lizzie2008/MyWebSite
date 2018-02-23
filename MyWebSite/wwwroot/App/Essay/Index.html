@@ -3,26 +3,27 @@
         <div class="col-md-12" id="navigator">
             <img src="/images/post_title.jpg" border="0">
             <ul id="navList">
-                <li><a ui-sref="EssayCreate">新随笔</a></li>
-                <li><a ui-sref="">随笔管理</a></li>
-                <li><a ui-sref="">分类管理</a></li>
-                <li><a ui-sref="">评论管理</a></li>
-                <li><a ui-sref="">设置选项</a></li>
+                <li><a class="hvr-grow" ui-sref="EssayIndex({ pageIndex: null, essayCatalogID: null, essayArchiveID: null, essayTagID: null })">随笔首页</a></li>
+                <li><a class="hvr-grow" ui-sref="EssayCreate">新建随笔</a></li>
+                <li><a class="hvr-grow" ui-sref="">随笔管理</a></li>
+                <li><a class="hvr-grow" ui-sref="">分类管理</a></li>
+                <li><a class="hvr-grow" ui-sref="">评论管理</a></li>
+                <li><a class="hvr-grow" ui-sref="">设置选项</a></li>
             </ul>
             <div class="blogStats">
                 <div id="blog_stats">
-                    随笔- {{essayPaginatedList.totalCount}}&nbsp;
+                    随笔- {{vm.essays.totalCount}}&nbsp;
                     评论- 104&nbsp;
                 </div>
             </div>
         </div>
-        <div class="col-md-10 day">
-            <div ng-repeat="essay in essayPaginatedList.items">
+        <div class="col-md-9 day">
+            <div ng-repeat="essay in vm.essays.items">
                 <div class="postTitle">
-                    <a ui-sref="EssayDetails({id:essay.essayID})">{{essay.title}}</a>
+                    <a class="hvr-wobble-horizontal" ui-sref="EssayDetails({id:essay.essayID})">{{essay.title}}</a>
                 </div>
                 <div class="postCon">
-                    摘要: {{essay.summary}}...&nbsp;&nbsp;<a ui-sref="EssayDetails({id:essay.essayID})">阅读全文</a>
+                    摘要: {{essay.summary}}...&nbsp;&nbsp;<a class="hvr-pulse-shrink" ui-sref="EssayDetails({id:essay.essayID})">阅读全文</a>
                 </div>
                 <div class="clear"></div>
                 <div class="postDesc">
@@ -33,46 +34,72 @@
             </div>
             <div>
                 <div class="box-footer">
-                    <span>{{essayPaginatedList.totalCount}}条记录, 共{{essayPaginatedList.totalPages}}页</span>
+                    <span>{{vm.essays.totalCount}}条记录, 共{{vm.essays.totalPages}}页</span>
                     <ul class="pagination pagination-sm no-margin pull-right">
                         <li>
-                            <a ui-sref="EssayIndex({pageIndex:essayPaginatedList.pageIndex-1})"
-                               class="btn {{essayPaginatedList.hasPreviousPage?'':'disabled'}}">&lt;上一页</a>
+                            <a ui-sref="EssayIndex({pageIndex:vm.essays.pageIndex-1})"
+                               class="btn {{vm.essays.hasPreviousPage?'':'disabled'}}">&lt;上一页</a>
                         </li>
-                        <li ng-repeat="x in essayPaginatedList.pageList">
+                        <li ng-repeat="x in vm.essays.pageList">
                             <a ui-sref="EssayIndex({pageIndex:x})"
-                               class="{{essayPaginatedList.pageIndex==x?'bg-gray':''}}">{{x}}</a>
+                               class="{{vm.essays.pageIndex==x?'bg-gray':''}}">{{x}}</a>
                         </li>
                         <li>
-                            <a ui-sref="EssayIndex({pageIndex:essayPaginatedList.pageIndex+1})"
-                               class="btn {{essayPaginatedList.hasNextPage?'':'disabled'}}">下一页&gt;</a>
+                            <a ui-sref="EssayIndex({pageIndex:vm.essays.pageIndex+1})"
+                               class="btn {{vm.essays.hasNextPage?'':'disabled'}}">下一页&gt;</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-md-2 sidecolumn">
-            <div class="catListPostCategory">
-                <h4 class="catListTitle">随笔分类</h4>
-                <ul>
-                    <li><a ui-sref="">ASP.NET Core(6)</a> </li>
-                    <li><a ui-sref="">ASP.NET MVC(1)</a> </li>
-                    <li><a ui-sref="">Golang(3)</a> </li>
-                    <li><a ui-sref="">Redis(3)</a> </li>
-                    <li><a ui-sref="">Unity3D(4)</a> </li>
-                    <li><a ui-sref="">WPF(3)</a> </li>
-                </ul>
+        <div class="col-md-3 sidecolumn">
+            <div class="card text-center">
+                <div class="thumbnail">
+                    <div class="card-image geopattern" data-pattern-id="aaaa222222">
+                        <div class="card-image-cell">
+                            <h3 class="card-title">
+                                随笔分类
+                            </h3>
+                            <ul>
+                                <li ng-repeat="catalogInfo in vm.catalogInfos">
+                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:catalogInfo.ESSAYCATALOGID,essayArchiveID:null,essayTagID:null})">{{catalogInfo.ESSAYCATALOGNAME | limitTo : 10:3}}({{catalogInfo.CATALOGCOUNT}})</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="catListPostCategory">
-                <h4 class="catListTitle">随笔归档</h4>
-                <ul>
-                    <li><a ui-sref="">2018年02月(6)</a> </li>
-                    <li><a ui-sref="">2018年01月(1)</a> </li>
-                    <li><a ui-sref="">2017年12月(3)</a> </li>
-                    <li><a ui-sref="">2017年11月(3)</a> </li>
-                    <li><a ui-sref="">2017年10月(4)</a> </li>
-                    <li><a ui-sref="">2017年09月(3)</a> </li>
-                </ul>
+            <div class="card text-center">
+                <div class="thumbnail">
+                    <div class="card-image geopattern" data-pattern-id="aaaa2222222">
+                        <div class="card-image-cell">
+                            <h3 class="card-title">
+                               随笔归档
+                            </h3>
+                            <ul>
+                                <li ng-repeat="archiveInfo in vm.archiveInfos">
+                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:null,essayArchiveID:archiveInfo.ESSAYARCHIVEID,essayTagID:null})">{{archiveInfo.ESSAYARCHIVENAME}}({{archiveInfo.ARCHIVECOUNT}})</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card text-center">
+                <div class="thumbnail">
+                    <div class="card-image geopattern" data-pattern-id="aaaa22222222">
+                        <div class="card-image-cell">
+                            <h3 class="card-title">
+                                随笔标签
+                            </h3>
+                            <ul>
+                                <li ng-repeat="tagInfo in vm.tagInfos">
+                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:null,essayArchiveID:null,essayTagID:tagInfo.ESSAYTAGID})">{{tagInfo.ESSAYTAGNAME}}({{tagInfo.TAGCOUNT}})</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

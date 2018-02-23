@@ -107,7 +107,7 @@
                 <h3 class="control-sidebar-heading">语言设置</h3>
                 <div class="form-group">
                     @{
-                        string language = HttpContextAccessorIns.HttpContext.Request.Cookies[".AspNetCore.Culture"]?? "c=zh-CN|uic=zh-CN";
+                        string language = HttpContextAccessorIns.HttpContext.Request.Cookies[".AspNetCore.Culture"] ?? "c=zh-CN|uic=zh-CN";
                     }
                     <label class="control-sidebar-subheading">
                         中文
@@ -180,7 +180,9 @@
 <div class="control-sidebar-bg"></div>
 <!-- back to top -->
 <div id="back-to-top" hidden>
-    <a ui-sref="">
-        <i class="fa fa-arrow-circle-up">回到顶部</i>
+    <a ui-sref="" class="hvr-pulse-shrink">
+        <span>
+            TOP ↑
+        </span>
     </a>
 </div>

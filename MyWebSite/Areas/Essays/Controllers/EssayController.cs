@@ -6,11 +6,22 @@ using MyWebSite.Datas;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
+using MyWebSite.Extensions;
 
 namespace MyWebSite.Areas.Essays.Controllers
 {
+    public class EssayCatalogInfo
+    {
+        public int? EssayCatalogID { get; set; }
+        public int CatalogCount { get; set; }
+        public string EssayCatalogName { get; set; }
+    }
+
     [Area("Essay")]
     public class EssayController : Controller
     {
@@ -26,21 +37,88 @@ namespace MyWebSite.Areas.Essays.Controllers
         /// </summary>
         /// <param name="pageIndex"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Index(int pageIndex = 1)
+        public async Task<IActionResult> Index(int pageIndex = 1, int pageSize = 10,
+            int? essayCatalogID = null, int? essayArchiveID = null, int? essayTagID = null)
         {
-            IQueryable<Essay> essayIQ = _context.Essays.AsNoTracking()
-                .Select(s => new Essay
-                {
-                    EssayID = s.EssayID,
-                    Title = s.Title,
-                    Summary = s.Summary,
-                    CreateTime = s.CreateTime
-                }).OrderByDescending(s => s.CreateTime);
+            //条件查询
+            IQueryable<Essay> essayIQ = _context.Essays.AsNoTracking();
+            //分类查询
+            if (essayCatalogID != null)
+            {
+                essayIQ = essayIQ.Where(s => s.EssayCatalogID == (essayCatalogID == 0 ? null : essayCatalogID));
+            }
+            //归档查询
+            if (essayArchiveID != null)
+            {
+                essayIQ = essayIQ.Where(s => s.EssayArchiveID == essayArchiveID);
+            }
+            //标签查询
+            if (essayTagID != null)
+            {
+                essayIQ = essayIQ.Where(s => s.EssayTagAssignments.Any(o => o.EssayTagID == essayTagID));
+            }
+            //返回需要的随笔列
+            essayIQ = essayIQ.Select(s => new Essay
+            {
+                EssayID = s.EssayID,
+                Title = s.Title,
+                Summary = s.Summary,
+                CreateTime = s.CreateTime
+            }).OrderByDescending(s => s.CreateTime);
+            var essays = await PaginatedList<Essay>.CreateAsync(essayIQ, pageIndex, pageSize);
 
-            var result = await PaginatedList<Essay>.CreateAsync(
-                essayIQ, pageIndex);
+            #region 获取额外显示信息
 
-            return new JsonResult(result);
+            //分类信息
+            var catalogSql = @"SELECT CASE
+                                 WHEN T0.ESSAYCATALOGID IS NULL THEN
+                                  0
+                                 ELSE
+                                  T0.ESSAYCATALOGID
+                               END AS ESSAYCATALOGID,
+                               CASE
+                                 WHEN T1.NAME IS NULL THEN
+                                  '00.未分类'
+                                 ELSE
+                                  T1.NAME
+                               END AS ESSAYCATALOGNAME, COUNT(1) AS CATALOGCOUNT
+                          FROM ESSAYS T0
+                          LEFT JOIN ESSAYCATALOGS T1
+                            ON T0.ESSAYCATALOGID = T1.ESSAYCATALOGID
+                         GROUP BY T0.ESSAYCATALOGID, T1.NAME
+                         ORDER BY T1.NAME";
+            var catalogInfos = _context.Database.GetDbConnection().Query(catalogSql);
+
+            //归档信息
+            var archiveSql = @"SELECT T0.ESSAYARCHIVEID, T1.NAME AS ESSAYARCHIVENAME,
+                                      COUNT(1) AS ARCHIVECOUNT
+                                 FROM ESSAYS T0
+                                 LEFT JOIN ESSAYARCHIVES T1
+                                   ON T0.ESSAYARCHIVEID = T1.ESSAYARCHIVEID
+                                GROUP BY T0.ESSAYARCHIVEID, T1.NAME
+                                ORDER BY T1.NAME DESC";
+            var archiveInfos = _context.Database.GetDbConnection().Query(archiveSql);
+
+            //归档信息
+            var tagSql = @"SELECT T0.ESSAYTAGID, T2.NAME AS ESSAYTAGNAME, COUNT(1) AS TAGCOUNT
+                             FROM ESSAYTAGASSIGNMENTS T0
+                            INNER JOIN ESSAYS T1
+                               ON T0.ESSAYID = T1.ESSAYID
+                            INNER JOIN ESSAYTAGS T2
+                               ON T0.ESSAYTAGID = T2.ESSAYTAGID
+                            GROUP BY T0.ESSAYTAGID, T2.NAME
+                            ORDER BY T2.NAME";
+            var tagInfos = _context.Database.GetDbConnection().Query(tagSql);
+
+            #endregion
+
+            return new JsonResult(new
+            {
+                Essays = essays,
+                CatalogInfos = catalogInfos,
+                ArchiveInfos = archiveInfos,
+                TagInfos = tagInfos
+            });
         }
 
         /// <summary>
