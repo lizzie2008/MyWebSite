@@ -135,6 +135,9 @@
   <data name="MyEssay" xml:space="preserve">
     <value>My Essay</value>
   </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
   <data name="RoleInfo" xml:space="preserve">
     <value>Role Info</value>
   </data>

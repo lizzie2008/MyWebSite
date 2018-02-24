@@ -44,12 +44,12 @@
                         </div>
                         <div class="pull-right">
                             <a ng-click="addMenu()"
-                               class="btn btn-social btn-instagram margin-r-5">
+                               class="btn btn-social btn-instagram {{isAuthenticated?'':'disabled'}} margin-r-5">
                                 <i class="fa fa-plus margin-r-5"></i>新增
                             </a>
                             <a ng-click="save(navMenus)"
                                ng-disabled="submitting"
-                               class="btn btn-social btn-instagram">
+                               class="btn btn-social btn-instagram {{isAuthenticated?'':'disabled'}}">
                                 <i class="fa fa-save margin-r-5"></i>保存
                             </a>
                         </div>

@@ -5,6 +5,12 @@ hm.src = "https://hm.baidu.com/hm.js?ba97b9ac7e6eb8c1d4e5e331e329edd0";
 var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hm, s);
 
+//登录跳转
+$('#loginLink').click(function () {
+    window.location.href = "/Account/Login?ReturnUrl="
+        + encodeURIComponent(window.location.href);
+})
+
 // 设置jQuery Ajax全局的参数  
 $.ajaxSetup({
     type: "POST",
@@ -70,13 +76,15 @@ app.run(['$rootScope', '$transitions', '$state', function ($rootScope, $transiti
     //UI权限配置
     var needAuthStateNames = ['EssayCreate', 'EssayEdit'];
     $transitions.onStart({}, function (trans) {
-        var isAuthenticated = IsAuthenticated();
         var toStateName = trans.to().name;
-        //没有权限，跳转登录界面
-        if (!isAuthenticated && $.inArray(toStateName, needAuthStateNames) >= 0) {
-            window.location.href = "/Account/Login?ReturnUrl="
-                + encodeURIComponent(window.location.href);
-            return false;
+        if ($.inArray(toStateName, needAuthStateNames) >= 0) {
+            var isAuthenticated = IsAuthenticated();
+            //没有权限，跳转登录界面
+            if (!isAuthenticated) {
+                window.location.href = "/Account/Login?ReturnUrl="
+                    + encodeURIComponent(window.location.href);
+                return false;
+            }
         }
         $("html,body").scrollTop(0);
     })
@@ -85,9 +93,14 @@ app.run(['$rootScope', '$transitions', '$state', function ($rootScope, $transiti
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('Home', {
+    $stateProvider.state('EssayIndex', {
         //主页
         url: '/',
+        params: { pageIndex: null, essayCatalogID: null, essayArchiveID: null, essayTagID: null },
+        templateUrl: 'App/Essay/Index.html'
+    }).state('MyProfile', {
+        //博主信息
+        url: '/MyProfile',
         templateUrl: 'App/Home/Home.html'
     }).state('MenuManagement', {
         //菜单管理
@@ -101,11 +114,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         //网站分析
         url: '/Tools/SiteAnalytics',
         templateUrl: 'App/Tools/SiteAnalytics/SiteAnalytics.html'
-    }).state('EssayIndex', {
-        //随笔列表
-        url: '/EssayIndex',
-        params: { pageIndex: null, essayCatalogID: null, essayArchiveID: null, essayTagID: null },
-        templateUrl: 'App/Essay/Index.html'
     }).state('EssayCreate', {
         //随笔新建
         url: '/EssayCreate',

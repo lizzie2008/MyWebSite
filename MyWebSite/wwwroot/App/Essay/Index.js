@@ -1,5 +1,7 @@
 ﻿app.controller('EssayIndexController', ['$scope', '$stateParams', function ($scope, $stateParams) {
 
+    $scope.isAuthenticated = IsAuthenticated();
+    //生成背景图
     $('.geopattern').each(function () {
         $(this).geopattern($(this).data('pattern-id'));
     });

@@ -135,6 +135,9 @@
   <data name="MyEssay" xml:space="preserve">
     <value>我的随笔</value>
   </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>博主信息</value>
+  </data>
   <data name="RoleInfo" xml:space="preserve">
     <value>角色信息</value>
   </data>

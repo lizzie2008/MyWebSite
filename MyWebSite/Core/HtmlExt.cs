@@ -4,7 +4,7 @@ namespace MyWebSite.Core
 {
     public static class HtmlExt
     {
-        public static string StripHTML(this string strHtml, int count = 200)
+        public static string StripHTML(this string strHtml, int count = 160)
         {
             string[] aryReg ={
                 @"<script[^>]*?>.*?</script>",

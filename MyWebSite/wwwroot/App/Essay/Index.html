@@ -3,12 +3,12 @@
         <div class="col-md-12" id="navigator">
             <img src="/images/post_title.jpg" border="0">
             <ul id="navList">
-                <li><a class="hvr-grow" ui-sref="EssayIndex({ pageIndex: null, essayCatalogID: null, essayArchiveID: null, essayTagID: null })">随笔首页</a></li>
-                <li><a class="hvr-grow" ui-sref="EssayCreate">新建随笔</a></li>
-                <li><a class="hvr-grow" ui-sref="">随笔管理</a></li>
-                <li><a class="hvr-grow" ui-sref="">分类管理</a></li>
-                <li><a class="hvr-grow" ui-sref="">评论管理</a></li>
-                <li><a class="hvr-grow" ui-sref="">设置选项</a></li>
+                <li><a class="hvr-grow btn" ui-sref="EssayIndex({ pageIndex: null, essayCatalogID: null, essayArchiveID: null, essayTagID: null })">随笔首页</a></li>
+                <li><a class="hvr-grow btn {{isAuthenticated?'':'disabled'}}" ui-sref="EssayCreate">新建随笔</a></li>
+                <li><a class="hvr-grow btn disabled" ui-sref="">随笔管理</a></li>
+                <li><a class="hvr-grow btn disabled" ui-sref="">分类管理</a></li>
+                <li><a class="hvr-grow btn disabled" ui-sref="">评论管理</a></li>
+                <li><a class="hvr-grow btn disabled" ui-sref="">设置选项</a></li>
             </ul>
             <div class="blogStats">
                 <div id="blog_stats">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="clear"></div>
                 <div class="postDesc">
-                    posted @ {{ essay.createTime | date :'yyyy-MM-dd HH:mm'}} | 点赞(-) | 评论(-) <a ui-sref="EssayEdit({id:essay.essayID})">编辑</a>
+                    posted @ {{ essay.createTime | date :'yyyy-MM-dd HH:mm'}} | 点赞(-) | 评论(-) <a ng-show="isAuthenticated" ui-sref="EssayEdit({id:essay.essayID})">编辑</a>
                 </div>
                 <div class="clear"></div>
                 <div class="postSeparator"></div>
@@ -74,7 +74,7 @@
                     <div class="card-image geopattern" data-pattern-id="aaaa2222222">
                         <div class="card-image-cell">
                             <h3 class="card-title">
-                               随笔归档
+                                随笔归档
                             </h3>
                             <ul>
                                 <li ng-repeat="archiveInfo in vm.archiveInfos">

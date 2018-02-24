@@ -1,4 +1,6 @@
 ﻿app.controller('MenuManagementController', ['$scope', function ($scope) {
+    $scope.isAuthenticated = IsAuthenticated();
+
     //编辑菜单
     $scope.editMenu = function (item) {
         $scope.selectedMenu = item;

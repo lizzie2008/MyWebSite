@@ -454,7 +454,14 @@ namespace MyWebSite.Controllers
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
-            return Redirect(returnUrl);
+            if (returnUrl!=null)
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
         }
 
         #endregion
