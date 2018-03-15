@@ -62,7 +62,7 @@
                             </h3>
                             <ul>
                                 <li ng-repeat="catalogInfo in vm.catalogInfos">
-                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:catalogInfo.ESSAYCATALOGID,essayArchiveID:null,essayTagID:null})">{{catalogInfo.ESSAYCATALOGNAME | limitTo : 10:3}}({{catalogInfo.CATALOGCOUNT}})</a>
+                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:catalogInfo.EssayCatalogID,essayArchiveID:null,essayTagID:null})">{{catalogInfo.EssayCatalogName | limitTo : 10:3}}({{catalogInfo.CatalogCount}})</a>
                                 </li>
                             </ul>
                         </div>
@@ -78,7 +78,7 @@
                             </h3>
                             <ul>
                                 <li ng-repeat="archiveInfo in vm.archiveInfos">
-                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:null,essayArchiveID:archiveInfo.ESSAYARCHIVEID,essayTagID:null})">{{archiveInfo.ESSAYARCHIVENAME}}({{archiveInfo.ARCHIVECOUNT}})</a>
+                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:null,essayArchiveID:archiveInfo.EssayArchiveID,essayTagID:null})">{{archiveInfo.EssayArchiveName}}({{archiveInfo.ArchiveCount}})</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,7 +94,7 @@
                             </h3>
                             <ul>
                                 <li ng-repeat="tagInfo in vm.tagInfos">
-                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:null,essayArchiveID:null,essayTagID:tagInfo.ESSAYTAGID})">{{tagInfo.ESSAYTAGNAME}}({{tagInfo.TAGCOUNT}})</a>
+                                    <a class="hvr-backward" ui-sref="EssayIndex({pageIndex:null,essayCatalogID:null,essayArchiveID:null,essayTagID:tagInfo.EssayTagID})">{{tagInfo.EssayTagName}}({{tagInfo.TagCount}})</a>
                                 </li>
                             </ul>
                         </div>

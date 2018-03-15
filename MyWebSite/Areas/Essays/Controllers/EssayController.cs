@@ -70,44 +70,48 @@ namespace MyWebSite.Areas.Essays.Controllers
             #region 获取额外显示信息
 
             //分类信息
-            var catalogSql = @"SELECT CASE
-                                 WHEN T0.ESSAYCATALOGID IS NULL THEN
-                                  0
-                                 ELSE
-                                  T0.ESSAYCATALOGID
-                               END AS ESSAYCATALOGID,
-                               CASE
-                                 WHEN T1.NAME IS NULL THEN
-                                  '00.未分类'
-                                 ELSE
-                                  T1.NAME
-                               END AS ESSAYCATALOGNAME, COUNT(1) AS CATALOGCOUNT
-                          FROM ESSAYS T0
-                          LEFT JOIN ESSAYCATALOGS T1
-                            ON T0.ESSAYCATALOGID = T1.ESSAYCATALOGID
-                         GROUP BY T0.ESSAYCATALOGID, T1.NAME
-                         ORDER BY T1.NAME";
+            var catalogSql = @"SELECT 
+                                   CASE
+                                       WHEN T0.EssayCatalogID IS NULL THEN 0
+                                       ELSE T0.EssayCatalogID
+                                   END AS EssayCatalogID,
+                                   CASE
+                                       WHEN T1.Name IS NULL THEN '00.未分类'
+                                       ELSE T1.Name
+                                   END AS EssayCatalogName,
+                                   COUNT(1) AS CatalogCount
+                               FROM
+                                   Essays T0
+                                       LEFT JOIN
+                                   EssayCatalogs T1 ON T0.EssayCatalogID = T1.EssayCatalogID
+                               GROUP BY T0.EssayCatalogID , T1.Name
+                               ORDER BY T1.Name";
             var catalogInfos = _context.Database.GetDbConnection().Query(catalogSql);
 
             //归档信息
-            var archiveSql = @"SELECT T0.ESSAYARCHIVEID, T1.NAME AS ESSAYARCHIVENAME,
-                                      COUNT(1) AS ARCHIVECOUNT
-                                 FROM ESSAYS T0
-                                 LEFT JOIN ESSAYARCHIVES T1
-                                   ON T0.ESSAYARCHIVEID = T1.ESSAYARCHIVEID
-                                GROUP BY T0.ESSAYARCHIVEID, T1.NAME
-                                ORDER BY T1.NAME DESC";
+            var archiveSql = @"SELECT 
+                                   T0.EssayArchiveID,
+                                   T1.Name AS EssayArchiveName,
+                                   COUNT(1) AS ArchiveCount
+                               FROM
+                                   Essays T0
+                                       LEFT JOIN
+                                   EssayArchives T1 ON T0.EssayArchiveID = T1.EssayArchiveID
+                               GROUP BY T0.EssayArchiveID , T1.Name
+                               ORDER BY T1.Name DESC";
             var archiveInfos = _context.Database.GetDbConnection().Query(archiveSql);
 
             //归档信息
-            var tagSql = @"SELECT T0.ESSAYTAGID, T2.NAME AS ESSAYTAGNAME, COUNT(1) AS TAGCOUNT
-                             FROM ESSAYTAGASSIGNMENTS T0
-                            INNER JOIN ESSAYS T1
-                               ON T0.ESSAYID = T1.ESSAYID
-                            INNER JOIN ESSAYTAGS T2
-                               ON T0.ESSAYTAGID = T2.ESSAYTAGID
-                            GROUP BY T0.ESSAYTAGID, T2.NAME
-                            ORDER BY T2.NAME";
+            var tagSql = @"SELECT 
+                               T0.EssayTagID, T2.Name AS EssayTagName, COUNT(1) AS TagCount
+                           FROM
+                               EssayTagAssignments T0
+                                   INNER JOIN
+                               Essays T1 ON T0.EssayID = T1.EssayID
+                                   INNER JOIN
+                               EssayTags T2 ON T0.EssayTagID = T2.EssayTagID
+                           GROUP BY T0.EssayTagID , T2.Name
+                           ORDER BY T2.Name";
             var tagInfos = _context.Database.GetDbConnection().Query(tagSql);
 
             #endregion

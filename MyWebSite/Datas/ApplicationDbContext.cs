@@ -19,6 +19,9 @@ namespace MyWebSite.Datas
 
             builder.Entity<RoleMenu>().HasKey(rm => new { rm.RoleId, rm.MenuId });
             builder.Entity<EssayTagAssignment>().HasKey(c => new { c.EssayID, c.EssayTagID });
+
+
+
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
