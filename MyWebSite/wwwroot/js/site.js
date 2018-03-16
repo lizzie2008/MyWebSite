@@ -93,15 +93,15 @@ app.run(['$rootScope', '$transitions', '$state', function ($rootScope, $transiti
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('EssayIndex', {
-        //主页
+    $stateProvider.state('MyProfile', {
+        //博主信息
         url: '/',
+        templateUrl: 'App/Home/Home.html'
+    }).state('EssayIndex', {
+        //个人随笔
+        url: '/EssayIndex',
         params: { pageIndex: null, essayCatalogID: null, essayArchiveID: null, essayTagID: null },
         templateUrl: 'App/Essay/Index.html'
-    }).state('MyProfile', {
-        //博主信息
-        url: '/MyProfile',
-        templateUrl: 'App/Home/Home.html'
     }).state('MenuManagement', {
         //菜单管理
         url: '/Configuration/MenuManagement',

@@ -1,17 +1,17 @@
 ﻿{
   "NavBarMenus": {
     "NavMenus": [
-      //随笔信息
-      {
-        "Name": "MyEssay",
-        "TemplateUrl": "EssayIndex",
-        "Icon": "fa-coffee"
-      },
       //博主信息
       {
         "Name": "MyProfile",
         "TemplateUrl": "MyProfile",
         "Icon": "fa-info-circle"
+      },
+      //我的随笔
+      {
+        "Name": "MyEssay",
+        "TemplateUrl": "EssayIndex",
+        "Icon": "fa-coffee"
       },
       {
         //我的博客
