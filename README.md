@@ -11,8 +11,8 @@ MySQL5.7
 ```
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Data Source=<Database IP>;Initial Catalog=MyWebSite;
-    Persist Security Info=True;User ID=<UserID>;Password=<Password>"
+    "DefaultConnection": "server=<Database IP>;port=<Database Port>;database=MyWebSite;
+    user=<UserID>;password=<Password>"
   },
   "Logging": {
     "IncludeScopes": false,
