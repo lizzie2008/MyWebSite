@@ -35,8 +35,8 @@ MySQL5.7
 具体可以参考我的系列文章：
 [.NET Core 搭建个人网站 | (7) Linux系统移植](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite07/)
 
-目录结构描述
-
+#### 目录结构描述
+```
 ├── wwwroot                     // 网站根目录
 │   ├── App                     // 应用逻辑
 │   ├── css                     // 网站样式
@@ -60,7 +60,7 @@ MySQL5.7
 ├── bundleconfig.json           // 打包配置
 ├── Startup.cs                  // 启动入口
 └── Readme.md                   // help
-
+```
 #### V1.0.0 版本内容更新
 1. 后台管理
 	- 用户管理
