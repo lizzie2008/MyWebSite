@@ -2,9 +2,9 @@
 ===========================
 
 #### 环境依赖
-Linux/Windows/Mac  
-dotnet-sdk-2.0.0  
-MySQL5.7
+- Linux/Windows/Mac  
+- dotnet-sdk-2.0.0  
+- MySQL5.7
 
 #### 调试部署
 调试说明：appsettings.json文件请自行添加，格式如下：
@@ -63,8 +63,8 @@ MySQL5.7
 ```
 #### V1.0.0 版本内容更新
 - 后台管理
- - 用户管理
- - 角色管理
- - 菜单管理
+  - 用户管理
+  - 角色管理
+  - 菜单管理
 
 
