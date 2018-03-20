@@ -32,7 +32,7 @@ MySQL5.7
   }
 }
 ```
-具体可以参考我的系列文章：
+具体可以参考我的系列文章：  
 [.NET Core 搭建个人网站 | (7) Linux系统移植](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite07/)
 
 #### 目录结构描述
