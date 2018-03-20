@@ -2,8 +2,8 @@
 ===========================
 
 #### 环境依赖
-Linux/Windows/Mac
-dotnet-sdk-2.0.0
+Linux/Windows/Mac  
+dotnet-sdk-2.0.0  
 MySQL5.7
 
 #### 调试部署
