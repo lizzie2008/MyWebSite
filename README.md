@@ -33,7 +33,7 @@
 }
 ```
 具体可以参考我的系列文章：  
-<a href="https://blog.lancel0t.cn/posts/mywebsite/MyWebSite07/" target="_blank">.NET Core 搭建个人网站 | (7) Linux系统移植</a>
+[.NET Core 搭建个人网站 | (7) Linux系统移植](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite07/ ".NET Core 搭建个人网站系列")
 
 #### 目录结构描述
 ```
