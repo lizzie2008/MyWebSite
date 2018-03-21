@@ -32,14 +32,14 @@
   }
 }
 ```
-具体可以参考我的系列文章：  
-[.NET Core 搭建个人网站 | (1) 环境搭建](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite01/ ".NET Core 搭建个人网站系列")
-[.NET Core 搭建个人网站 | (2) 一键部署和用户登录](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite02/ ".NET Core 搭建个人网站系列")
-[.NET Core 搭建个人网站 | (3) 菜单管理](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite03/ ".NET Core 搭建个人网站系列")
-[.NET Core 搭建个人网站 | (4) 主页和登录验证](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite04/ ".NET Core 搭建个人网站系列")
-[.NET Core 搭建个人网站 | (5) Api模拟和网站分析](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite05/ ".NET Core 搭建个人网站系列")
-[.NET Core 搭建个人网站 | (6) 单页模式和优化](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite06/ ".NET Core 搭建个人网站系列")
-[.NET Core 搭建个人网站 | (7) Linux系统移植](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite07/ ".NET Core 搭建个人网站系列")
+具体可以参考我的系列文章：  
+- [.NET Core 搭建个人网站 | (1) 环境搭建](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite01/ ".NET Core 搭建个人网站系列")
+- [.NET Core 搭建个人网站 | (2) 一键部署和用户登录](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite02/ ".NET Core 搭建个人网站系列")
+- [.NET Core 搭建个人网站 | (3) 菜单管理](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite03/ ".NET Core 搭建个人网站系列")
+- [.NET Core 搭建个人网站 | (4) 主页和登录验证](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite04/ ".NET Core 搭建个人网站系列")
+- [.NET Core 搭建个人网站 | (5) Api模拟和网站分析](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite05/ ".NET Core 搭建个人网站系列")
+- [.NET Core 搭建个人网站 | (6) 单页模式和优化](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite06/ ".NET Core 搭建个人网站系列")
+- [.NET Core 搭建个人网站 | (7) Linux系统移植](https://blog.lancel0t.cn/posts/mywebsite/MyWebSite07/ ".NET Core 搭建个人网站系列")
 
 #### 目录结构描述
 ```
