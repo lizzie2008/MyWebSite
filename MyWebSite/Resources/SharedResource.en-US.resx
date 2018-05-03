@@ -120,11 +120,23 @@
   <data name="ApiSimulator" xml:space="preserve">
     <value>API Simulator</value>
   </data>
+  <data name="CnBlogs" xml:space="preserve">
+    <value>Cn Blogs</value>
+  </data>
   <data name="Configuration" xml:space="preserve">
     <value>Configuration</value>
   </data>
+  <data name="GitHubForProject" xml:space="preserve">
+    <value>GitHub For Project</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="IndependentBlog" xml:space="preserve">
+    <value>Independent Blog</value>
   </data>
   <data name="MenuManagement" xml:space="preserve">
     <value>Menu Management</value>
@@ -133,10 +145,16 @@
     <value>My Blog</value>
   </data>
   <data name="MyEssay" xml:space="preserve">
-    <value>My Essay</value>
+    <value>My Essay(On Testing)</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
     <value>My Profile</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="RoleInfo" xml:space="preserve">
     <value>Role Info</value>

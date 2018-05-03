@@ -12,7 +12,7 @@
         url: '/Essay/Essay/Index',
         data: {
             pageIndex: $stateParams.pageIndex,
-            pageSize: 10,
+            pageSize: 5,
             essayCatalogID: $stateParams.essayCatalogID,
             essayArchiveID: $stateParams.essayArchiveID,
             essayTagID: $stateParams.essayTagID

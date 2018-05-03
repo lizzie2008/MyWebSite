@@ -4,6 +4,7 @@
 @inject IViewLocalizer Localizer
 @model MyWebSite.ViewModels.LayoutVM
 @inject IOptions<NavBarMenus> NavBarMenus
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 <aside class="main-sidebar">
     <section class="sidebar">
@@ -12,8 +13,8 @@
                 <img src="images/anonymous.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>@Model.NickName</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> @Model.NetState</a>
+                <p>@SharedLocalizer[Model.NickName]</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> @SharedLocalizer[Model.NetState]</a>
             </div>
         </div>
         <form action="#" method="get" class="sidebar-form">
@@ -32,10 +33,10 @@
             @await Html.PartialAsync("_NavMenu", NavBarMenus.Value)
 
             <li class="header">相关资料</li>
-            <li><a href="https://github.com/lizzie2008/MyWebSite" target="_blank"><i class="fa fa-book"></i> <span>GitHub For Project</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+            <li><a href="https://blog.lancel0t.cn/" target="_blank"><i class="fa fa-chrome text-aqua"></i> <span>@SharedLocalizer["IndependentBlog"]</span></a></li>
+            <li><a href="http://www.cnblogs.com/lizzie-xhu/" target="_blank"><i class="fa fa-btc text-yellow"></i> <span>@SharedLocalizer["CnBlogs"]</span></a></li>
+            <li><a href="mailto:34878936@qq.com"><i class="fa fa-envelope text-danger"></i> <span>@SharedLocalizer["Email"]</span></a></li>
+            <li><a href="https://github.com/lizzie2008/MyWebSite" target="_blank"><i class="fa fa-book text-blue"></i> <span>@SharedLocalizer["GitHubForProject"]</span></a></li>
         </ul>
     </section>
 </aside>

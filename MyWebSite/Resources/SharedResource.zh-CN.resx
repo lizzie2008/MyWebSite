@@ -120,23 +120,41 @@
   <data name="ApiSimulator" xml:space="preserve">
     <value>API 模拟</value>
   </data>
+  <data name="CnBlogs" xml:space="preserve">
+    <value>博客园</value>
+  </data>
   <data name="Configuration" xml:space="preserve">
     <value>后台管理</value>
   </data>
+  <data name="GitHubForProject" xml:space="preserve">
+    <value>项目源码</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>游客</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>主页</value>
+  </data>
+  <data name="IndependentBlog" xml:space="preserve">
+    <value>个人博客</value>
   </data>
   <data name="MenuManagement" xml:space="preserve">
     <value>菜单管理</value>
   </data>
   <data name="MyBlog" xml:space="preserve">
-    <value>我的博客</value>
+    <value>系列文章</value>
   </data>
   <data name="MyEssay" xml:space="preserve">
-    <value>我的随笔</value>
+    <value>我的随笔(测试中)</value>
   </data>
   <data name="MyProfile" xml:space="preserve">
     <value>博主信息</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>在线</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>资料</value>
   </data>
   <data name="RoleInfo" xml:space="preserve">
     <value>角色信息</value>

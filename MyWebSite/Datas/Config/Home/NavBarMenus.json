@@ -92,6 +92,12 @@
                 "Name": "06.单页模式和优化",
                 "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8378256.html",
                 "Icon": "fa-circle-o"
+              },
+              //07.Linux系统移植
+              {
+                "Name": "07.Linux系统移植",
+                "TemplateUrl": "http://www.cnblogs.com/lizzie-xhu/p/8572616.html",
+                "Icon": "fa-circle-o"
               }
             ]
           }
