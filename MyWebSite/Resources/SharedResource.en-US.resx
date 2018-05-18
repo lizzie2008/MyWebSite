@@ -150,6 +150,9 @@
   <data name="MyProfile" xml:space="preserve">
     <value>My Profile</value>
   </data>
+  <data name="MyResume" xml:space="preserve">
+    <value>My Resume</value>
+  </data>
   <data name="Online" xml:space="preserve">
     <value>Online</value>
   </data>

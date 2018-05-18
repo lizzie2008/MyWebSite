@@ -150,6 +150,9 @@
   <data name="MyProfile" xml:space="preserve">
     <value>博主信息</value>
   </data>
+  <data name="MyResume" xml:space="preserve">
+    <value>个人简历</value>
+  </data>
   <data name="Online" xml:space="preserve">
     <value>在线</value>
   </data>
